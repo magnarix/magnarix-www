@@ -1,119 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MagnaRix Crown</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: system-ui, sans-serif;
-      background: white;
-      color: black;
-      line-height: 1.6;
-    }
-    header {
-      padding: 2rem;
-      text-align: center;
-      border-bottom: 1px solid #ccc;
-    }
-    .logo {
-      max-width: 160px;
-      margin-bottom: 10px;
-    }
-    header h1 {
-      margin: 0;
-      font-size: 2.5rem;
-      letter-spacing: 1px;
-    }
-    nav {
-      margin-top: 1rem;
-    }
-    nav a {
-      margin: 0 12px;
-      text-decoration: none;
-      color: black;
-      font-weight: 500;
-    }
-    .hero {
-      padding: 4rem 2rem;
-      text-align: center;
-    }
-    .hero h2 {
-      font-size: 1.75rem;
-      margin-bottom: 1rem;
-    }
-    .hero p {
-      font-size: 1.1rem;
-      max-width: 600px;
-      margin: 0 auto;
-    }
-    .sections {
-      padding: 3rem 2rem;
-      display: grid;
-      gap: 2rem;
-      max-width: 900px;
-      margin: auto;
-    }
-    .section {
-      border-top: 1px solid #eee;
-      padding-top: 2rem;
-    }
-    .section h3 {
-      margin-bottom: 0.5rem;
-    }
-    footer {
-      text-align: center;
-      padding: 2rem;
-      font-size: 0.9rem;
-      border-top: 1px solid #ccc;
-    }
-  </style>
+  
+<div data-include="head-meta.html"></div>
+
 </head>
 <body>
+  
+<div data-include="nav.html"></div>
 
-  <header>
-    <a href="/"><img src="logo.png" alt="MagnaRix Logo" class="logo" /></a>
-    <h1>MagnaRix Crown</h1>
-    <nav>
-      <a href="/index.html">Home</a>
-      <a href="/forge.html">Forge</a>
-      <a href="/values.html">Our Values</a>
-      <a href="/contact.html">Contact</a>
-    </nav>
-  </header>
-
-  <div class="hero">
-    <h2>Lead with Intelligence</h2>
-    <p>MagnaRix Crown is your executive AI layer — the cockpit where insights meet judgment, and governance meets vision.</p>
+  
+<div class="hero">
+  <h2>Lead with Intelligence</h2>
+  <p>MagnaRix Crown is your executive AI layer — the cockpit where insights meet judgment, and governance meets vision.</p>
+</div>
+<div class="sections">
+  <div class="section">
+    <h3>🎯 Command Insights</h3>
+    <p>Executive dashboards that translate AI outputs into clear, strategic narratives for decision-makers.</p>
   </div>
+</div>
 
-  <div class="sections">
-    <div class="section">
-      <h3>🎯 Command Insights</h3>
-      <p>Executive dashboards that translate AI outputs into clear, strategic narratives for decision-makers.</p>
-    </div>
-    <div class="section">
-      <h3>🧠 Crown Orchestrator</h3>
-      <p>AI-driven scenario modeling and decision support, informed by your enterprise data and logic models.</p>
-    </div>
-    <div class="section">
-      <h3>🛡️ Decree Rulesets</h3>
-      <p>Define what your AI can and cannot do. Every model obeys the laws you write — no black boxes.</p>
-    </div>
-    <div class="section">
-      <h3>🤝 Council Sync</h3>
-      <p>Enable collaborative decision-making before AI policies are enforced, keeping humans in command — not just in the loop.</p>
-    </div>
-    <div class="section">
-      <h3>🔗 RoyalDecree API</h3>
-      <p>Connect your leadership logic to production systems. Govern outcomes with authority and auditability.</p>
-    </div>
-  </div>
+  
+<div data-include="footer.html"></div>
 
-  <footer>
-    &copy; 2025 MagnaRix. All rights reserved.
-  </footer>
+  
+<script>
+  async function includeHTML() {
+    const elements = document.querySelectorAll('[data-include]');
+    for (const el of elements) {
+      const file = el.getAttribute('data-include');
+      if (file) {
+        const res = await fetch(file);
+        const html = await res.text();
+        el.innerHTML = html;
+      }
+    }
+  }
+  includeHTML();
+</script>
 
 </body>
 </html>

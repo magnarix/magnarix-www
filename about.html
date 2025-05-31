@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+<div data-include="head-meta.html"></div>
+
+</head>
+<body>
+  
+<div data-include="nav.html"></div>
+
+  
+<div class="container">
+  <section>
+    <h2>Our Origin</h2>
+    <p>MagnaRix was founded on a simple but radical conviction: that artificial intelligence should not replace leadership — it should serve it.</p>
+  </section>
+  <section>
+    <h2>What We Build</h2>
+    <p>We build sovereign AI systems for those who lead. MagnaRix Forge crafts deeply aligned intelligence. MagnaRix Crown governs decisions with confidence.</p>
+  </section>
+  <section>
+    <h2>The Meaning Behind the Name</h2>
+    <p><strong>Magna</strong>, Latin for “great.” <strong>Rix</strong>, an ancient word for ruler. Together: intelligence that is not just automated — but enthroned.</p>
+  </section>
+</div>
+
+  
+<div data-include="footer.html"></div>
+
+  
+<script>
+  async function includeHTML() {
+    const elements = document.querySelectorAll('[data-include]');
+    for (const el of elements) {
+      const file = el.getAttribute('data-include');
+      if (file) {
+        const res = await fetch(file);
+        const html = await res.text();
+        el.innerHTML = html;
+      }
+    }
+  }
+  includeHTML();
+</script>
+
+</body>
+</html>

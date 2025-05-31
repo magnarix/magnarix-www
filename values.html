@@ -1,109 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Our Values – MagnaRix</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: system-ui, sans-serif;
-      background: white;
-      color: black;
-      line-height: 1.6;
-    }
-    header {
-      padding: 2rem;
-      text-align: center;
-      border-bottom: 1px solid #ccc;
-    }
-    .logo {
-      max-width: 160px;
-      margin-bottom: 10px;
-    }
-    header h1 {
-      margin: 0;
-      font-size: 2.5rem;
-      letter-spacing: 1px;
-    }
-    nav {
-      margin-top: 1rem;
-    }
-    nav a {
-      margin: 0 12px;
-      text-decoration: none;
-      color: black;
-      font-weight: 500;
-    }
-    .container {
-      max-width: 800px;
-      margin: 40px auto;
-      padding: 2rem;
-    }
-    .value {
-      border-top: 1px solid #eee;
-      padding-top: 1.5rem;
-      margin-top: 2rem;
-    }
-    .value h3 {
-      margin-bottom: 0.5rem;
-    }
-    footer {
-      text-align: center;
-      padding: 2rem;
-      font-size: 0.9rem;
-      border-top: 1px solid #ccc;
-    }
-  </style>
+  
+<div data-include="head-meta.html"></div>
+
 </head>
 <body>
+  
+<div data-include="nav.html"></div>
 
-  <header>
-    <a href="/"><img src="logo.png" alt="MagnaRix Logo" class="logo" /></a>
-    <h1>Our Values</h1>
-    <nav>
-      <a href="/index.html">Home</a>
-      <a href="/forge.html">Forge</a>
-      <a href="/crown.html">Crown</a>
-      <a href="/contact.html">Contact</a>
-    </nav>
-  </header>
-
-  <div class="container">
-    <div class="value">
-      <h3>🛡 Sovereignty by Design</h3>
-      <p>We build systems that reflect your governance and mission. Control, autonomy, and integrity are not optional — they are embedded by design.</p>
-    </div>
-
-    <div class="value">
-      <h3>🧠 Intelligence with Honor</h3>
-      <p>Performance means nothing without principle. Our AI serves wisdom, not just speed.</p>
-    </div>
-
-    <div class="value">
-      <h3>📐 Architectural Excellence</h3>
-      <p>We craft systems with timeless clarity, precision, and scalability — like cathedrals, not kiosks.</p>
-    </div>
-
-    <div class="value">
-      <h3>🔥 Transformational Boldness</h3>
-      <p>We challenge the status quo, disrupt the mediocre, and build for those who command change.</p>
-    </div>
-
-    <div class="value">
-      <h3>🤝 Enduring Trust</h3>
-      <p>Our partnerships are built on truth, transparency, and shared mission — not hype or half-promises.</p>
-    </div>
-
-    <div class="value">
-      <h3>🌍 Cultural Precision</h3>
-      <p>Our AI respects language, tradition, and identity. It adapts to your world — not the other way around.</p>
-    </div>
+  
+<div class="container">
+  <div class="value">
+    <h3>🛡 Sovereignty by Design</h3>
+    <p>We build systems that reflect your governance and mission. Control, autonomy, and integrity are embedded by design.</p>
   </div>
+  <div class="value">
+    <h3>🧠 Intelligence with Honor</h3>
+    <p>Performance means nothing without principle. Our AI serves wisdom, not just speed.</p>
+  </div>
+</div>
 
-  <footer>
-    &copy; 2025 MagnaRix. All rights reserved.
-  </footer>
+  
+<div data-include="footer.html"></div>
+
+  
+<script>
+  async function includeHTML() {
+    const elements = document.querySelectorAll('[data-include]');
+    for (const el of elements) {
+      const file = el.getAttribute('data-include');
+      if (file) {
+        const res = await fetch(file);
+        const html = await res.text();
+        el.innerHTML = html;
+      }
+    }
+  }
+  includeHTML();
+</script>
 
 </body>
 </html>
