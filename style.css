@@ -10,10 +10,6 @@ body {
   height: 100vh;
 }
 
-.container {
-  max-width: 600px;
-  padding: 20px;
-}
 
 .logo {
   width: 300px;
