@@ -1,3 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>MagnaRix Navigation</title>
+  <link href="https://fonts.cdnfonts.com/css/magnetic" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Magnetic', sans-serif;
+    }
+
+    #nav {
+      background: white;
+      text-align: center;
+      border-bottom: 1px solid #ccc;
+    }
+
+    #nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: inline-flex;
+      gap: 2rem;
+    }
+
+    #nav ul li {
+      position: relative;
+    }
+
+    #nav ul li a {
+      display: block;
+      padding: 1em 0.5em;
+      color: black;
+      text-decoration: none;
+      font-size: 1rem;
+    }
+
+    #nav ul li a:hover,
+    #nav ul li a.active {
+      background: #f2f2f2;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: white;
+      min-width: 180px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      z-index: 1;
+      top: 100%;
+      left: 0;
+    }
+
+    .dropdown-content a {
+      color: black;
+      padding: 0.75em 1em;
+      display: block;
+      text-align: left;
+    }
+
+    .dropdown-content a:hover {
+      background-color: #f0f0f0;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    @media (max-width: 768px) {
+      #nav ul {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .dropdown-content {
+        position: static;
+        box-shadow: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
 <nav id="nav">
   <ul>
     <li><a href="index.html" class="active">Home</a></li>
@@ -19,58 +103,5 @@
   </ul>
 </nav>
 
-<style>
-  #nav ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    gap: 1rem;
-    background: #111;
-  }
-
-  #nav ul li {
-    position: relative;
-  }
-
-  #nav ul li a {
-    display: block;
-    padding: 1em;
-    color: #fff;
-    text-decoration: none;
-  }
-
-  #nav ul li a:hover,
-  #nav ul li a.active {
-    background: #333;
-  }
-
-  .dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #222;
-    min-width: 160px;
-    z-index: 1;
-    top: 100%;
-  }
-
-  .dropdown-content a {
-    color: white;
-    padding: 0.75em 1em;
-    display: block;
-  }
-
-  .dropdown-content a:hover {
-    background-color: #333;
-  }
-
-  .dropdown:hover .dropdown-content {
-    display: block;
-  }
-
-  @media (max-width: 768px) {
-    #nav ul {
-      flex-direction: column;
-    }
-  }
-</style>
+</body>
+</html>
