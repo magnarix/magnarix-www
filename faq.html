@@ -1,99 +1,152 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MagnaRix – Frequently Asked Questions</title>
+  <meta charset="UTF-8">
+  <title>FAQ – MagnaRix</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body {
-      font-family: 'Helvetica Neue', sans-serif;
-      background-color: #f9f9f9;
-      color: #222;
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background-color: #ffffff;
+      color: #000000;
+    }
+
+    #nav {
+      background-color: #fff;
+      text-align: center;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    #nav ul {
       margin: 0;
       padding: 0;
+      list-style: none;
+      display: inline-block;
     }
-    .container {
-      max-width: 960px;
-      margin: 0 auto;
-      padding: 60px 20px;
+
+    #nav ul li {
+      display: inline-block;
+      position: relative;
     }
+
+    #nav ul li a {
+      display: block;
+      padding: 16px 20px;
+      color: #000;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    #nav ul li a:hover,
+    #nav ul li a.active {
+      text-decoration: underline;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #fff;
+      box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+      z-index: 1;
+      min-width: 160px;
+      text-align: left;
+    }
+
+    .dropdown-content a {
+      padding: 12px 16px;
+      display: block;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    main {
+      max-width: 800px;
+      margin: 60px auto;
+      padding: 0 20px;
+    }
+
     h1 {
-      font-size: 2.5em;
-      border-bottom: 2px solid #ddd;
-      padding-bottom: 0.4em;
+      text-align: center;
+      font-size: 2em;
+      margin-bottom: 1em;
     }
+
     h2 {
-      margin-top: 3em;
-      font-size: 1.75em;
-      color: #111;
-      border-bottom: 1px solid #ddd;
-      padding-bottom: 0.3em;
-    }
-    .faq-item {
-      margin-bottom: 30px;
-    }
-    .faq-item h3 {
+      margin-top: 1.5em;
       font-size: 1.2em;
-      color: #333;
-      margin-bottom: 0.5em;
     }
-    .faq-item p {
-      line-height: 1.6;
-      margin: 0;
+
+    footer {
+      text-align: center;
+      padding: 30px 20px;
+      background-color: #f2f2f2;
+      margin-top: 60px;
+      font-size: 14px;
     }
   </style>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      fetch("navbar.html")
+        .then(response => response.text())
+        .then(data => {
+          document.getElementById("navbar-placeholder").innerHTML = data;
+        });
+    });
+  </script>
 </head>
 <body>
-<div id="navbar"></div>
 
-<script>
-  fetch("navbar.html")
-    .then(response => response.text())
-    .then(html => {
-      document.getElementById("navbar").innerHTML = html;
-    })
-    .catch(error => {
-      console.error("Error loading navbar:", error);
-    });
-</script>
+  <div id="navbar-placeholder"></div>
 
-
-  
-  <div class="container">
+  <main>
     <h1>Frequently Asked Questions</h1>
 
-    <h2>About MagnaRix</h2>
-    <div class="faq-item"><h3>1. What is MagnaRix?</h3><p>MagnaRix is a sovereign intelligence platform that transforms raw data, models, and workflows into actionable strategic clarity. It comprises two core components: MagnaForge and MagnaCrown, enabling organizations to build and govern AI systems that align with their mission and values.</p></div>
-    <div class="faq-item"><h3>2. Why choose MagnaRix?</h3><p>MagnaRix offers a cohesive framework that integrates technology, data, and decision logic. It empowers enterprises to self-govern, innovate, and lead with clarity amidst complexity.</p></div>
-    <div class="faq-item"><h3>3. What are the advantages of MagnaRix?</h3><p>Sovereign IT, composable architecture, strategic intelligence, and long-term resilience against vendor lock-in and technological churn.</p></div>
-    <div class="faq-item"><h3>4. Why would people pay for MagnaRix?</h3><p>For decision intelligence that is explainable, infrastructure that is ownable, and foresight that is strategic—not reactive.</p></div>
-    <div class="faq-item"><h3>5. Is MagnaRix profitable?</h3><p>Yes. MagnaRix operates in a growing market with a scalable revenue model based on subscriptions, enterprise licensing, and custom integrations.</p></div>
-    <div class="faq-item"><h3>6. What is Sovereign IT?</h3><p>The ability for an organization to own, adapt, and govern its entire intelligence infrastructure, free from third-party constraints.</p></div>
-    <div class="faq-item"><h3>7. What does it mean to lead with strategic clarity?</h3><p>It means seeing not just what to do, but why and how—with decisions rooted in mission-aligned insights and explainable logic.</p></div>
-    <div class="faq-item"><h3>8. Why is AI alone insufficient?</h3><p>AI alone is narrow and context-blind. MagnaRix places AI within a governance-aware architecture that ensures alignment with human goals and strategy.</p></div>
-    <div class="faq-item"><h3>9. Are there existing products like MagnaRix?</h3><p>None that unify architecture, AI, governance, and decision logic into a sovereign framework as MagnaRix does.</p></div>
+    <h2>1. What is MagnaRix?</h2>
+    <p>MagnaRix is a next-generation platform that integrates intelligence, collaboration, and governance across digital transformation efforts.</p>
 
-    <h2>MagnaForge & MagnaCrown</h2>
-    <div class="faq-item"><h3>10. What does it mean to forge intelligence?</h3><p>To construct transparent, auditable, and modular intelligence systems through deliberate engineering.</p></div>
-    <div class="faq-item"><h3>11. What does it mean to crown wisdom?</h3><p>To elevate intelligence into leadership—transforming insights into action through decision logic, accountability, and clarity.</p></div>
-    <div class="faq-item"><h3>12. What is MagnaForge?</h3><p>The studio where intelligence workflows are composed, integrated, versioned, and shared across the enterprise.</p></div>
-    <div class="faq-item"><h3>13. What is MagnaCrown?</h3><p>The layer that interprets intelligence outputs into executive-ready strategic decisions using scenario logic and governance overlays.</p></div>
+    <h2>2. Why MagnaRix?</h2>
+    <p>MagnaRix is built to unify business, IT, and governance teams by making their workflows transparent, traceable, and automated—at scale.</p>
 
-    <h2>Role-Specific Benefits</h2>
-    <div class="faq-item"><h3>14. I’m a CEO—what can MagnaRix do for me?</h3><p>Provide strategic clarity, executive dashboards, mission-aligned insights, and self-governed intelligence infrastructure.</p></div>
-    <div class="faq-item"><h3>15. I’m a middle-tier manager—how can MagnaRix help?</h3><p>Unify fragmented inputs, convert goals into action, and support measurable outcomes across workflows.</p></div>
-    <div class="faq-item"><h3>16. I’m an architect—what does MagnaRix offer?</h3><p>A model-agnostic, traceable, and composable architecture for AI, workflows, and governance by design.</p></div>
-    <div class="faq-item"><h3>17. I’m a lawyer—how does MagnaRix help?</h3><p>Full audit trails, human-in-the-loop mechanisms, explainability, and compliance readiness built in.</p></div>
-    <div class="faq-item"><h3>18. I’m a government employee—why MagnaRix?</h3><p>Trust, transparency, coordination, and ownership over public-sector intelligence infrastructure.</p></div>
-    <div class="faq-item"><h3>19. I’m an entrepreneur—how does MagnaRix support me?</h3><p>Rapid prototyping of intelligent systems, avoiding tech debt, and building scalable AI-based products with clarity and control.</p></div>
-    <div class="faq-item"><h3>20. I’m a stockbroker—how can MagnaRix help me?</h3><p>Integrated market insight engines, strategic scenario forecasting, and client-grade explainable AI tools.</p></div>
+    <h2>3. What are the advantages of MagnaRix?</h2>
+    <p>It streamlines complex operations, reduces risk, and speeds up innovation cycles across departments.</p>
 
-    <h2>Technical Insights</h2>
-    <div class="faq-item"><h3>21. What sets MagnaRix apart from other AI platforms?</h3><p>It’s architecture-centric, designed to orchestrate intelligence as an enterprise layer—not just deploy isolated models.</p></div>
-    <div class="faq-item"><h3>22. How does MagnaForge relate to MLOps?</h3><p>It operates above MLOps as a strategic composition and orchestration layer, working with tools like Airflow, MLflow, or Kubeflow.</p></div>
-    <div class="faq-item"><h3>23. Does MagnaCrown replace BI tools?</h3><p>No—it complements them by interpreting their outputs into governance-aware, mission-aligned decision logic.</p></div>
-    <div class="faq-item"><h3>24. How does MagnaRix handle governance?</h3><p>Governance is native: all workflows are versioned, traceable, and auditable—with policy-aware checkpoints.</p></div>
-    <div class="faq-item"><h3>25. Can I use existing models and LLMs with MagnaRix?</h3><p>Yes. MagnaRix supports HuggingFace, OpenAI, Azure, Anthropic, and any REST-based model you choose to integrate.</p></div>
-  </div>
+    <h2>4. Why would people want to pay for MagnaRix?</h2>
+    <p>MagnaRix generates measurable ROI by improving clarity, governance, and decision-making across enterprise processes.</p>
+
+    <h2>14. I am a CEO of a company, what can MagnaRix do for me?</h2>
+    <p>MagnaRix provides strategic visibility across the enterprise and simplifies complex transformations.</p>
+
+    <h2>15. I am a middle-tier manager, what can MagnaRix do for me?</h2>
+    <p>It helps track deliverables, remove ambiguity, and streamline collaboration across departments.</p>
+
+    <h2>16. I am an architect, what can MagnaRix do for me?</h2>
+    <p>MagnaRix maps dependencies clearly, supports documentation, and tracks architecture compliance in real-time.</p>
+
+    <h2>17. I am a lawyer, what can MagnaRix do for me?</h2>
+    <p>It offers governance, audit trails, and documentation support for regulatory and legal compliance.</p>
+
+    <h2>18. I am a government employee, what can MagnaRix do for me?</h2>
+    <p>It introduces transparency and accountability while improving public-sector digital transformation initiatives.</p>
+
+    <h2>19. I am an entrepreneur, what can MagnaRix do for me?</h2>
+    <p>MagnaRix helps you scale by organizing complexity and aligning people around clear, trackable deliverables.</p>
+
+    <h2>20. I am a stock broker – what can MagnaRix do for me?</h2>
+    <p>It allows you to track enterprise risk, transformation velocity, and governance practices in companies you evaluate.</p>
+
+    <h2>21. I’m an AI developer or engineer. What can MagnaRix offer me?</h2>
+    <p>It provides a structured framework for integrating AI capabilities within enterprise-grade workflows, while maintaining traceability and data lineage.</p>
+  </main>
+
+  <footer>
+    &copy; 2025 MagnaRix Inc. All rights reserved.
+  </footer>
+
 </body>
 </html>
