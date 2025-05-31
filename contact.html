@@ -1,15 +1,23 @@
-<form
-  action="https://formspree.io/f/xldnrprd"
-  method="POST"
->
-  <label>
-    Your email:
-    <input type="email" name="email">
-  </label>
-  <label>
-    Your message:
-    <textarea name="message"></textarea>
-  </label>
-  <!-- your other form fields go here -->
-  <button type="submit">Send</button>
-</form>
+<!-- Contact Form -->
+<div style="max-width: 600px; margin: 40px auto; font-family: sans-serif; color: black; background: white; padding: 30px; border: 1px solid #ddd; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
+  <h2 style="text-align: center; margin-bottom: 20px;">Contact Us</h2>
+  <form action="https://formspree.io/f/xldnrprd" method="POST">
+    
+    <label style="display: block; margin-bottom: 10px;">
+      <span style="display: block; margin-bottom: 5px;">Your email:</span>
+      <input type="email" name="email" required
+        style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px;">
+    </label>
+
+    <label style="display: block; margin-bottom: 20px;">
+      <span style="display: block; margin-bottom: 5px;">Your message:</span>
+      <textarea name="message" rows="6" required
+        style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px;"></textarea>
+    </label>
+
+    <button type="submit"
+      style="background: black; color: white; border: none; padding: 12px 20px; border-radius: 4px; font-weight: bold; cursor: pointer; transition: background 0.3s ease;">
+      Send
+    </button>
+  </form>
+</div>
