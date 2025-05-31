@@ -71,16 +71,24 @@
   </style>
 </head>
 <body>
+<div id="navbar"></div>
 
+<script>
+  fetch("navbar.html")
+    .then(response => response.text())
+    .then(html => {
+      document.getElementById("navbar").innerHTML = html;
+    })
+    .catch(error => {
+      console.error("Error loading navbar:", error);
+    });
+</script>
+
+
+  
   <header>
     <a href="/"><img src="logo.png" alt="MagnaRix Logo" class="logo" /></a>
     <h1>MagnaRix Forge</h1>
-    <nav>
-      <a href="/index.html">Home</a>
-      <a href="/crown.html">Crown</a>
-      <a href="/values.html">Our Values</a>
-      <a href="/contact.html">Contact</a>
-    </nav>
   </header>
 
   <div class="hero">
