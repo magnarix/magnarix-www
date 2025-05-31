@@ -1,0 +1,77 @@
+<nav id="nav">
+  <ul>
+    <li><a href="index.html" class="active">Home</a></li>
+    <li class="dropdown">
+      <a href="javascript:void(0)" class="dropbtn">About</a>
+      <div class="dropdown-content">
+        <a href="index.html">Home</a>
+        <a href="values.html">Our Values</a>
+        <a href="faq.html">FAQ</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </li>
+    <li class="dropdown">
+      <a href="javascript:void(0)" class="dropbtn">Product</a>
+      <div class="dropdown-content">
+        <a href="forge.html">MagnaForge</a>
+        <a href="crown.html">MagnaCrown</a>
+      </div>
+    </li>
+  </ul>
+</nav>
+
+<style>
+  #nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 1rem;
+    background: #111;
+  }
+
+  #nav ul li {
+    position: relative;
+  }
+
+  #nav ul li a {
+    display: block;
+    padding: 1em;
+    color: #fff;
+    text-decoration: none;
+  }
+
+  #nav ul li a:hover,
+  #nav ul li a.active {
+    background: #333;
+  }
+
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #222;
+    min-width: 160px;
+    z-index: 1;
+    top: 100%;
+  }
+
+  .dropdown-content a {
+    color: white;
+    padding: 0.75em 1em;
+    display: block;
+  }
+
+  .dropdown-content a:hover {
+    background-color: #333;
+  }
+
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+
+  @media (max-width: 768px) {
+    #nav ul {
+      flex-direction: column;
+    }
+  }
+</style>
