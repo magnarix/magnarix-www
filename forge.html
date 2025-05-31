@@ -1,32 +1,119 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <div data-include="head-meta.html"></div>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MagnaRix Forge</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: system-ui, sans-serif;
+      background: white;
+      color: black;
+      line-height: 1.6;
+    }
+    header {
+      padding: 2rem;
+      text-align: center;
+      border-bottom: 1px solid #ccc;
+    }
+    .logo {
+      max-width: 160px;
+      margin-bottom: 10px;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+      letter-spacing: 1px;
+    }
+    nav {
+      margin-top: 1rem;
+    }
+    nav a {
+      margin: 0 12px;
+      text-decoration: none;
+      color: black;
+      font-weight: 500;
+    }
+    .hero {
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+    .hero h2 {
+      font-size: 1.75rem;
+      margin-bottom: 1rem;
+    }
+    .hero p {
+      font-size: 1.1rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .sections {
+      padding: 3rem 2rem;
+      display: grid;
+      gap: 2rem;
+      max-width: 900px;
+      margin: auto;
+    }
+    .section {
+      border-top: 1px solid #eee;
+      padding-top: 2rem;
+    }
+    .section h3 {
+      margin-bottom: 0.5rem;
+    }
+    footer {
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.9rem;
+      border-top: 1px solid #ccc;
+    }
+  </style>
 </head>
 <body>
-  <div data-include="nav.html"></div>
-  
-<div class="hero">
-  <h2>Forge Intelligence That Obeys Your Mission</h2>
-  <p>MagnaRix Forge is the engine room for sovereign AI — giving you the power to architect intelligence that reflects your values.</p>
-</div>
 
-  <div data-include="footer.html"></div>
-  
-<script>
-  async function includeHTML() {
-    const elements = document.querySelectorAll('[data-include]');
-    for (const el of elements) {
-      const file = el.getAttribute('data-include');
-      if (file) {
-        const res = await fetch(file);
-        const html = await res.text();
-        el.innerHTML = html;
-      }
-    }
-  }
-  includeHTML();
-</script>
+  <header>
+    <a href="/"><img src="logo.png" alt="MagnaRix Logo" class="logo" /></a>
+    <h1>MagnaRix Forge</h1>
+    <nav>
+      <a href="/index.html">Home</a>
+      <a href="/crown.html">Crown</a>
+      <a href="/values.html">Our Values</a>
+      <a href="/contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <div class="hero">
+    <h2>Forge Intelligence That Obeys Your Mission</h2>
+    <p>MagnaRix Forge is the engine room for sovereign AI — giving you the power to architect intelligence that reflects your values, not imported defaults.</p>
+  </div>
+
+  <div class="sections">
+    <div class="section">
+      <h3>🧱 CrownModel Builder</h3>
+      <p>Fine-tune foundational models with embedded ethics, business logic, and domain specificity.</p>
+    </div>
+    <div class="section">
+      <h3>📚 Lexicon Layer</h3>
+      <p>Shape how your AI interprets your world — with curated vocabularies, cultural nuance, and institutional memory.</p>
+    </div>
+    <div class="section">
+      <h3>🛡️ SentinelGuard</h3>
+      <p>Ensure data privacy and model safety across every layer. No data leaks. No surprises. Full auditability.</p>
+    </div>
+    <div class="section">
+      <h3>🎛️ ForgeCast Orchestration</h3>
+      <p>Visually manage pipelines, datasets, and transformations with clarity and control.</p>
+    </div>
+    <div class="section">
+      <h3>🚀 RoyalDecree API</h3>
+      <p>Deploy AI-as-a-service that’s aligned, secure, and governed — not just “smart.”</p>
+    </div>
+  </div>
+
+  <footer>
+    &copy; 2025 MagnaRix. All rights reserved.
+  </footer>
 
 </body>
 </html>
