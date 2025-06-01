@@ -4,55 +4,115 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Our Values – MagnaRix</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --primary: #0052cc;
+      --secondary: #007fff;
+      --text-dark: #1a1a1a;
+      --text-light: #ffffff;
+      --bg-light: #f9fafc;
+      --bg-white: #ffffff;
+      --shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
-      font-family: system-ui, sans-serif;
-      background: white;
-      color: black;
-      line-height: 1.6;
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--bg-light);
+      color: var(--text-dark);
+      line-height: 1.65;
+      font-size: 16px;
     }
+
     header {
-      padding: 2rem;
+      padding: 1rem 1rem;
       text-align: center;
-      border-bottom: 1px solid #ccc;
+      background-color: var(--bg-white);
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
     }
+
     .logo {
-      max-width: 160px;
-      margin-bottom: 10px;
-    }
-    header h1 {
-      margin: 0;
-      font-size: 2.5rem;
-      letter-spacing: 1px;
-    }
-    nav {
-      margin-top: 1rem;
-    }
-    nav a {
-      margin: 0 12px;
-      text-decoration: none;
-      color: black;
-      font-weight: 500;
-    }
-    .container {
-      max-width: 800px;
-      margin: 40px auto;
-      padding: 2rem;
-    }
-    .value {
-      border-top: 1px solid #eee;
-      padding-top: 1.5rem;
-      margin-top: 2rem;
-    }
-    .value h3 {
+      max-width: 182px;
       margin-bottom: 0.5rem;
     }
+
+    header h1 {
+      margin: 0;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .hero {
+      padding: 1rem 1rem;
+      text-align: center;
+      background: linear-gradient(to right, var(--primary), var(--secondary));
+      color: var(--text-light);
+    }
+
+    .hero h2 {
+      font-size: 1.4rem;
+      margin: 0 auto;
+      max-width: 720px;
+      line-height: 1.5;
+    }
+
+    .container {
+      max-width: 960px;
+      margin: 3rem auto;
+      padding: 0 1.25rem;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .value {
+      background: var(--bg-white);
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+      padding: 1.5rem;
+      transition: transform 0.3s ease;
+    }
+
+    .value:hover {
+      transform: translateY(-5px);
+    }
+
+    .value h3 {
+      font-size: 1.4rem;
+      margin-bottom: 0.75rem;
+      color: var(--primary);
+    }
+
+    .value p {
+      font-size: 1rem;
+      color: #333;
+      margin: 0.25rem 0 0;
+    }
+
     footer {
       text-align: center;
-      padding: 2rem;
+      padding: 2rem 1rem;
       font-size: 0.9rem;
+      background: var(--bg-white);
       border-top: 1px solid #ccc;
+    }
+
+    @media (min-width: 768px) {
+      .container {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .container {
+        grid-template-columns: repeat(3, 1fr);
+      }
     }
   </style>
 </head>
@@ -71,47 +131,56 @@
     });
 </script>
 
-  
-  <header>
-    <a href="/"><img src="logo.png" alt="MagnaRix Logo" class="logo" /></a>
-    <h1>Our Values</h1>
-  </header>
+<header>
+  <a href="/"><img src="logo.png" alt="MagnaRix Logo" class="logo" /></a>
+  <h1>Our Values</h1>
+</header>
 
-  <div class="container">
-    <div class="value">
-      <h3>🛡 Sovereignty by Design</h3>
-      <p>We build systems that reflect your governance and mission. Control, autonomy, and integrity are not optional — they are embedded by design.</p>
-    </div>
+<div class="hero">
+  <h2>Our Mission: Intelligence in Service of Integrity, Strategy, and Sovereignty.</h2>
+</div>
 
-    <div class="value">
-      <h3>🧠 Intelligence with Honor</h3>
-      <p>Performance means nothing without principle. Our AI serves wisdom, not just speed.</p>
-    </div>
-
-    <div class="value">
-      <h3>📐 Architectural Excellence</h3>
-      <p>We craft systems with timeless clarity, precision, and scalability — like cathedrals, not kiosks.</p>
-    </div>
-
-    <div class="value">
-      <h3>🔥 Transformational Boldness</h3>
-      <p>We challenge the status quo, disrupt the mediocre, and build for those who command change.</p>
-    </div>
-
-    <div class="value">
-      <h3>🤝 Enduring Trust</h3>
-      <p>Our partnerships are built on truth, transparency, and shared mission — not hype or half-promises.</p>
-    </div>
-
-    <div class="value">
-      <h3>🌍 Cultural Precision</h3>
-      <p>Our AI respects language, tradition, and identity. It adapts to your world — not the other way around.</p>
-    </div>
+<div class="container">
+  <div class="value">
+    <h3>🛡 Sovereignty by Design</h3>
+    <p><strong>Autonomy is built in.</strong></p>
+    <p>You own your models, your workflows, your decisions — not us, not a vendor.</p>
   </div>
 
-  <footer>
-    &copy; 2025 MagnaRix. All rights reserved.
-  </footer>
+  <div class="value">
+    <h3>🧠 Intelligence with Honor</h3>
+    <p><strong>Speed means nothing without principle.</strong></p>
+    <p>Our AI reflects your ethics, respects your boundaries, and answers to your vision.</p>
+  </div>
+
+  <div class="value">
+    <h3>📐 Architectural Excellence</h3>
+    <p><strong>Built to last — not just launch.</strong></p>
+    <p>We craft clean, scalable systems designed to grow with you, not break under pressure.</p>
+  </div>
+
+  <div class="value">
+    <h3>🔥 Transformational Boldness</h3>
+    <p><strong>We build for pioneers, not passengers.</strong></p>
+    <p>MagnaRix empowers those ready to reshape industries — not just automate the obvious.</p>
+  </div>
+
+  <div class="value">
+    <h3>🤝 Enduring Trust</h3>
+    <p><strong>No hype. No hidden clauses.</strong></p>
+    <p>We earn partnership through clarity, alignment, and doing what we say we will do.</p>
+  </div>
+
+  <div class="value">
+    <h3>🌍 Cultural Precision</h3>
+    <p><strong>Context isn’t cosmetic — it’s foundational.</strong></p>
+    <p>Our AI adapts to your language, culture, and worldview with nuance and care.</p>
+  </div>
+</div>
+
+<footer>
+  &copy; 2025 MagnaRix. All rights reserved.
+</footer>
 
 </body>
 </html>
