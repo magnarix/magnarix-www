@@ -1,7 +1,7 @@
 <nav id="nav">
   <div class="nav-container">
     <a href="index.html" class="brand">MagnaRix</a>
-    <div class="hamburger" onclick="toggleMenu()">&#9776;</div>
+    <div class="hamburger">&#9776;</div>
     <ul class="nav-links" id="nav-links">
       <li class="dropdown">
         <a href="javascript:void(0)">Products ▾</a>
@@ -157,15 +157,21 @@
 </style>
 
 <script>
-  function toggleMenu() {
+  document.addEventListener("DOMContentLoaded", function () {
     const nav = document.getElementById("nav-links");
-    nav.classList.toggle("show");
-
+    const hamburger = document.querySelector(".hamburger");
     const dropdowns = nav.querySelectorAll(".dropdown");
+
+    hamburger.addEventListener("click", function () {
+      nav.classList.toggle("show");
+    });
+
     dropdowns.forEach(d => {
-      d.addEventListener("click", function () {
-        this.classList.toggle("open");
+      const link = d.querySelector("a");
+      link.addEventListener("click", function (e) {
+        e.preventDefault();
+        d.classList.toggle("open");
       });
     });
-  }
+  });
 </script>
