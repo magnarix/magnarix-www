@@ -37,7 +37,7 @@
     }
 
     .logo {
-      max-width: 140px;
+      max-width: 182px; /* 30% larger than 140px */
       margin-bottom: 0.5rem;
     }
 
@@ -62,7 +62,7 @@
     }
 
     .hero {
-    padding: 1rem 1rem;
+      padding: 1rem 1rem;
       text-align: center;
       background: linear-gradient(to right, var(--primary), var(--secondary));
       color: var(--text-light);
@@ -77,6 +77,11 @@
       font-size: 1.05rem;
       max-width: 680px;
       margin: 0 auto;
+    }
+
+    .section-wrapper {
+      display: flex;
+      justify-content: center;
     }
 
     .sections {
@@ -139,7 +144,8 @@
 
     @media (min-width: 1024px) {
       .sections {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(2, 1fr);
+        justify-content: center;
       }
     }
   </style>
@@ -165,28 +171,27 @@
 
 <div class="hero">
   <h2>Command the Future</h2>
-  <p>Forge intelligence. Crown wisdom. MagnaRix empowers organizations to build sovereign AI and lead with strategic clarity. Intelligence is not enough. Leadership is required.</p>
+  <p>MagnaRix is the enterprise AI decision orchestration platform that integrates your data, models, and teams into one actionable environment. From real-time insights to outcome simulation, MagnaRix turns leadership judgment into a system — helping you move from siloed data to aligned decisions, fast.</p>
 </div>
 
 <div class="hero">
-  <p><strong>MagnaRix</strong> is the AI-powered decision orchestration platform that transforms how leaders navigate complexity. In a world overwhelmed by fragmented data and high-stakes choices, MagnaRix unifies insights, automates workflows, and empowers executives to make faster, smarter, and more strategic decisions. Whether you're a CEO, architect, or analyst, MagnaRix becomes your intelligence amplifier — turning noise into clarity, action into impact, and decisions into competitive advantage.</p>
-  <p></p>
+  <p><strong>MagnaRix</strong> enables organizations to unify disconnected analytics, automate decision pipelines, and ensure that every executive action is informed, governed, and strategically aligned. It’s not just AI-powered reporting — it’s a decision OS built for enterprise transformation.</p>
 </div>
 
-<center>
-<div class="sections">
-  <div class="section">
-    <h3>🛠️ MagnaForge</h3>
-    <p><strong>Design with purpose. Build with sovereignty.</strong><br>
-    MagnaForge is your AI foundry — a powerful environment where ideas become intelligent systems that reflect your organization’s mission, culture, and data DNA. It doesn’t just accelerate development; it reclaims authorship. With MagnaForge, you’re not outsourcing intelligence — you’re forging it in-house, aligned to your values, optimized for your future. No more off-the-shelf models dictating your strategy. You build what’s yours.</p>
-  </div>
-  <div class="section">
-    <h3>👑 MagnaCrown</h3>
-    <p><strong>Govern like a visionary. Orchestrate like a strategist.</strong><br>
-    MagnaCrown is your executive command center — turning data chaos into governed clarity. It empowers leaders to orchestrate AI, enforce policy, guide ethical decision flows, and simulate outcomes in real time. With MagnaCrown, you don’t just deploy intelligence. You crown it — guiding its purpose, regulating its impact, and ensuring every decision aligns with your strategic vision. This is leadership at the speed of AI.</p>
+<div class="section-wrapper">
+  <div class="sections">
+    <div class="section">
+      <h3>🛠️ MagnaForge</h3>
+      <p><strong>Design custom AI solutions. Build proprietary intelligence.</strong><br>
+      MagnaForge is a low-code AI development studio built for enterprise teams. It lets your data scientists, architects, and business users collaboratively design, train, and deploy machine learning models without relying on black-box third-party tools. From NLP pipelines to predictive engines, everything is modular, explainable, and version-controlled — tailored to your domain, fully owned by you.</p>
+    </div>
+    <div class="section">
+      <h3>👑 MagnaCrown</h3>
+      <p><strong>Centralize governance. Operationalize oversight.</strong><br>
+      MagnaCrown is the executive dashboard and policy engine of the MagnaRix platform. It enables CXOs and compliance leaders to define rules, monitor AI usage, and simulate decisions across departments. With built-in risk scoring, audit trails, and outcome forecasting, MagnaCrown turns AI governance into a real-time, strategic function — not just a checkbox.</p>
+    </div>
   </div>
 </div>
-</center>
 
 <footer>
   &copy; 2025 MagnaRix. All rights reserved.
