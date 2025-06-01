@@ -3,70 +3,138 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MagnaRix Crown</title>
+  <title>MagnaCrown</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --primary: #0052cc;
+      --secondary: #007fff;
+      --text-dark: #1a1a1a;
+      --text-light: #ffffff;
+      --bg-light: #f9fafc;
+      --bg-white: #ffffff;
+      --shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
-      font-family: system-ui, sans-serif;
-      background: white;
-      color: black;
-      line-height: 1.6;
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--bg-light);
+      color: var(--text-dark);
+      line-height: 1.65;
+      font-size: 16px;
     }
+
     header {
-      padding: 2rem;
+      padding: 1rem 1rem;
       text-align: center;
-      border-bottom: 1px solid #ccc;
+      background-color: var(--bg-white);
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
     }
+
     .logo {
-      max-width: 160px;
-      margin-bottom: 10px;
+      max-width: 182px;
+      margin-bottom: 0.5rem;
     }
+
     header h1 {
       margin: 0;
-      font-size: 2.5rem;
-      letter-spacing: 1px;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--primary);
     }
+
     nav {
       margin-top: 1rem;
+      text-align: center;
     }
+
     nav a {
-      margin: 0 12px;
+      margin: 0 0.75rem;
       text-decoration: none;
       color: black;
       font-weight: 500;
+      font-size: 1rem;
     }
+
     .hero {
-      padding: 4rem 2rem;
+      padding: 1rem 1rem;
       text-align: center;
+      background: linear-gradient(to right, var(--primary), var(--secondary));
+      color: var(--text-light);
     }
+
     .hero h2 {
-      font-size: 1.75rem;
+      font-size: 2rem;
       margin-bottom: 1rem;
     }
+
     .hero p {
-      font-size: 1.1rem;
-      max-width: 600px;
+      font-size: 1.05rem;
+      max-width: 680px;
       margin: 0 auto;
     }
+
     .sections {
-      padding: 3rem 2rem;
       display: grid;
+      grid-template-columns: 1fr;
       gap: 2rem;
-      max-width: 900px;
-      margin: auto;
+      max-width: 1000px;
+      margin: 3rem auto;
+      padding: 0 1.25rem;
     }
+
     .section {
-      border-top: 1px solid #eee;
-      padding-top: 2rem;
+      background: var(--bg-white);
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+      padding: 1.5rem;
+      transition: transform 0.3s ease;
     }
+
+    .section:hover {
+      transform: translateY(-5px);
+    }
+
     .section h3 {
-      margin-bottom: 0.5rem;
+      font-size: 1.4rem;
+      margin-bottom: 0.75rem;
+      color: var(--primary);
     }
+
+    .section p {
+      font-size: 1rem;
+      color: #333;
+    }
+
     footer {
       text-align: center;
-      padding: 2rem;
+      padding: 2rem 1rem;
       font-size: 0.9rem;
+      background: var(--bg-white);
       border-top: 1px solid #ccc;
+    }
+
+    footer a {
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    @media (min-width: 768px) {
+      .sections {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .sections {
+        grid-template-columns: repeat(2, 1fr);
+        justify-content: center;
+      }
     }
   </style>
 </head>
@@ -85,43 +153,51 @@
     });
 </script>
 
-  
-  <header>
-    <a href="/"><img src="logo.png" alt="MagnaRix Logo" class="logo" /></a>
-    <h1>MagnaRix Crown</h1>
-  </header>
+<header>
+  <a href="/"><img src="logo.png" alt="MagnaRix Logo" class="logo" /></a>
+  <h1>MagnaCrown</h1>
+</header>
 
-  <div class="hero">
-    <h2>Lead with Intelligence</h2>
-    <p>MagnaRix Crown is your executive AI layer — the cockpit where insights meet judgment, and governance meets vision.</p>
+<div class="hero">
+  <h2>Lead with Intelligence</h2>
+  <p>MagnaCrown is your executive AI command layer — where enterprise decisions are governed, aligned, and translated into accountable action.</p>
+</div>
+
+<div class="sections">
+  <div class="section">
+    <h3>🎯 Command Insights</h3>
+    <p><strong>Turn data into executive-ready strategy.</strong><br>
+    Command Insights translates complex AI outputs into clear, contextual dashboards tailored for leadership. Understand trends, compare outcomes, and make confident, insight-driven decisions in real time.</p>
   </div>
 
-  <div class="sections">
-    <div class="section">
-      <h3>🎯 Command Insights</h3>
-      <p>Executive dashboards that translate AI outputs into clear, strategic narratives for decision-makers.</p>
-    </div>
-    <div class="section">
-      <h3>🧠 Crown Orchestrator</h3>
-      <p>AI-driven scenario modeling and decision support, informed by your enterprise data and logic models.</p>
-    </div>
-    <div class="section">
-      <h3>🛡️ Decree Rulesets</h3>
-      <p>Define what your AI can and cannot do. Every model obeys the laws you write — no black boxes.</p>
-    </div>
-    <div class="section">
-      <h3>🤝 Council Sync</h3>
-      <p>Enable collaborative decision-making before AI policies are enforced, keeping humans in command — not just in the loop.</p>
-    </div>
-    <div class="section">
-      <h3>🔗 RoyalDecree API</h3>
-      <p>Connect your leadership logic to production systems. Govern outcomes with authority and auditability.</p>
-    </div>
+  <div class="section">
+    <h3>🧠 Crown Orchestrator</h3>
+    <p><strong>Simulate decisions before they’re made.</strong><br>
+    Crown Orchestrator lets you model “what-if” scenarios using AI, risk logic, and business constraints. Forecast the downstream impact of decisions before they happen — with data-backed, ethical reasoning.</p>
   </div>
 
-  <footer>
-    &copy; 2025 MagnaRix. All rights reserved.
-  </footer>
+  <div class="section">
+    <h3>🛡️ Decree Rulesets</h3>
+    <p><strong>Write the rules your AI must obey.</strong><br>
+    Define policies, guardrails, and ethical limits that every AI workflow must follow. With Decree Rulesets, your executive intent becomes enforceable code — creating clarity and compliance from the start.</p>
+  </div>
+
+  <div class="section">
+    <h3>🤝 Council Sync</h3>
+    <p><strong>Enable collaborative, cross-functional oversight.</strong><br>
+    Council Sync provides a structured environment for stakeholders to review, comment, and approve AI strategies before they’re activated. Preserve human judgment while accelerating organizational alignment.</p>
+  </div>
+
+  <div class="section">
+    <h3>🔗 RoyalDecree API</h3>
+    <p><strong>Bridge strategy and systems with confidence.</strong><br>
+    RoyalDecree connects MagnaCrown decisions directly to production environments. Ensure every triggered action reflects approved leadership logic, with full auditability and rollback control.</p>
+  </div>
+</div>
+
+<footer>
+  &copy; 2025 MagnaRix. All rights reserved.
+</footer>
 
 </body>
 </html>
