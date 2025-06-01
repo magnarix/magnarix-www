@@ -6,96 +6,141 @@
   <title>MagnaRix – Command the Future</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --primary: #0052cc;
+      --secondary: #007fff;
+      --text-dark: #1a1a1a;
+      --text-light: #ffffff;
+      --bg-light: #f9fafc;
+      --bg-white: #ffffff;
+      --shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
       font-family: 'Inter', system-ui, sans-serif;
-      background: #f9fafc;
-      color: #1a1a1a;
+      background: var(--bg-light);
+      color: var(--text-dark);
       line-height: 1.65;
+      font-size: 16px;
     }
+
     header {
-      padding: 2rem;
+      padding: 2rem 1rem;
       text-align: center;
-      background-color: #fff;
+      background-color: var(--bg-white);
       box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
     }
+
     .logo {
-      max-width: 160px;
-      margin-bottom: 10px;
+      max-width: 140px;
+      margin-bottom: 0.5rem;
     }
+
     header h1 {
       margin: 0;
-      font-size: 2.4rem;
-      letter-spacing: 1px;
+      font-size: 2rem;
       font-weight: 700;
-      color: #002244;
+      color: var(--primary);
     }
+
     nav {
       margin-top: 1rem;
+      text-align: center;
     }
+
     nav a {
-      margin: 0 12px;
+      margin: 0 0.75rem;
       text-decoration: none;
       color: black;
       font-weight: 500;
+      font-size: 1rem;
     }
+
     .hero {
-      padding: 4rem 2rem;
+      padding: 3rem 1.5rem;
       text-align: center;
-      background: linear-gradient(to right, #0052cc, #007fff);
-      color: white;
+      background: linear-gradient(to right, var(--primary), var(--secondary));
+      color: var(--text-light);
     }
+
     .hero h2 {
-      font-size: 2.2rem;
+      font-size: 2rem;
       margin-bottom: 1rem;
     }
+
     .hero p {
-      font-size: 1.1rem;
-      max-width: 700px;
+      font-size: 1.05rem;
+      max-width: 680px;
       margin: 0 auto;
     }
+
     .sections {
-      padding: 4rem 2rem;
       display: grid;
-      gap: 2.5rem;
+      grid-template-columns: 1fr;
+      gap: 2rem;
       max-width: 1000px;
-      margin: auto;
+      margin: 3rem auto;
+      padding: 0 1.25rem;
     }
+
     .section {
-      background: white;
+      background: var(--bg-white);
       border-radius: 12px;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.04);
-      padding: 2rem;
+      box-shadow: var(--shadow);
+      padding: 1.5rem;
       transition: transform 0.3s ease;
     }
+
     .section:hover {
       transform: translateY(-5px);
     }
+
     .section h3 {
-      margin-bottom: 1rem;
-      font-size: 1.5rem;
-      color: #0047ab;
+      font-size: 1.4rem;
+      margin-bottom: 0.75rem;
+      color: var(--primary);
     }
+
     .section p {
-      font-size: 1.05rem;
+      font-size: 1rem;
       color: #333;
     }
-    footer {
-      text-align: center;
-      padding: 2rem;
-      font-size: 0.9rem;
-      border-top: 1px solid #ccc;
-      background: #ffffff;
-    }
-    footer a {
-      color: #0056b3;
-      text-decoration: none;
-    }
+
     .divider-icon {
       text-align: center;
       font-size: 2rem;
-      color: #0056b3;
+      color: var(--primary);
       margin-top: -1rem;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      font-size: 0.9rem;
+      background: var(--bg-white);
+      border-top: 1px solid #ccc;
+    }
+
+    footer a {
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    @media (min-width: 768px) {
+      .sections {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .sections {
+        grid-template-columns: repeat(3, 1fr);
+      }
     }
   </style>
 </head>
@@ -113,47 +158,47 @@
     });
 </script>
 
-  <header>
-    <img src="logo.png" alt="MagnaRix Logo" class="logo" />
-    <h1></h1>
-  </header>
+<header>
+  <img src="logo.png" alt="MagnaRix Logo" class="logo" />
+  <h1></h1>
+</header>
 
-  <div class="hero">
-    <h2>Command the Future</h2>
-    <p>Forge intelligence. Crown wisdom. MagnaRix empowers organizations to build sovereign AI and lead with strategic clarity. Intelligence is not enough. Leadership is required.</p>
+<div class="hero">
+  <h2>Command the Future</h2>
+  <p>Forge intelligence. Crown wisdom. MagnaRix empowers organizations to build sovereign AI and lead with strategic clarity. Intelligence is not enough. Leadership is required.</p>
+</div>
+
+<div class="hero" style="padding-top: 2rem;">
+  <p><strong>MagnaRix</strong> is the AI-powered decision orchestration platform that transforms how leaders navigate complexity. In a world overwhelmed by fragmented data and high-stakes choices, MagnaRix unifies insights, automates workflows, and empowers executives to make faster, smarter, and more strategic decisions. Whether you're a CEO, architect, or analyst, MagnaRix becomes your intelligence amplifier — turning noise into clarity, action into impact, and decisions into competitive advantage.</p>
+</div>
+
+<div class="hero" style="padding-top: 0;">
+  <h2>From Vision to Execution</h2>
+  <p>MagnaRix brings your leadership vision to life through two powerful engines — Forge and Crown. Together, they enable you to build, govern, and scale intelligent systems with strategic precision.</p>
+</div>
+
+<div class="divider-icon">⬇️</div>
+
+<div class="sections">
+  <div class="section">
+    <h3>🛠️ MagnaForge</h3>
+    <p><strong>Design with purpose. Build with sovereignty.</strong><br>
+    MagnaForge is your AI foundry — a powerful environment where ideas become intelligent systems that reflect your organization’s mission, culture, and data DNA. It doesn’t just accelerate development; it reclaims authorship. With MagnaForge, you’re not outsourcing intelligence — you’re forging it in-house, aligned to your values, optimized for your future. No more off-the-shelf models dictating your strategy. You build what’s yours.</p>
   </div>
-
-  <div class="hero" style="padding-top: 2rem;">
-    <p><strong>MagnaRix</strong> is the AI-powered decision orchestration platform that transforms how leaders navigate complexity. In a world overwhelmed by fragmented data and high-stakes choices, MagnaRix unifies insights, automates workflows, and empowers executives to make faster, smarter, and more strategic decisions. Whether you're a CEO, architect, or analyst, MagnaRix becomes your intelligence amplifier — turning noise into clarity, action into impact, and decisions into competitive advantage.</p>
+  <div class="section">
+    <h3>👑 MagnaCrown</h3>
+    <p><strong>Govern like a visionary. Orchestrate like a strategist.</strong><br>
+    MagnaCrown is your executive command center — turning data chaos into governed clarity. It empowers leaders to orchestrate AI, enforce policy, guide ethical decision flows, and simulate outcomes in real time. With MagnaCrown, you don’t just deploy intelligence. You crown it — guiding its purpose, regulating its impact, and ensuring every decision aligns with your strategic vision. This is leadership at the speed of AI.</p>
   </div>
-
-  <div class="hero" style="padding-top: 0;">
-    <h2>From Vision to Execution</h2>
-    <p>MagnaRix brings your leadership vision to life through two powerful engines — Forge and Crown. Together, they enable you to build, govern, and scale intelligent systems with strategic precision.</p>
+  <div class="section">
+    <h3>🎯 Built for Visionaries</h3>
+    <p>MagnaRix is for leaders — founders, architects, and strategists — who believe in alignment, sovereignty, and wisdom in action.</p>
   </div>
+</div>
 
-  <div class="divider-icon">⬇️</div>
-
-  <div class="sections">
-    <div class="section">
-      <h3>🛠️ MagnaForge</h3>
-      <p><strong>Design with purpose. Build with sovereignty.</strong><br>
-      MagnaForge is your AI foundry — a powerful environment where ideas become intelligent systems that reflect your organization’s mission, culture, and data DNA. It doesn’t just accelerate development; it reclaims authorship. With MagnaForge, you’re not outsourcing intelligence — you’re forging it in-house, aligned to your values, optimized for your future. No more off-the-shelf models dictating your strategy. You build what’s yours.</p>
-    </div>
-    <div class="section">
-      <h3>👑 MagnaCrown</h3>
-      <p><strong>Govern like a visionary. Orchestrate like a strategist.</strong><br>
-      MagnaCrown is your executive command center — turning data chaos into governed clarity. It empowers leaders to orchestrate AI, enforce policy, guide ethical decision flows, and simulate outcomes in real time. With MagnaCrown, you don’t just deploy intelligence. You crown it — guiding its purpose, regulating its impact, and ensuring every decision aligns with your strategic vision. This is leadership at the speed of AI.</p>
-    </div>
-    <div class="section">
-      <h3>🎯 Built for Visionaries</h3>
-      <p>MagnaRix is for leaders — founders, architects, and strategists — who believe in alignment, sovereignty, and wisdom in action.</p>
-    </div>
-  </div>
-
-  <footer>
-    &copy; 2025 MagnaRix. All rights reserved.
-  </footer>
+<footer>
+  &copy; 2025 MagnaRix. All rights reserved.
+</footer>
 
 </body>
 </html>
