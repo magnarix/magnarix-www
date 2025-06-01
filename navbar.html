@@ -1,17 +1,17 @@
 <nav id="nav">
   <div class="nav-container">
     <a href="index.html" class="brand">MagnaRix</a>
-    <div class="hamburger">&#9776;</div>
+    <div class="hamburger" id="hamburger">&#9776;</div>
     <ul class="nav-links" id="nav-links">
       <li class="dropdown">
-        <a href="javascript:void(0)">Products ▾</a>
+        <button class="dropdown-toggle">Products ▾</button>
         <ul class="dropdown-content">
           <li><a href="forge.html">MagnaForge</a></li>
           <li><a href="crown.html">MagnaCrown</a></li>
         </ul>
       </li>
       <li class="dropdown">
-        <a href="javascript:void(0)">About ▾</a>
+        <button class="dropdown-toggle">About ▾</button>
         <ul class="dropdown-content">
           <li><a href="values.html">Mission & Values</a></li>
           <li><a href="faq.html">FAQ</a></li>
@@ -67,17 +67,22 @@
     position: relative;
   }
 
-  .nav-links a {
+  .nav-links a,
+  .dropdown-toggle {
     text-decoration: none;
     color: #1a1a1a;
     padding: 0.75rem 0;
-    display: inline-block;
     font-weight: 500;
-    transition: color 0.2s ease;
+    background: none;
+    border: none;
+    font-family: inherit;
+    font-size: 1rem;
+    cursor: pointer;
   }
 
   .nav-links a:hover,
-  .nav-links a.active {
+  .nav-links a.active,
+  .dropdown-toggle:hover {
     color: #007fff;
   }
 
@@ -90,13 +95,12 @@
     min-width: 180px;
     box-shadow: 0 8px 16px rgba(0,0,0,0.08);
     border-radius: 6px;
-    overflow: hidden;
     z-index: 10;
   }
 
   .dropdown-content li a {
-    padding: 0.75rem 1rem;
     display: block;
+    padding: 0.75rem 1rem;
     color: #333;
     white-space: nowrap;
   }
@@ -129,48 +133,50 @@
       display: flex;
     }
 
-    .nav-links li {
-      text-align: center;
-    }
-
-    .dropdown-content {
-      position: relative;
-      box-shadow: none;
-    }
-
     .dropdown:hover .dropdown-content {
       display: none;
     }
 
-    .dropdown > a::after {
+    .dropdown.open .dropdown-content {
+      display: block;
+      position: relative;
+      box-shadow: none;
+    }
+
+    .dropdown-toggle::after {
       content: " ▼";
     }
 
-    .dropdown.open .dropdown-content {
-      display: block;
+    .nav-links li {
+      width: 100%;
+      text-align: center;
     }
 
-    .dropdown > a {
-      cursor: pointer;
+    .dropdown-content li {
+      text-align: left;
     }
   }
 </style>
 
 <script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const nav = document.getElementById("nav-links");
-    const hamburger = document.querySelector(".hamburger");
-    const dropdowns = nav.querySelectorAll(".dropdown");
+  document.addEventListener("DOMContentLoaded", () => {
+    const hamburger = document.getElementById("hamburger");
+    const navLinks = document.getElementById("nav-links");
+    const dropdownToggles = document.querySelectorAll(".dropdown-toggle");
 
-    hamburger.addEventListener("click", function () {
-      nav.classList.toggle("show");
+    hamburger.addEventListener("click", () => {
+      navLinks.classList.toggle("show");
     });
 
-    dropdowns.forEach(d => {
-      const link = d.querySelector("a");
-      link.addEventListener("click", function (e) {
-        e.preventDefault();
-        d.classList.toggle("open");
+    dropdownToggles.forEach(toggle => {
+      toggle.addEventListener("click", (e) => {
+        const parentDropdown = toggle.closest(".dropdown");
+        parentDropdown.classList.toggle("open");
+
+        // Optional: close other open dropdowns
+        document.querySelectorAll(".dropdown").forEach(d => {
+          if (d !== parentDropdown) d.classList.remove("open");
+        });
       });
     });
   });
