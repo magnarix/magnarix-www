@@ -3,16 +3,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MagnaRix – Command the Future</title>
+  <title>Magnarix – Command the Future</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --primary: #0052cc;
-      --secondary: #007fff;
+      --primary: #111111;
+      --accent: #007fff;
       --text-dark: #1a1a1a;
       --text-light: #ffffff;
-      --bg-light: #f9fafc;
-      --bg-white: #ffffff;
+      --bg-light: #ffffff;
+      --bg-gray: #f9fafc;
       --shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
     }
 
@@ -22,30 +22,27 @@
 
     body {
       margin: 0;
-      font-family: 'Inter', system-ui, sans-serif;
+      font-family: 'Inter', sans-serif;
       background: var(--bg-light);
       color: var(--text-dark);
       line-height: 1.65;
-      font-size: 16px;
     }
 
     header {
-      padding: 1rem 1rem;
       text-align: center;
-      background-color: var(--bg-white);
-      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+      padding: 3rem 1rem 2rem;
     }
 
     .logo {
-      max-width: 182px;
-      margin-bottom: 0.5rem;
+      max-width: 180px;
+      margin-bottom: 1rem;
     }
 
-    header h1 {
+    h1 {
       margin: 0;
-      font-size: 2rem;
-      font-weight: 700;
-      color: var(--primary);
+      font-size: 2.75rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
     }
 
     nav {
@@ -54,18 +51,17 @@
     }
 
     nav a {
-      margin: 0 0.75rem;
+      margin: 0 1rem;
       text-decoration: none;
-      color: black;
+      color: var(--text-dark);
       font-weight: 500;
       font-size: 1rem;
     }
 
     .hero {
-      padding: 1rem 1rem;
       text-align: center;
-      background: linear-gradient(to right, var(--primary), var(--secondary));
-      color: var(--text-light);
+      padding: 2rem 1rem;
+      background: var(--bg-gray);
     }
 
     .hero h2 {
@@ -74,14 +70,66 @@
     }
 
     .hero p {
-      font-size: 1.05rem;
-      max-width: 680px;
+      font-size: 1.15rem;
+      max-width: 700px;
       margin: 0 auto;
+      color: #444;
+    }
+
+    .cta-buttons {
+      margin-top: 2rem;
+    }
+
+    .cta-buttons a {
+      display: inline-block;
+      margin: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      font-weight: 500;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+    }
+
+    .cta-primary {
+      background-color: var(--primary);
+      color: white;
+    }
+
+    .cta-primary:hover {
+      background-color: #333;
+    }
+
+    .cta-secondary {
+      background-color: #f5f5f5;
+      color: var(--primary);
+      border: 1px solid #ddd;
+    }
+
+    .cta-secondary:hover {
+      background-color: #eaeaea;
+    }
+
+    .section {
+      padding: 4rem 1rem;
+      text-align: center;
+    }
+
+    .section h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .section p {
+      font-size: 1.1rem;
+      max-width: 700px;
+      margin: 0 auto;
+      color: #333;
     }
 
     .section-wrapper {
       display: flex;
       justify-content: center;
+      padding: 2rem 1rem;
     }
 
     .sections {
@@ -89,45 +137,38 @@
       grid-template-columns: 1fr;
       gap: 2rem;
       max-width: 1000px;
-      margin: 3rem auto;
-      padding: 0 1.25rem;
+      width: 100%;
     }
 
-    .section {
-      background: var(--bg-white);
+    .card {
+      background: var(--bg-light);
       border-radius: 12px;
       box-shadow: var(--shadow);
-      padding: 1.5rem;
+      padding: 2rem;
+      text-align: left;
       transition: transform 0.3s ease;
     }
 
-    .section:hover {
+    .card:hover {
       transform: translateY(-5px);
     }
 
-    .section h3 {
-      font-size: 1.4rem;
+    .card h3 {
+      font-size: 1.5rem;
       margin-bottom: 0.75rem;
       color: var(--primary);
     }
 
-    .section p {
+    .card p {
       font-size: 1rem;
       color: #333;
-    }
-
-    .divider-icon {
-      text-align: center;
-      font-size: 2rem;
-      color: var(--primary);
-      margin-top: -1rem;
     }
 
     footer {
       text-align: center;
       padding: 2rem 1rem;
       font-size: 0.9rem;
-      background: var(--bg-white);
+      color: #777;
       border-top: 1px solid #ccc;
     }
 
@@ -141,42 +182,37 @@
         grid-template-columns: repeat(2, 1fr);
       }
     }
-
-    @media (min-width: 1024px) {
-      .sections {
-        grid-template-columns: repeat(2, 1fr);
-        justify-content: center;
-      }
-    }
   </style>
 </head>
 <body>
-<div id="navbar"></div>
 
+<div id="navbar"></div>
 <script>
   fetch("navbar.html")
     .then(response => response.text())
     .then(html => {
       document.getElementById("navbar").innerHTML = html;
     })
-    .catch(error => {
-      console.error("Error loading navbar:", error);
-    });
+    .catch(error => console.error("Error loading navbar:", error));
 </script>
 
 <header>
   <img src="logo.png" alt="MagnaRix Logo" class="logo" />
-  <h1></h1>
+  <h1>Command the Future</h1>
 </header>
 
 <div class="hero">
-  <h2>Command the Future</h2>
-  <p>MagnaRix is the enterprise AI decision orchestration platform that integrates your data, models, and teams into one actionable environment. From real-time insights to outcome simulation, MagnaRix turns leadership judgment into a system — helping you move from siloed data to aligned decisions, fast.</p>
+  <h2>Strategic AI Orchestration for Visionary Leaders</h2>
+  <p>MagnaRix is the AI-powered interface for executives to visualize, simulate, and align organizational strategy — from vision to execution. Turn judgment into systems. Lead with foresight.</p>
+  <div class="cta-buttons">
+    <a href="forge.html" class="cta-primary">Explore MagnaForge</a>
+    <a href="crown.html" class="cta-secondary">Discover MagnaCrown</a>
+  </div>
 </div>
 
 <!-- ▶️ YouTube Video Embed -->
 <div class="section-wrapper">
-  <div style="width: 100%; max-width: 960px; margin: 2rem auto;">
+  <div style="width: 100%; max-width: 960px;">
     <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 12px; box-shadow: var(--shadow);">
       <iframe src="https://www.youtube.com/embed/Da4hQ6dJ0tY"
               title="MagnaRix – Command the Future"
@@ -189,23 +225,29 @@
   </div>
 </div>
 
+<section class="section">
+  <h2>The Intelligence Behind Visionary Leadership</h2>
+  <p>MagnaRix empowers CEOs, strategists, and architects to model decisions, simulate outcomes, and steer their organizations with clarity and confidence.</p>
+  <div class="cta-buttons">
+    <a href="values.html" class="cta-secondary">See Our Philosophy</a>
+  </div>
+</section>
+
 <div class="section-wrapper">
   <div class="sections">
-    <div class="section">
+    <div class="card">
       <h3>🛠️ MagnaForge</h3>
-      <p><strong>Design custom AI solutions. Build proprietary intelligence.</strong><br>
-      MagnaForge is a low-code AI development studio built for enterprise teams. It lets your data scientists, architects, and business users collaboratively design, train, and deploy machine learning models without relying on black-box third-party tools. From NLP pipelines to predictive engines, everything is modular, explainable, and version-controlled — tailored to your domain, fully owned by you.</p>
+      <p><strong>Design custom AI. Build proprietary intelligence.</strong><br> A low-code studio for AI development, model training, and orchestration — made to be explainable, secure, and fully enterprise-controlled.</p>
     </div>
-    <div class="section">
+    <div class="card">
       <h3>👑 MagnaCrown</h3>
-      <p><strong>Centralize governance. Operationalize oversight.</strong><br>
-      MagnaCrown is the executive dashboard and policy engine of the MagnaRix platform. It enables CXOs and compliance leaders to define rules, monitor AI usage, and simulate decisions across departments. With built-in risk scoring, audit trails, and outcome forecasting, MagnaCrown turns AI governance into a real-time, strategic function — not just a checkbox.</p>
+      <p><strong>Operationalize oversight. Align with governance.</strong><br> The executive command center for policy, risk, and strategic simulation. Enables real-time monitoring, audit trails, and cross-org accountability.</p>
     </div>
   </div>
 </div>
 
 <footer>
-  &copy; 2025 MagnaRix. All rights reserved.
+  &copy; 2025 MagnaRix Corporation · All rights reserved · <a href="contact.html">Contact</a>
 </footer>
 
 </body>
