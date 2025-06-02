@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MagnaCrown</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   MagnaCrown – Govern Strategic Decisions
+  </title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
   <style>
-    :root {
+   :root {
       --primary: #0052cc;
       --secondary: #007fff;
       --text-dark: #1a1a1a;
@@ -137,13 +139,12 @@
       }
     }
   </style>
-</head>
-<body>
-
-<div id="navbar"></div>
-
-<script>
-  fetch("navbar.html")
+ </head>
+ <body>
+  <div id="navbar">
+  </div>
+  <script>
+   fetch("navbar.html")
     .then(response => response.text())
     .then(html => {
       document.getElementById("navbar").innerHTML = html;
@@ -151,53 +152,82 @@
     .catch(error => {
       console.error("Error loading navbar:", error);
     });
-</script>
-
-<header>
-  <a href="/"><img src="logo.png" alt="MagnaRix Logo" class="logo" /></a>
-  <h1>MagnaCrown</h1>
-</header>
-
-<div class="hero">
-  <h2>Lead with Intelligence</h2>
-  <p>MagnaCrown is your executive AI command layer — where enterprise decisions are governed, aligned, and translated into accountable action.</p>
-</div>
-
-<div class="sections">
-  <div class="section">
-    <h3>🎯 Command Insights</h3>
-    <p><strong>Turn data into executive-ready strategy.</strong><br>
-    Command Insights translates complex AI outputs into clear, contextual dashboards tailored for leadership. Understand trends, compare outcomes, and make confident, insight-driven decisions in real time.</p>
+  </script>
+  <header>
+   <a href="/">
+    <img alt="MagnaRix Logo" class="logo" src="logo.png"/>
+   </a>
+   <h1>
+    MagnaCrown
+   </h1>
+  </header>
+  <div class="hero">
+   <h2>
+    Executive Governance for Real-World AI Decisions
+   </h2>
+   <p>
+    MagnaCrown turns abstract governance into real-time decision control — where AI is aligned with oversight, ethics, and leadership logic.
+   </p>
   </div>
-
-  <div class="section">
-    <h3>🧠 Crown Orchestrator</h3>
-    <p><strong>Simulate decisions before they’re made.</strong><br>
-    Crown Orchestrator lets you model “what-if” scenarios using AI, risk logic, and business constraints. Forecast the downstream impact of decisions before they happen — with data-backed, ethical reasoning.</p>
+  <div class="sections">
+   <div class="section">
+    <h3>
+     🎯 Command Insights
+    </h3>
+    <p>
+     Translate complexity into clarity.
+    </p>
+    <p>
+     Executive dashboards simplify trends, reveal options, and highlight implications to support confident decisions.
+    </p>
+   </div>
+   <div class="section">
+    <h3>
+     🧠 Crown Orchestrator
+    </h3>
+    <p>
+     Simulate decisions before they’re made.
+    </p>
+    <p>
+     Model scenarios using your rules, risk tolerance, and strategy to understand impact — before deployment.
+    </p>
+   </div>
+   <div class="section">
+    <h3>
+     🛡️ Decree Rulesets
+    </h3>
+    <p>
+     Codify your values into logic.
+    </p>
+    <p>
+     Define policy guardrails that AI must respect. No shortcuts, no ambiguity.
+    </p>
+   </div>
+   <div class="section">
+    <h3>
+     🤝 Council Sync
+    </h3>
+    <p>
+     Enable accountable collaboration.
+    </p>
+    <p>
+     Cross-functional teams review and approve strategies, preserving oversight without slowing innovation.
+    </p>
+   </div>
+   <div class="section">
+    <h3>
+     🔗 RoyalDecree API
+    </h3>
+    <p>
+     Connect intent to execution.
+    </p>
+    <p>
+     Trigger actions directly from approved decisions — every step logged, traceable, and reversible.
+    </p>
+   </div>
   </div>
-
-  <div class="section">
-    <h3>🛡️ Decree Rulesets</h3>
-    <p><strong>Write the rules your AI must obey.</strong><br>
-    Define policies, guardrails, and ethical limits that every AI workflow must follow. With Decree Rulesets, your executive intent becomes enforceable code — creating clarity and compliance from the start.</p>
-  </div>
-
-  <div class="section">
-    <h3>🤝 Council Sync</h3>
-    <p><strong>Enable collaborative, cross-functional oversight.</strong><br>
-    Council Sync provides a structured environment for stakeholders to review, comment, and approve AI strategies before they’re activated. Preserve human judgment while accelerating organizational alignment.</p>
-  </div>
-
-  <div class="section">
-    <h3>🔗 RoyalDecree API</h3>
-    <p><strong>Bridge strategy and systems with confidence.</strong><br>
-    RoyalDecree connects MagnaCrown decisions directly to production environments. Ensure every triggered action reflects approved leadership logic, with full auditability and rollback control.</p>
-  </div>
-</div>
-
-<footer>
-  &copy; 2025 MagnaRix. All rights reserved.
-</footer>
-
-</body>
+  <footer>
+   © 2025 MagnaRix. All rights reserved.
+  </footer>
+ </body>
 </html>

@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MagnaForge</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   MagnaForge – Build Strategic AI
+  </title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
   <style>
-    :root {
+   :root {
       --primary: #0052cc;
       --secondary: #007fff;
       --text-dark: #1a1a1a;
@@ -137,12 +139,12 @@
       }
     }
   </style>
-</head>
-<body>
-<div id="navbar"></div>
-
-<script>
-  fetch("navbar.html")
+ </head>
+ <body>
+  <div id="navbar">
+  </div>
+  <script>
+   fetch("navbar.html")
     .then(response => response.text())
     .then(html => {
       document.getElementById("navbar").innerHTML = html;
@@ -150,53 +152,82 @@
     .catch(error => {
       console.error("Error loading navbar:", error);
     });
-</script>
-
-<header>
-  <a href="/"><img src="logo.png" alt="MagnaRix Logo" class="logo" /></a>
-  <h1>MagnaForge</h1>
-</header>
-
-<div class="hero">
-  <h2>Forge Intelligence That Obeys Your Mission</h2>
-  <p>MagnaForge is your AI development platform — purpose-built for enterprises to design, train, and govern custom models that reflect their own values, language, and strategic logic.</p>
-</div>
-
-<div class="sections">
-  <div class="section">
-    <h3>🧱 CrownModel Builder</h3>
-    <p><strong>Customize foundational models with embedded expertise.</strong><br>
-    Fine-tune large AI models using your organization's data and policies. CrownModel Builder lets you embed ethics, business logic, and use-case-specific behavior directly into the model architecture — ensuring your AI operates in alignment with your mission.</p>
+  </script>
+  <header>
+   <a href="/">
+    <img alt="MagnaRix Logo" class="logo" src="logo.png"/>
+   </a>
+   <h1>
+    MagnaForge
+   </h1>
+  </header>
+  <div class="hero">
+   <h2>
+    Forge Intelligence That Obeys Your Mission
+   </h2>
+   <p>
+    MagnaForge empowers enterprises to design, train, and orchestrate strategic AI systems that are explainable, aligned, and fully governed.
+   </p>
   </div>
-
-  <div class="section">
-    <h3>📚 Lexicon Layer</h3>
-    <p><strong>Teach your AI how your world works.</strong><br>
-    Define and control your AI’s understanding of language with the Lexicon Layer. Shape vocabulary, brand tone, cultural context, and institutional nuance to ensure your models interpret language the way your organization does.</p>
+  <div class="sections">
+   <div class="section">
+    <h3>
+     🧱 CrownModel Builder
+    </h3>
+    <p>
+     Customize foundational models with embedded expertise.
+    </p>
+    <p>
+     Train AI using your organization’s knowledge, logic, and ethics — making your models reflect your mission.
+    </p>
+   </div>
+   <div class="section">
+    <h3>
+     📚 Lexicon Layer
+    </h3>
+    <p>
+     Teach your AI how your world works.
+    </p>
+    <p>
+     Control vocabulary, tone, and semantics. Tailor the language layer to fit your brand and domain.
+    </p>
+   </div>
+   <div class="section">
+    <h3>
+     🛡️ SentinelGuard
+    </h3>
+    <p>
+     Embed compliance into the pipeline.
+    </p>
+    <p>
+     From PII detection to behavioral logs, enforce safety and governance at every stage of your AI lifecycle.
+    </p>
+   </div>
+   <div class="section">
+    <h3>
+     🎛️ ForgeCast Orchestration
+    </h3>
+    <p>
+     Visualize every pipeline.
+    </p>
+    <p>
+     Design, deploy, and manage modular AI workflows on an intuitive canvas — no code, no confusion.
+    </p>
+   </div>
+   <div class="section">
+    <h3>
+     🚀 RoyalDecree API
+    </h3>
+    <p>
+     Deploy AI as a governed service.
+    </p>
+    <p>
+     Expose secure endpoints with auditability, scalability, and full alignment with your operational rules.
+    </p>
+   </div>
   </div>
-
-  <div class="section">
-    <h3>🛡️ SentinelGuard</h3>
-    <p><strong>Enforce privacy, traceability, and safety at every layer.</strong><br>
-    SentinelGuard provides integrated compliance controls — from PII detection to model behavior monitoring. With real-time alerts, audit logs, and access governance, you maintain full visibility and accountability across your AI systems.</p>
-  </div>
-
-  <div class="section">
-    <h3>🎛️ ForgeCast Orchestration</h3>
-    <p><strong>Visually control every step of your AI lifecycle.</strong><br>
-    Design and manage your AI workflows on a visual canvas — from data ingestion to deployment. Drag, drop, and configure each pipeline component while maintaining full version control and operational clarity.</p>
-  </div>
-
-  <div class="section">
-    <h3>🚀 RoyalDecree API</h3>
-    <p><strong>Deploy AI-as-a-service — governed, aligned, and enterprise-ready.</strong><br>
-    RoyalDecree gives you a secure, scalable API layer to expose your models across apps or teams. Every endpoint is governed, access-controlled, and performance-monitored — ensuring your deployed AI stays aligned and reliable in real-world conditions.</p>
-  </div>
-</div>
-
-<footer>
-  &copy; 2025 MagnaRix. All rights reserved.
-</footer>
-
-</body>
+  <footer>
+   © 2025 MagnaRix. All rights reserved.
+  </footer>
+ </body>
 </html>

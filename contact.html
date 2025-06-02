@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contact MagnaRix</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Contact MagnaRix – Start the Conversation
+  </title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
   <style>
-    :root {
+   :root {
       --primary: #0052cc;
       --secondary: #007fff;
       --text-dark: #1a1a1a;
@@ -126,13 +128,12 @@
       border-top: 1px solid #ccc;
     }
   </style>
-</head>
-<body>
-
-<div id="navbar"></div>
-
-<script>
-  fetch("navbar.html")
+ </head>
+ <body>
+  <div id="navbar">
+  </div>
+  <script>
+   fetch("navbar.html")
     .then(response => response.text())
     .then(html => {
       document.getElementById("navbar").innerHTML = html;
@@ -140,34 +141,43 @@
     .catch(error => {
       console.error("Error loading navbar:", error);
     });
-</script>
-
-<header>
-  <a href="/"><img src="logo.png" alt="MagnaRix Logo" class="logo" /></a>
-  <h1>Contact MagnaRix</h1>
-</header>
-
-<div class="hero">
-  <h2>We’d love to hear from you — whether you're exploring MagnaForge, MagnaCrown, or a strategic partnership.</h2>
-</div>
-
-<div class="container">
-  <h2>Let’s Connect</h2>
-  <p>Drop us a message and our team will respond promptly. Your vision deserves the right platform — let’s shape it together.</p>
-  <form action="https://formspree.io/f/xldnrprd" method="POST">
-    <label for="email">Your Email</label>
-    <input type="email" id="email" name="email" required>
-
-    <label for="message">Your Message</label>
-    <textarea id="message" name="message" rows="6" required></textarea>
-
-    <button type="submit">Send Message</button>
-  </form>
-</div>
-
-<footer>
-  &copy; 2025 MagnaRix. All rights reserved.
-</footer>
-
-</body>
+  </script>
+  <header>
+   <a href="/">
+    <img alt="MagnaRix Logo" class="logo" src="logo.png"/>
+   </a>
+   <h1>
+    Get in Touch
+   </h1>
+  </header>
+  <div class="hero">
+   <h2>
+    Whether you’re exploring strategic AI or forging a new path — we’d love to hear your vision.
+   </h2>
+  </div>
+  <div class="container">
+   <h2>
+    Let’s Build the Future
+   </h2>
+   <p>
+    Reach out and a member of the MagnaRix team will connect promptly. We’re here to help you design, govern, and deploy aligned intelligence.
+   </p>
+   <form action="https://formspree.io/f/xldnrprd" method="POST">
+    <label for="email">
+     Your Email
+    </label>
+    <input id="email" name="email" required="" type="email"/>
+    <label for="message">
+     Your Message
+    </label>
+    <textarea id="message" name="message" required="" rows="6"></textarea>
+    <button type="submit">
+     Send Message
+    </button>
+   </form>
+  </div>
+  <footer>
+   © 2025 MagnaRix. All rights reserved.
+  </footer>
+ </body>
 </html>
