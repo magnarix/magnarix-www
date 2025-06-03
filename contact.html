@@ -1,20 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
- <head>
-  <meta charset="utf-8"/>
-  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-  <title>
-   Contact MagnaRix – Start the Conversation
-  </title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact MagnaRix – Start the Conversation</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
-   :root {
-      --primary: #0052cc;
-      --secondary: #007fff;
+    :root {
+      --primary: #111111;
+      --accent: #007fff;
       --text-dark: #1a1a1a;
       --text-light: #ffffff;
-      --bg-light: #f9fafc;
-      --bg-white: #ffffff;
+      --bg-light: #ffffff;
+      --bg-gray: #f9fafc;
       --shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
     }
 
@@ -24,64 +22,67 @@
 
     body {
       margin: 0;
-      font-family: 'Inter', system-ui, sans-serif;
+      font-family: 'Inter', sans-serif;
       background: var(--bg-light);
       color: var(--text-dark);
       line-height: 1.65;
-      font-size: 16px;
     }
 
     header {
-      padding: 1rem 1rem;
       text-align: center;
-      background-color: var(--bg-white);
-      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+      padding: 3rem 1rem 2rem;
     }
 
     .logo {
-      max-width: 182px;
-      margin-bottom: 0.5rem;
+      max-width: 180px;
+      margin-bottom: 1rem;
     }
 
-    header h1 {
+    h1 {
       margin: 0;
-      font-size: 2rem;
-      font-weight: 700;
-      color: var(--primary);
+      font-size: 2.75rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
     }
 
     .hero {
-      padding: 1rem 1rem;
       text-align: center;
-      background: linear-gradient(to right, var(--primary), var(--secondary));
-      color: var(--text-light);
+      padding: 2rem 1rem;
+      background: var(--bg-gray);
     }
 
     .hero h2 {
-      font-size: 1.4rem;
-      margin: 0 auto;
+      font-size: 2rem;
       max-width: 720px;
-      line-height: 1.5;
+      margin: 0 auto;
+      color: #444;
     }
 
-    .container {
+    .section-wrapper {
+      display: flex;
+      justify-content: center;
+      padding: 4rem 1rem;
+    }
+
+    .card {
       max-width: 600px;
-      margin: 3rem auto;
-      padding: 2rem;
-      background: var(--bg-white);
+      width: 100%;
+      background: var(--bg-light);
       border-radius: 12px;
       box-shadow: var(--shadow);
+      padding: 2rem;
     }
 
-    .container h2 {
+    .card h2 {
       margin-top: 0;
       font-size: 1.6rem;
       color: var(--primary);
     }
 
-    .container p {
+    .card p {
       margin-bottom: 1.5rem;
       font-size: 1rem;
+      color: #333;
     }
 
     form label {
@@ -117,23 +118,28 @@
     }
 
     form button:hover {
-      background: var(--secondary);
+      background: #333;
     }
 
     footer {
       text-align: center;
       padding: 2rem 1rem;
       font-size: 0.9rem;
-      background: var(--bg-white);
+      color: #777;
       border-top: 1px solid #ccc;
     }
+
+    footer a {
+      color: var(--primary);
+      text-decoration: none;
+    }
   </style>
- </head>
- <body>
-  <div id="navbar">
-  </div>
-  <script>
-   fetch("navbar.html")
+</head>
+<body>
+
+<div id="navbar"></div>
+<script>
+  fetch("navbar.html")
     .then(response => response.text())
     .then(html => {
       document.getElementById("navbar").innerHTML = html;
@@ -141,43 +147,34 @@
     .catch(error => {
       console.error("Error loading navbar:", error);
     });
-  </script>
-  <header>
-   <a href="/">
-    <img alt="MagnaRix Logo" class="logo" src="logo.png"/>
-   </a>
-   <h1>
-    Get in Touch
-   </h1>
-  </header>
-  <div class="hero">
-   <h2>
-    Whether you’re exploring strategic AI or forging a new path — we’d love to hear your vision.
-   </h2>
+</script>
+
+<header>
+  <a href="/"><img alt="MagnaRix Logo" class="logo" src="logo.png"/></a>
+  <h1>Get in Touch</h1>
+</header>
+
+<div class="hero">
+  <h2>Whether you’re exploring strategic AI or forging a new path — we’d love to hear your vision.</h2>
+</div>
+
+<div class="section-wrapper">
+  <div class="card">
+    <h2>Let’s Build the Future</h2>
+    <p>Reach out and a member of the MagnaRix team will connect promptly. We’re here to help you design, govern, and deploy aligned intelligence.</p>
+    <form action="https://formspree.io/f/xldnrprd" method="POST">
+      <label for="email">Your Email</label>
+      <input id="email" name="email" type="email" required />
+      <label for="message">Your Message</label>
+      <textarea id="message" name="message" rows="6" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
   </div>
-  <div class="container">
-   <h2>
-    Let’s Build the Future
-   </h2>
-   <p>
-    Reach out and a member of the MagnaRix team will connect promptly. We’re here to help you design, govern, and deploy aligned intelligence.
-   </p>
-   <form action="https://formspree.io/f/xldnrprd" method="POST">
-    <label for="email">
-     Your Email
-    </label>
-    <input id="email" name="email" required="" type="email"/>
-    <label for="message">
-     Your Message
-    </label>
-    <textarea id="message" name="message" required="" rows="6"></textarea>
-    <button type="submit">
-     Send Message
-    </button>
-   </form>
-  </div>
-  <footer>
-   © 2025 MagnaRix. All rights reserved.
-  </footer>
- </body>
+</div>
+
+<footer>
+  &copy; 2025 MagnaRix Corporation · All rights reserved · <a href="index.html">Home</a>
+</footer>
+
+</body>
 </html>
