@@ -1,12 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
- <head>
-  <meta charset="utf-8"/>
-  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-  <title>
-   MagnaForge – Build Strategic AI
-  </title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MagnaForge – Build Strategic AI</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
       --primary: #111111;
@@ -28,6 +26,7 @@
       background: var(--bg-light);
       color: var(--text-dark);
       line-height: 1.65;
+      font-size: 16px;
     }
 
     header {
@@ -78,60 +77,10 @@
       color: #444;
     }
 
-    .cta-buttons {
-      margin-top: 2rem;
-    }
-
-    .cta-buttons a {
-      display: inline-block;
-      margin: 0.5rem;
-      padding: 0.75rem 1.5rem;
-      font-weight: 500;
-      border-radius: 6px;
-      text-decoration: none;
-      transition: background-color 0.3s ease;
-    }
-
-    .cta-primary {
-      background-color: var(--primary);
-      color: white;
-    }
-
-    .cta-primary:hover {
-      background-color: #333;
-    }
-
-    .cta-secondary {
-      background-color: #f5f5f5;
-      color: var(--primary);
-      border: 1px solid #ddd;
-    }
-
-    .cta-secondary:hover {
-      background-color: #eaeaea;
-    }
-
-    .section {
-      padding: 4rem 1rem;
-      text-align: center;
-    }
-
-    .section h2 {
-      font-size: 2rem;
-      margin-bottom: 1rem;
-    }
-
-    .section p {
-      font-size: 1.1rem;
-      max-width: 700px;
-      margin: 0 auto;
-      color: #333;
-    }
-
     .section-wrapper {
       display: flex;
       justify-content: center;
-      padding: 2rem 1rem;
+      padding: 4rem 1rem;
     }
 
     .sections {
@@ -184,96 +133,58 @@
         grid-template-columns: repeat(2, 1fr);
       }
     }
-  </style> 
- </head>
- <body>
-  <div id="navbar">
-  </div>
-  <script>
-   fetch("navbar.html")
+  </style>
+</head>
+<body>
+
+<div id="navbar"></div>
+<script>
+  fetch("navbar.html")
     .then(response => response.text())
     .then(html => {
       document.getElementById("navbar").innerHTML = html;
     })
-    .catch(error => {
-      console.error("Error loading navbar:", error);
-    });
-  </script>
-  <header>
-   <a href="/">
-    <img alt="MagnaRix Logo" class="logo" src="logo.png"/>
-   </a>
-   <h1>
-    MagnaForge
-   </h1>
-  </header>
-  <div class="hero">
-   <h2>
-    Forge Intelligence That Obeys Your Mission
-   </h2>
-   <p>
-    MagnaForge empowers enterprises to design, train, and orchestrate strategic AI systems that are explainable, aligned, and fully governed.
-   </p>
-  </div>
+    .catch(error => console.error("Error loading navbar:", error));
+</script>
+
+<header>
+  <a href="/"><img alt="MagnaRix Logo" class="logo" src="logo.png" /></a>
+  <h1>MagnaForge</h1>
+</header>
+
+<div class="hero">
+  <h2>Forge Intelligence That Obeys Your Mission</h2>
+  <p>MagnaForge empowers enterprises to design, train, and orchestrate strategic AI systems that are explainable, aligned, and fully governed.</p>
+</div>
+
+<div class="section-wrapper">
   <div class="sections">
-   <div class="section">
-    <h3>
-     🧱 CrownModel Builder
-    </h3>
-    <p>
-     Customize foundational models with embedded expertise.
-    </p>
-    <p>
-     Train AI using your organization’s knowledge, logic, and ethics — making your models reflect your mission.
-    </p>
-   </div>
-   <div class="section">
-    <h3>
-     📚 Lexicon Layer
-    </h3>
-    <p>
-     Teach your AI how your world works.
-    </p>
-    <p>
-     Control vocabulary, tone, and semantics. Tailor the language layer to fit your brand and domain.
-    </p>
-   </div>
-   <div class="section">
-    <h3>
-     🛡️ SentinelGuard
-    </h3>
-    <p>
-     Embed compliance into the pipeline.
-    </p>
-    <p>
-     From PII detection to behavioral logs, enforce safety and governance at every stage of your AI lifecycle.
-    </p>
-   </div>
-   <div class="section">
-    <h3>
-     🎛️ ForgeCast Orchestration
-    </h3>
-    <p>
-     Visualize every pipeline.
-    </p>
-    <p>
-     Design, deploy, and manage modular AI workflows on an intuitive canvas — no code, no confusion.
-    </p>
-   </div>
-   <div class="section">
-    <h3>
-     🚀 RoyalDecree API
-    </h3>
-    <p>
-     Deploy AI as a governed service.
-    </p>
-    <p>
-     Expose secure endpoints with auditability, scalability, and full alignment with your operational rules.
-    </p>
-   </div>
+    <div class="card">
+      <h3>🧱 CrownModel Builder</h3>
+      <p><strong>Customize foundational models with embedded expertise.</strong><br> Train AI using your organization’s knowledge, logic, and ethics — making your models reflect your mission.</p>
+    </div>
+    <div class="card">
+      <h3>📚 Lexicon Layer</h3>
+      <p><strong>Teach your AI how your world works.</strong><br> Control vocabulary, tone, and semantics. Tailor the language layer to fit your brand and domain.</p>
+    </div>
+    <div class="card">
+      <h3>🛡️ SentinelGuard</h3>
+      <p><strong>Embed compliance into the pipeline.</strong><br> From PII detection to behavioral logs, enforce safety and governance at every stage of your AI lifecycle.</p>
+    </div>
+    <div class="card">
+      <h3>🎛️ ForgeCast Orchestration</h3>
+      <p><strong>Visualize every pipeline.</strong><br> Design, deploy, and manage modular AI workflows on an intuitive canvas — no code, no confusion.</p>
+    </div>
+    <div class="card">
+      <h3>🚀 RoyalDecree API</h3>
+      <p><strong>Deploy AI as a governed service.</strong><br> Expose secure endpoints with auditability, scalability, and full alignment with your operational rules.</p>
+    </div>
   </div>
-  <footer>
-   © 2025 MagnaRix. All rights reserved.
-  </footer>
- </body>
+</div>
+
+<footer>
+  &copy; 2025 MagnaRix Corporation · All rights reserved · <a href="contact.html">Contact</a>
+</footer>
+
+</body>
 </html>
