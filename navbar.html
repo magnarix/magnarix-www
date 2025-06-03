@@ -24,7 +24,6 @@
 
 <style>
   :root {
-    --primary: #111111;
     --accent: #007fff;
     --bg-light: #ffffff;
     --text-dark: #1a1a1a;
@@ -53,7 +52,7 @@
   .brand {
     font-size: 1.4rem;
     font-weight: 700;
-    color: var(--primary); /* ✅ changed from #0052cc to match site */
+    color: #111111; /* ✅ explicit black to override blue */
     text-decoration: none;
   }
 
@@ -177,7 +176,7 @@
     });
 
     dropdownToggles.forEach(toggle => {
-      toggle.addEventListener("click", (e) => {
+      toggle.addEventListener("click", () => {
         const parentDropdown = toggle.closest(".dropdown");
         parentDropdown.classList.toggle("open");
 
