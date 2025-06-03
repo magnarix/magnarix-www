@@ -1,20 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
- <head>
-  <meta charset="utf-8"/>
-  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-  <title>
-   Our Values – MagnaRix
-  </title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Our Values – MagnaRix</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
-   :root {
-      --primary: #0052cc;
-      --secondary: #007fff;
+    :root {
+      --primary: #111111;
+      --accent: #007fff;
       --text-dark: #1a1a1a;
       --text-light: #ffffff;
-      --bg-light: #f9fafc;
-      --bg-white: #ffffff;
+      --bg-light: #ffffff;
+      --bg-gray: #f9fafc;
       --shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
     }
 
@@ -24,7 +22,7 @@
 
     body {
       margin: 0;
-      font-family: 'Inter', system-ui, sans-serif;
+      font-family: 'Inter', sans-serif;
       background: var(--bg-light);
       color: var(--text-dark);
       line-height: 1.65;
@@ -32,66 +30,82 @@
     }
 
     header {
-      padding: 1rem 1rem;
       text-align: center;
-      background-color: var(--bg-white);
-      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+      padding: 3rem 1rem 2rem;
     }
 
     .logo {
-      max-width: 182px;
-      margin-bottom: 0.5rem;
+      max-width: 180px;
+      margin-bottom: 1rem;
     }
 
-    header h1 {
+    h1 {
       margin: 0;
-      font-size: 2rem;
-      font-weight: 700;
-      color: var(--primary);
+      font-size: 2.75rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+
+    nav {
+      margin-top: 1rem;
+      text-align: center;
+    }
+
+    nav a {
+      margin: 0 1rem;
+      text-decoration: none;
+      color: var(--text-dark);
+      font-weight: 500;
+      font-size: 1rem;
     }
 
     .hero {
-      padding: 1rem 1rem;
       text-align: center;
-      background: linear-gradient(to right, var(--primary), var(--secondary));
-      color: var(--text-light);
+      padding: 2rem 1rem;
+      background: var(--bg-gray);
     }
 
     .hero h2 {
-      font-size: 1.4rem;
-      margin: 0 auto;
+      font-size: 2rem;
       max-width: 720px;
-      line-height: 1.5;
+      margin: 0 auto;
+      color: #444;
     }
 
-    .container {
-      max-width: 960px;
-      margin: 3rem auto;
-      padding: 0 1.25rem;
+    .section-wrapper {
+      display: flex;
+      justify-content: center;
+      padding: 4rem 1rem;
+    }
+
+    .sections {
       display: grid;
       grid-template-columns: 1fr;
       gap: 2rem;
+      max-width: 1000px;
+      width: 100%;
     }
 
-    .value {
-      background: var(--bg-white);
+    .card {
+      background: var(--bg-light);
       border-radius: 12px;
       box-shadow: var(--shadow);
-      padding: 1.5rem;
+      padding: 2rem;
+      text-align: left;
       transition: transform 0.3s ease;
     }
 
-    .value:hover {
+    .card:hover {
       transform: translateY(-5px);
     }
 
-    .value h3 {
-      font-size: 1.4rem;
+    .card h3 {
+      font-size: 1.5rem;
       margin-bottom: 0.75rem;
       color: var(--primary);
     }
 
-    .value p {
+    .card p {
       font-size: 1rem;
       color: #333;
       margin: 0.25rem 0 0;
@@ -101,28 +115,33 @@
       text-align: center;
       padding: 2rem 1rem;
       font-size: 0.9rem;
-      background: var(--bg-white);
+      color: #777;
       border-top: 1px solid #ccc;
     }
 
+    footer a {
+      color: var(--primary);
+      text-decoration: none;
+    }
+
     @media (min-width: 768px) {
-      .container {
+      .sections {
         grid-template-columns: repeat(2, 1fr);
       }
     }
 
     @media (min-width: 1024px) {
-      .container {
+      .sections {
         grid-template-columns: repeat(3, 1fr);
       }
     }
   </style>
- </head>
- <body>
-  <div id="navbar">
-  </div>
-  <script>
-   fetch("navbar.html")
+</head>
+<body>
+
+<div id="navbar"></div>
+<script>
+  fetch("navbar.html")
     .then(response => response.text())
     .then(html => {
       document.getElementById("navbar").innerHTML = html;
@@ -130,90 +149,49 @@
     .catch(error => {
       console.error("Error loading navbar:", error);
     });
-  </script>
-  <header>
-   <a href="/">
-    <img alt="MagnaRix Logo" class="logo" src="logo.png"/>
-   </a>
-   <h1>
-    Our Values
-   </h1>
-  </header>
-  <div class="hero">
-   <h2>
-    Clarity. Integrity. Sovereignty. Our values shape how MagnaRix builds for bold leadership.
-   </h2>
+</script>
+
+<header>
+  <a href="/"><img alt="MagnaRix Logo" class="logo" src="logo.png" /></a>
+  <h1>Our Values</h1>
+</header>
+
+<div class="hero">
+  <h2>Clarity. Integrity. Sovereignty. Our values shape how MagnaRix builds for bold leadership.</h2>
+</div>
+
+<div class="section-wrapper">
+  <div class="sections">
+    <div class="card">
+      <h3>🛡 Sovereignty by Design</h3>
+      <p><strong>Autonomy is built in.</strong><br>You own your models, your workflows, your decisions — not us, not a vendor.</p>
+    </div>
+    <div class="card">
+      <h3>🧠 Intelligence with Honor</h3>
+      <p><strong>Speed means nothing without principle.</strong><br>Our AI reflects your ethics, respects your boundaries, and answers to your vision.</p>
+    </div>
+    <div class="card">
+      <h3>📐 Architectural Excellence</h3>
+      <p><strong>Built to last — not just launch.</strong><br>We craft clean, scalable systems designed to grow with you, not break under pressure.</p>
+    </div>
+    <div class="card">
+      <h3>🔥 Transformational Boldness</h3>
+      <p><strong>We build for pioneers, not passengers.</strong><br>MagnaRix empowers those ready to reshape industries — not just automate the obvious.</p>
+    </div>
+    <div class="card">
+      <h3>🤝 Enduring Trust</h3>
+      <p><strong>No hype. No hidden clauses.</strong><br>We earn partnership through clarity, alignment, and doing what we say we will do.</p>
+    </div>
+    <div class="card">
+      <h3>🌍 Cultural Precision</h3>
+      <p><strong>Context isn’t cosmetic — it’s foundational.</strong><br>Our AI adapts to your language, culture, and worldview with nuance and care.</p>
+    </div>
   </div>
-  <div class="container">
-   <div class="value">
-    <h3>
-     🛡 Sovereignty by Design
-    </h3>
-    <p>
-     Autonomy is built in.
-    </p>
-    <p>
-     You own your models, your workflows, your decisions — not us, not a vendor.
-    </p>
-   </div>
-   <div class="value">
-    <h3>
-     🧠 Intelligence with Honor
-    </h3>
-    <p>
-     Speed means nothing without principle.
-    </p>
-    <p>
-     Our AI reflects your ethics, respects your boundaries, and answers to your vision.
-    </p>
-   </div>
-   <div class="value">
-    <h3>
-     📐 Architectural Excellence
-    </h3>
-    <p>
-     Built to last — not just launch.
-    </p>
-    <p>
-     We craft clean, scalable systems designed to grow with you, not break under pressure.
-    </p>
-   </div>
-   <div class="value">
-    <h3>
-     🔥 Transformational Boldness
-    </h3>
-    <p>
-     We build for pioneers, not passengers.
-    </p>
-    <p>
-     MagnaRix empowers those ready to reshape industries — not just automate the obvious.
-    </p>
-   </div>
-   <div class="value">
-    <h3>
-     🤝 Enduring Trust
-    </h3>
-    <p>
-     No hype. No hidden clauses.
-    </p>
-    <p>
-     We earn partnership through clarity, alignment, and doing what we say we will do.
-    </p>
-   </div>
-   <div class="value">
-    <h3>
-     🌍 Cultural Precision
-    </h3>
-    <p>
-     Context isn’t cosmetic — it’s foundational.
-    </p>
-    <p>
-     Our AI adapts to your language, culture, and worldview with nuance and care.
-    </p>
-   </div>
-  </div>
-  <footer>
-   © 2025 MagnaRix. All rights reserved.
-  </footer>
- </body>
+</div>
+
+<footer>
+  &copy; 2025 MagnaRix Corporation · All rights reserved · <a href="contact.html">Contact</a>
+</footer>
+
+</body>
 </html>
