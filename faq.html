@@ -1,20 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
- <head>
+<head>
   <meta charset="utf-8"/>
-  <title>
-   FAQ – Your MagnaRix Questions, Answered
-  </title>
-  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FAQ – Your MagnaRix Questions, Answered</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
-   :root {
-      --primary: #0052cc;
-      --secondary: #007fff;
+    :root {
+      --primary: #111111;
+      --accent: #007fff;
       --text-dark: #1a1a1a;
       --text-light: #ffffff;
-      --bg-light: #f9fafc;
-      --bg-white: #ffffff;
+      --bg-light: #ffffff;
+      --bg-gray: #f9fafc;
       --shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
     }
 
@@ -24,252 +22,152 @@
 
     body {
       margin: 0;
-      font-family: 'Inter', system-ui, sans-serif;
+      font-family: 'Inter', sans-serif;
       background: var(--bg-light);
       color: var(--text-dark);
-      line-height: 1.7;
+      line-height: 1.65;
     }
 
-    #navbar-placeholder {
-      background-color: var(--bg-white);
-      box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+    header {
+      text-align: center;
+      padding: 3rem 1rem 2rem;
     }
 
-    main {
-      max-width: 960px;
-      margin: 4rem auto;
-      padding: 0 1.5rem;
+    .logo {
+      max-width: 180px;
+      margin-bottom: 1rem;
     }
 
     h1 {
+      margin: 0;
+      font-size: 2.75rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+
+    .hero {
       text-align: center;
-      font-size: 2.25rem;
-      color: var(--primary);
-      margin-bottom: 2.5rem;
+      padding: 2rem 1rem;
+      background: var(--bg-gray);
     }
 
-    h2 {
-      font-size: 1.3rem;
-      color: var(--primary);
-      border-top: 1px solid #ccc;
-      padding-top: 2rem;
-      margin-top: 3rem;
+    .hero h2 {
+      font-size: 2rem;
+      max-width: 800px;
+      margin: 0 auto;
+      color: #444;
     }
 
-    .faq-item {
-      background: var(--bg-white);
+    .section-wrapper {
+      display: flex;
+      justify-content: center;
+      padding: 4rem 1rem;
+    }
+
+    .sections {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      max-width: 1000px;
+      width: 100%;
+    }
+
+    .card {
+      background: var(--bg-light);
       border-radius: 12px;
       box-shadow: var(--shadow);
-      margin: 1.25rem 0;
-      padding: 1.5rem;
+      padding: 2rem;
       transition: transform 0.3s ease;
     }
 
-    .faq-item:hover {
-      transform: translateY(-2px);
+    .card:hover {
+      transform: translateY(-5px);
     }
 
-    .faq-item h3 {
-      margin-top: 0;
+    .card h3 {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
       color: var(--primary);
-      font-size: 1.1rem;
     }
 
-    .faq-item p {
-      margin: 0.75rem 0 0;
+    .card p {
       font-size: 1rem;
       color: #333;
+      margin: 0.25rem 0 0;
     }
 
     footer {
       text-align: center;
       padding: 2rem 1rem;
       font-size: 0.9rem;
-      background: var(--bg-white);
+      color: #777;
       border-top: 1px solid #ccc;
-      margin-top: 4rem;
+    }
+
+    footer a {
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    @media (min-width: 768px) {
+      .sections {
+        grid-template-columns: repeat(2, 1fr);
+      }
     }
   </style>
-  <script>
-   document.addEventListener("DOMContentLoaded", function () {
-      fetch("navbar.html")
-        .then(response => response.text())
-        .then(data => {
-          document.getElementById("navbar-placeholder").innerHTML = data;
-        });
+</head>
+<body>
+
+<div id="navbar"></div>
+<script>
+  fetch("navbar.html")
+    .then(response => response.text())
+    .then(html => {
+      document.getElementById("navbar").innerHTML = html;
+    })
+    .catch(error => {
+      console.error("Error loading navbar:", error);
     });
-  </script>
- </head>
- <body>
-  <div id="navbar-placeholder">
+</script>
+
+<header>
+  <a href="/"><img alt="MagnaRix Logo" class="logo" src="logo.png"/></a>
+  <h1>Frequently Asked Questions</h1>
+</header>
+
+<div class="hero">
+  <h2>Answers to the most common questions about MagnaRix, MagnaForge, and MagnaCrown</h2>
+</div>
+
+<div class="section-wrapper">
+  <div class="sections">
+    <div class="card"><h3>1. What is MagnaRix?</h3><p>A sovereign AI platform that unifies architecture, intelligence, and decision governance through MagnaForge and MagnaCrown.</p></div>
+    <div class="card"><h3>2. Why choose MagnaRix?</h3><p>To own your AI infrastructure, enforce internal policies, and align all data-driven operations with your mission.</p></div>
+    <div class="card"><h3>3. What makes MagnaRix different?</h3><p>It combines composable model logic, executive-level foresight, and governance in one orchestrated framework — not a siloed tool.</p></div>
+    <div class="card"><h3>4. Who is MagnaRix for?</h3><p>Built for enterprises, government agencies, and strategic teams that need explainability, control, and long-term resilience.</p></div>
+    <div class="card"><h3>5. What is MagnaForge?</h3><p>A visual, no-code/low-code interface to build, chain, and manage AI workflows using modular logic and policy-bound rules.</p></div>
+    <div class="card"><h3>6. What is MagnaCrown?</h3><p>An orchestration layer that simulates, scores, and governs outcomes — delivering scenario-tested decisions with traceability.</p></div>
+    <div class="card"><h3>7. Can MagnaRix simulate business impact before deployment?</h3><p>Yes — MagnaCrown lets you preview implications of decisions using model-backed simulations tied to your data.</p></div>
+    <div class="card"><h3>8. Can I audit and trace decisions made by the system?</h3><p>Every logic branch, model call, and user override is logged, versioned, and fully traceable.</p></div>
+    <div class="card"><h3>9. What does a CEO gain from MagnaRix?</h3><p>A unified view of operations, intelligent simulations, and real-time strategic clarity — without black-box AI.</p></div>
+    <div class="card"><h3>10. How does MagnaRix help product or ops managers?</h3><p>Connects insights across silos, drives automation with control, and tracks what actually moves KPIs.</p></div>
+    <div class="card"><h3>11. What’s the value for enterprise architects?</h3><p>Composable, model-agnostic infrastructure with reusable pipelines and built-in governance enforcement.</p></div>
+    <div class="card"><h3>12. How does MagnaRix serve compliance officers or lawyers?</h3><p>Policies are encoded as guardrails — every model and workflow enforces rules and documents exceptions.</p></div>
+    <div class="card"><h3>13. Is MagnaRix suitable for public sector or regulated industries?</h3><p>Absolutely. It's designed with transparency, fairness, and audit-readiness at its foundation.</p></div>
+    <div class="card"><h3>14. Can startups or innovators benefit from MagnaRix?</h3><p>Yes — it accelerates time-to-insight while enabling you to retain control and IP over your stack.</p></div>
+    <div class="card"><h3>15. Can MagnaRix integrate with existing ML models and APIs?</h3><p>Yes — it supports OpenAI, HuggingFace, Azure, REST APIs, or any private LLM or model.</p></div>
+    <div class="card"><h3>16. Does MagnaRix include model training?</h3><p>It supports model hosting and retraining workflows but remains model-agnostic — bring your own or plug in foundation models.</p></div>
+    <div class="card"><h3>17. How does MagnaRix handle data pipelines?</h3><p>Through connectors and orchestration layers — it ingests, transforms, and validates inputs across systems.</p></div>
+    <div class="card"><h3>18. Can I deploy MagnaRix on-prem, cloud, or hybrid?</h3><p>Yes — it supports full deployment flexibility, including Kubernetes-native architecture and cloud-agnostic builds.</p></div>
+    <div class="card"><h3>19. Does it require a specific data lake or warehouse?</h3><p>No — it connects to Snowflake, BigQuery, Redshift, Postgres, and custom data sources via adapters.</p></div>
+    <div class="card"><h3>20. What makes its governance different from MLOps?</h3><p>MagnaRix enforces decision-level governance — beyond devops — integrating ethics, policy, and oversight in every outcome.</p></div>
   </div>
-  <main>
-   <h1>
-    Frequently Asked Questions
-   </h1>
-   <div class="faq-item">
-    <h3 style="margin-bottom: 0.5rem; font-weight: 600;">
-     1. What is MagnaRix?
-    </h3>
-    <p style="color: #333; margin-top: 0.25rem;">
-     A sovereign AI platform that unifies architecture, intelligence, and decision governance through MagnaForge and MagnaCrown.
-    </p>
-   </div>
-   <div class="faq-item">
-    <h3 style="margin-bottom: 0.5rem; font-weight: 600;">
-     2. Why choose MagnaRix?
-    </h3>
-    <p style="color: #333; margin-top: 0.25rem;">
-     To own your AI infrastructure, enforce internal policies, and align all data-driven operations with your mission.
-    </p>
-   </div>
-   <div class="faq-item">
-    <h3 style="margin-bottom: 0.5rem; font-weight: 600;">
-     3. What makes MagnaRix different?
-    </h3>
-    <p style="color: #333; margin-top: 0.25rem;">
-     It combines composable model logic, executive-level foresight, and governance in one orchestrated framework — not a siloed tool.
-    </p>
-   </div>
-   <div class="faq-item">
-    <h3 style="margin-bottom: 0.5rem; font-weight: 600;">
-     4. Who is MagnaRix for?
-    </h3>
-    <p style="color: #333; margin-top: 0.25rem;">
-     Built for enterprises, government agencies, and strategic teams that need explainability, control, and long-term resilience.
-    </p>
-   </div>
-   <div class="faq-item">
-    <h3 style="margin-bottom: 0.5rem; font-weight: 600;">
-     5. What is MagnaForge?
-    </h3>
-    <p style="color: #333; margin-top: 0.25rem;">
-     A visual, no-code/low-code interface to build, chain, and manage AI workflows using modular logic and policy-bound rules.
-    </p>
-   </div>
-   <div class="faq-item">
-    <h3 style="margin-bottom: 0.5rem; font-weight: 600;">
-     6. What is MagnaCrown?
-    </h3>
-    <p style="color: #333; margin-top: 0.25rem;">
-     An orchestration layer that simulates, scores, and governs outcomes — delivering scenario-tested decisions with traceability.
-    </p>
-   </div>
-   <div class="faq-item">
-    <h3 style="margin-bottom: 0.5rem; font-weight: 600;">
-     7. Can MagnaRix simulate business impact before deployment?
-    </h3>
-    <p style="color: #333; margin-top: 0.25rem;">
-     Yes — MagnaCrown lets you preview implications of decisions using model-backed simulations tied to your data.
-    </p>
-   </div>
-   <div class="faq-item">
-    <h3 style="margin-bottom: 0.5rem; font-weight: 600;">
-     8. Can I audit and trace decisions made by the system?
-    </h3>
-    <p style="color: #333; margin-top: 0.25rem;">
-     Every logic branch, model call, and user override is logged, versioned, and fully traceable.
-    </p>
-   </div>
-   <div class="faq-item">
-    <h3 style="margin-bottom: 0.5rem; font-weight: 600;">
-     9. What does a CEO gain from MagnaRix?
-    </h3>
-    <p style="color: #333; margin-top: 0.25rem;">
-     A unified view of operations, intelligent simulations, and real-time strategic clarity — without black-box AI.
-    </p>
-   </div>
-   <div class="faq-item">
-    <h3 style="margin-bottom: 0.5rem; font-weight: 600;">
-     10. How does MagnaRix help product or ops managers?
-    </h3>
-    <p style="color: #333; margin-top: 0.25rem;">
-     Connects insights across silos, drives automation with control, and tracks what actually moves KPIs.
-    </p>
-   </div>
-   <div class="faq-item">
-    <h3 style="margin-bottom: 0.5rem; font-weight: 600;">
-     11. What’s the value for enterprise architects?
-    </h3>
-    <p style="color: #333; margin-top: 0.25rem;">
-     Composable, model-agnostic infrastructure with reusable pipelines and built-in governance enforcement.
-    </p>
-   </div>
-   <div class="faq-item">
-    <h3 style="margin-bottom: 0.5rem; font-weight: 600;">
-     12. How does MagnaRix serve compliance officers or lawyers?
-    </h3>
-    <p style="color: #333; margin-top: 0.25rem;">
-     Policies are encoded as guardrails — every model and workflow enforces rules and documents exceptions.
-    </p>
-   </div>
-   <div class="faq-item">
-    <h3 style="margin-bottom: 0.5rem; font-weight: 600;">
-     13. Is MagnaRix suitable for public sector or regulated industries?
-    </h3>
-    <p style="color: #333; margin-top: 0.25rem;">
-     Absolutely. It's designed with transparency, fairness, and audit-readiness at its foundation.
-    </p>
-   </div>
-   <div class="faq-item">
-    <h3 style="margin-bottom: 0.5rem; font-weight: 600;">
-     14. Can startups or innovators benefit from MagnaRix?
-    </h3>
-    <p style="color: #333; margin-top: 0.25rem;">
-     Yes — it accelerates time-to-insight while enabling you to retain control and IP over your stack.
-    </p>
-   </div>
-   <div class="faq-item">
-    <h3 style="margin-bottom: 0.5rem; font-weight: 600;">
-     15. Can MagnaRix integrate with existing ML models and APIs?
-    </h3>
-    <p style="color: #333; margin-top: 0.25rem;">
-     Yes — it supports OpenAI, HuggingFace, Azure, REST APIs, or any private LLM or model.
-    </p>
-   </div>
-   <div class="faq-item">
-    <h3 style="margin-bottom: 0.5rem; font-weight: 600;">
-     16. Does MagnaRix include model training?
-    </h3>
-    <p style="color: #333; margin-top: 0.25rem;">
-     It supports model hosting and retraining workflows but remains model-agnostic — bring your own or plug in foundation models.
-    </p>
-   </div>
-   <div class="faq-item">
-    <h3 style="margin-bottom: 0.5rem; font-weight: 600;">
-     17. How does MagnaRix handle data pipelines?
-    </h3>
-    <p style="color: #333; margin-top: 0.25rem;">
-     Through connectors and orchestration layers — it ingests, transforms, and validates inputs across systems.
-    </p>
-   </div>
-   <div class="faq-item">
-    <h3 style="margin-bottom: 0.5rem; font-weight: 600;">
-     18. Can I deploy MagnaRix on-prem, cloud, or hybrid?
-    </h3>
-    <p style="color: #333; margin-top: 0.25rem;">
-     Yes — it supports full deployment flexibility, including Kubernetes-native architecture and cloud-agnostic builds.
-    </p>
-   </div>
-   <div class="faq-item">
-    <h3 style="margin-bottom: 0.5rem; font-weight: 600;">
-     19. Does it require a specific data lake or warehouse?
-    </h3>
-    <p style="color: #333; margin-top: 0.25rem;">
-     No — it connects to Snowflake, BigQuery, Redshift, Postgres, and custom data sources via adapters.
-    </p>
-   </div>
-   <div class="faq-item">
-    <h3 style="margin-bottom: 0.5rem; font-weight: 600;">
-     20. What makes its governance different from MLOps?
-    </h3>
-    <p style="color: #333; margin-top: 0.25rem;">
-     MagnaRix enforces decision-level governance — beyond devops — integrating ethics, policy, and oversight in every outcome.
-    </p>
-   </div>
-  </main>
-  <footer>
-   © 2025 MagnaRix. All rights reserved.
-  </footer>
- </body>
+</div>
+
+<footer>
+  &copy; 2025 MagnaRix Corporation · All rights reserved · <a href="contact.html">Contact</a>
+</footer>
+
+</body>
 </html>
