@@ -8,13 +8,13 @@
   </title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
   <style>
-   :root {
-      --primary: #0052cc;
-      --secondary: #007fff;
+    :root {
+      --primary: #111111;
+      --accent: #007fff;
       --text-dark: #1a1a1a;
       --text-light: #ffffff;
-      --bg-light: #f9fafc;
-      --bg-white: #ffffff;
+      --bg-light: #ffffff;
+      --bg-gray: #f9fafc;
       --shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
     }
 
@@ -24,30 +24,27 @@
 
     body {
       margin: 0;
-      font-family: 'Inter', system-ui, sans-serif;
+      font-family: 'Inter', sans-serif;
       background: var(--bg-light);
       color: var(--text-dark);
       line-height: 1.65;
-      font-size: 16px;
     }
 
     header {
-      padding: 1rem 1rem;
       text-align: center;
-      background-color: var(--bg-white);
-      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+      padding: 3rem 1rem 2rem;
     }
 
     .logo {
-      max-width: 182px;
-      margin-bottom: 0.5rem;
+      max-width: 180px;
+      margin-bottom: 1rem;
     }
 
-    header h1 {
+    h1 {
       margin: 0;
-      font-size: 2rem;
-      font-weight: 700;
-      color: var(--primary);
+      font-size: 2.75rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
     }
 
     nav {
@@ -56,18 +53,17 @@
     }
 
     nav a {
-      margin: 0 0.75rem;
+      margin: 0 1rem;
       text-decoration: none;
-      color: black;
+      color: var(--text-dark);
       font-weight: 500;
       font-size: 1rem;
     }
 
     .hero {
-      padding: 1rem 1rem;
       text-align: center;
-      background: linear-gradient(to right, var(--primary), var(--secondary));
-      color: var(--text-light);
+      padding: 2rem 1rem;
+      background: var(--bg-gray);
     }
 
     .hero h2 {
@@ -76,9 +72,66 @@
     }
 
     .hero p {
-      font-size: 1.05rem;
-      max-width: 680px;
+      font-size: 1.15rem;
+      max-width: 700px;
       margin: 0 auto;
+      color: #444;
+    }
+
+    .cta-buttons {
+      margin-top: 2rem;
+    }
+
+    .cta-buttons a {
+      display: inline-block;
+      margin: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      font-weight: 500;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+    }
+
+    .cta-primary {
+      background-color: var(--primary);
+      color: white;
+    }
+
+    .cta-primary:hover {
+      background-color: #333;
+    }
+
+    .cta-secondary {
+      background-color: #f5f5f5;
+      color: var(--primary);
+      border: 1px solid #ddd;
+    }
+
+    .cta-secondary:hover {
+      background-color: #eaeaea;
+    }
+
+    .section {
+      padding: 4rem 1rem;
+      text-align: center;
+    }
+
+    .section h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .section p {
+      font-size: 1.1rem;
+      max-width: 700px;
+      margin: 0 auto;
+      color: #333;
+    }
+
+    .section-wrapper {
+      display: flex;
+      justify-content: center;
+      padding: 2rem 1rem;
     }
 
     .sections {
@@ -86,29 +139,29 @@
       grid-template-columns: 1fr;
       gap: 2rem;
       max-width: 1000px;
-      margin: 3rem auto;
-      padding: 0 1.25rem;
+      width: 100%;
     }
 
-    .section {
-      background: var(--bg-white);
+    .card {
+      background: var(--bg-light);
       border-radius: 12px;
       box-shadow: var(--shadow);
-      padding: 1.5rem;
+      padding: 2rem;
+      text-align: left;
       transition: transform 0.3s ease;
     }
 
-    .section:hover {
+    .card:hover {
       transform: translateY(-5px);
     }
 
-    .section h3 {
-      font-size: 1.4rem;
+    .card h3 {
+      font-size: 1.5rem;
       margin-bottom: 0.75rem;
       color: var(--primary);
     }
 
-    .section p {
+    .card p {
       font-size: 1rem;
       color: #333;
     }
@@ -117,7 +170,7 @@
       text-align: center;
       padding: 2rem 1rem;
       font-size: 0.9rem;
-      background: var(--bg-white);
+      color: #777;
       border-top: 1px solid #ccc;
     }
 
@@ -131,14 +184,7 @@
         grid-template-columns: repeat(2, 1fr);
       }
     }
-
-    @media (min-width: 1024px) {
-      .sections {
-        grid-template-columns: repeat(2, 1fr);
-        justify-content: center;
-      }
-    }
-  </style>
+  </style> 
  </head>
  <body>
   <div id="navbar">
