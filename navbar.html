@@ -1,189 +1,210 @@
-<nav id="nav">
-  <div class="nav-container">
-    <a href="index.html" class="brand">MagnaRix</a>
-    <div class="hamburger" id="hamburger">&#9776;</div>
-    <ul class="nav-links" id="nav-links">
-      <li class="dropdown">
-        <button class="dropdown-toggle">Products ▾</button>
-        <ul class="dropdown-content">
-          <li><a href="forge.html">MagnaForge</a></li>
-          <li><a href="crown.html">MagnaCrown</a></li>
-        </ul>
-      </li>
-      <li class="dropdown">
-        <button class="dropdown-toggle">About ▾</button>
-        <ul class="dropdown-content">
-          <li><a href="values.html">Mission & Values</a></li>
-          <li><a href="faq.html">FAQ</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </li>
-    </ul>
-  </div>
-</nav>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MagnaRix Navigation</title>
+  <style>
+    :root {
+      --accent: #007fff;
+      --bg-light: #ffffff;
+      --text-dark: #1a1a1a;
+      --shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
+    }
 
-<style>
-  :root {
-    --accent: #007fff;
-    --bg-light: #ffffff;
-    --text-dark: #1a1a1a;
-    --shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
-  }
+    #nav {
+      background: var(--bg-light);
+      border-bottom: 1px solid #e0e0e0;
+      font-family: 'Inter', sans-serif;
+      box-shadow: var(--shadow);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
 
-  #nav {
-    background: var(--bg-light);
-    border-bottom: 1px solid #e0e0e0;
-    font-family: 'Inter', sans-serif;
-    box-shadow: var(--shadow);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-  }
+    .nav-container {
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 0.5rem 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
 
-  .nav-container {
-    max-width: 1140px;
-    margin: 0 auto;
-    padding: 0.5rem 1rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
+    .brand {
+      font-size: 1.4rem;
+      font-weight: 700;
+      text-decoration: none;
+      color: #111111;
+      transition: color 0.3s ease, transform 0.3s ease;
+    }
 
-  .brand {
-    font-size: 1.4rem;
-    font-weight: 700;
-    color: #111111; /* ✅ explicit black to override blue */
-    text-decoration: none;
-  }
+    .brand:visited {
+      color: #111111;
+    }
 
-  .hamburger {
-    font-size: 1.5rem;
-    cursor: pointer;
-    display: none;
-  }
+    .brand:hover,
+    .brand:active {
+      color: var(--accent);
+      transform: scale(1.05);
+    }
 
-  .nav-links {
-    list-style: none;
-    display: flex;
-    align-items: center;
-    gap: 1.5rem;
-    margin: 0;
-  }
-
-  .nav-links li {
-    position: relative;
-  }
-
-  .nav-links a,
-  .dropdown-toggle {
-    text-decoration: none;
-    color: var(--text-dark);
-    padding: 0.75rem 0;
-    font-weight: 500;
-    background: none;
-    border: none;
-    font-family: inherit;
-    font-size: 1rem;
-    cursor: pointer;
-  }
-
-  .nav-links a:hover,
-  .nav-links a.active,
-  .dropdown-toggle:hover {
-    color: var(--accent);
-  }
-
-  .dropdown-content {
-    display: none;
-    position: absolute;
-    background: var(--bg-light);
-    top: 100%;
-    left: 0;
-    min-width: 180px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
-    border-radius: 6px;
-    z-index: 10;
-  }
-
-  .dropdown-content li a {
-    display: block;
-    padding: 0.75rem 1rem;
-    color: #333;
-    white-space: nowrap;
-  }
-
-  .dropdown-content li a:hover {
-    background: #f5f5f5;
-  }
-
-  .dropdown:hover .dropdown-content {
-    display: block;
-  }
-
-  @media (max-width: 768px) {
     .hamburger {
-      display: block;
+      font-size: 1.5rem;
+      cursor: pointer;
+      display: none;
     }
 
     .nav-links {
-      display: none;
-      flex-direction: column;
-      background: var(--bg-light);
-      position: absolute;
-      top: 100%;
-      left: 0;
-      width: 100%;
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.06);
-    }
-
-    .nav-links.show {
+      list-style: none;
       display: flex;
-    }
-
-    .dropdown:hover .dropdown-content {
-      display: none;
-    }
-
-    .dropdown.open .dropdown-content {
-      display: block;
-      position: relative;
-      box-shadow: none;
-    }
-
-    .dropdown-toggle::after {
-      content: " ▼";
+      align-items: center;
+      gap: 1.5rem;
+      margin: 0;
     }
 
     .nav-links li {
-      width: 100%;
-      text-align: center;
+      position: relative;
     }
 
-    .dropdown-content li {
-      text-align: left;
+    .nav-links a,
+    .dropdown-toggle {
+      text-decoration: none;
+      color: var(--text-dark);
+      padding: 0.75rem 0;
+      font-weight: 500;
+      background: none;
+      border: none;
+      font-family: inherit;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: color 0.3s ease;
     }
-  }
-</style>
 
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const hamburger = document.getElementById("hamburger");
-    const navLinks = document.getElementById("nav-links");
-    const dropdownToggles = document.querySelectorAll(".dropdown-toggle");
+    .nav-links a:hover,
+    .nav-links a.active,
+    .dropdown-toggle:hover {
+      color: var(--accent);
+    }
 
-    hamburger.addEventListener("click", () => {
-      navLinks.classList.toggle("show");
-    });
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background: var(--bg-light);
+      top: 100%;
+      left: 0;
+      min-width: 180px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+      border-radius: 6px;
+      z-index: 10;
+    }
 
-    dropdownToggles.forEach(toggle => {
-      toggle.addEventListener("click", () => {
-        const parentDropdown = toggle.closest(".dropdown");
-        parentDropdown.classList.toggle("open");
+    .dropdown-content li a {
+      display: block;
+      padding: 0.75rem 1rem;
+      color: #333;
+      white-space: nowrap;
+    }
 
-        document.querySelectorAll(".dropdown").forEach(d => {
-          if (d !== parentDropdown) d.classList.remove("open");
+    .dropdown-content li a:hover {
+      background: #f5f5f5;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    @media (max-width: 768px) {
+      .hamburger {
+        display: block;
+      }
+
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        background: var(--bg-light);
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.06);
+      }
+
+      .nav-links.show {
+        display: flex;
+      }
+
+      .dropdown:hover .dropdown-content {
+        display: none;
+      }
+
+      .dropdown.open .dropdown-content {
+        display: block;
+        position: relative;
+        box-shadow: none;
+      }
+
+      .dropdown-toggle::after {
+        content: " ▼";
+      }
+
+      .nav-links li {
+        width: 100%;
+        text-align: center;
+      }
+
+      .dropdown-content li {
+        text-align: left;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav id="nav">
+    <div class="nav-container">
+      <a href="index.html" class="brand">MagnaRix</a>
+      <div class="hamburger" id="hamburger">&#9776;</div>
+      <ul class="nav-links" id="nav-links">
+        <li class="dropdown">
+          <button class="dropdown-toggle">Products ▾</button>
+          <ul class="dropdown-content">
+            <li><a href="forge.html">MagnaForge</a></li>
+            <li><a href="crown.html">MagnaCrown</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <button class="dropdown-toggle">About ▾</button>
+          <ul class="dropdown-content">
+            <li><a href="values.html">Mission & Values</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const hamburger = document.getElementById("hamburger");
+      const navLinks = document.getElementById("nav-links");
+      const dropdownToggles = document.querySelectorAll(".dropdown-toggle");
+
+      hamburger.addEventListener("click", () => {
+        navLinks.classList.toggle("show");
+      });
+
+      dropdownToggles.forEach(toggle => {
+        toggle.addEventListener("click", () => {
+          const parentDropdown = toggle.closest(".dropdown");
+          parentDropdown.classList.toggle("open");
+
+          document.querySelectorAll(".dropdown").forEach(d => {
+            if (d !== parentDropdown) d.classList.remove("open");
+          });
         });
       });
     });
-  });
-</script>
+  </script>
+</body>
+</html>
