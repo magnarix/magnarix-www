@@ -23,11 +23,19 @@
 </nav>
 
 <style>
+  :root {
+    --primary: #111111;
+    --accent: #007fff;
+    --bg-light: #ffffff;
+    --text-dark: #1a1a1a;
+    --shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
+  }
+
   #nav {
-    background: white;
+    background: var(--bg-light);
     border-bottom: 1px solid #e0e0e0;
-    font-family: 'Inter', system-ui, sans-serif;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.03);
+    font-family: 'Inter', sans-serif;
+    box-shadow: var(--shadow);
     position: sticky;
     top: 0;
     z-index: 1000;
@@ -45,7 +53,7 @@
   .brand {
     font-size: 1.4rem;
     font-weight: 700;
-    color: #0052cc;
+    color: var(--primary);
     text-decoration: none;
   }
 
@@ -70,7 +78,7 @@
   .nav-links a,
   .dropdown-toggle {
     text-decoration: none;
-    color: #1a1a1a;
+    color: var(--text-dark);
     padding: 0.75rem 0;
     font-weight: 500;
     background: none;
@@ -83,17 +91,17 @@
   .nav-links a:hover,
   .nav-links a.active,
   .dropdown-toggle:hover {
-    color: #007fff;
+    color: var(--accent);
   }
 
   .dropdown-content {
     display: none;
     position: absolute;
-    background: white;
+    background: var(--bg-light);
     top: 100%;
     left: 0;
     min-width: 180px;
-    box-shadow: 0 8px 16px rgba(0,0,0,0.08);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
     border-radius: 6px;
     z-index: 10;
   }
@@ -121,12 +129,12 @@
     .nav-links {
       display: none;
       flex-direction: column;
-      background: white;
+      background: var(--bg-light);
       position: absolute;
       top: 100%;
       left: 0;
       width: 100%;
-      box-shadow: 0 8px 16px rgba(0,0,0,0.06);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.06);
     }
 
     .nav-links.show {
