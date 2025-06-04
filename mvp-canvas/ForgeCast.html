@@ -8,39 +8,187 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<style>
+  html {
+    scroll-behavior: smooth;
+  }
+  .navbar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: linear-gradient(to right, #2c3e50, #4ca1af);
+    color: white;
+    padding: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  }
+  .navbar-brand {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-right: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .navbar-brand img {
+    height: 32px;
+  }
+  .nav-links {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  .nav-links a {
+    color: white;
+    text-decoration: none;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+  }
+  .nav-links a.active {
+    background: rgba(255, 255, 255, 0.2);
+  }
+  .hamburger {
+    display: none;
+    font-size: 1.5rem;
+    margin-left: auto;
+    cursor: pointer;
+  }
+  @media (max-width: 768px) {
+    .nav-links {
+      display: none;
+      flex-direction: column;
+      width: 100%;
+      margin-top: 1rem;
+    }
+    .nav-links.show {
+      display: flex;
+    }
+    .hamburger {
+      display: block;
+    }
+  }
+  footer {
+    margin-top: 3rem;
+    padding: 1rem;
+    text-align: center;
+    font-size: 0.9rem;
+    color: #555;
+    border-top: 1px solid #ccc;
+  }
+</style>
 
-<nav style="background:#333; color:white; padding:1rem; display:flex; gap:1rem;">
-  <a href="index.html" style="color:white; text-decoration:none;">🏠 Command Canvas</a>
-  <a href="CommandCanvas.html" style="color:white; text-decoration:none;">📊 Timeline & Dependencies</a>
-  <a href="ForgeCast.html" style="color:white; text-decoration:none;">🧠 ForgeCast Insights</a>
-  <a href="OrchestratedPaths.html" style="color:white; text-decoration:none;">🔄 Scenario Simulation</a>
-  <a href="CrownLens.html" style="color:white; text-decoration:none;">📈 CrownLens Risk View</a>
-  <a href="https://www.magnarix.com" target="_blank" style="color:white; text-decoration:none; margin-left:auto;">↩ Back to MagnaRix</a>
+<nav class="navbar">
+  <div class="navbar-brand">
+    <img src="logo.png" alt="MagnaRix Logo">
+    MagnaRix
+  </div>
+  <div class="hamburger" onclick="toggleMenu()">☰</div>
+  <div class="nav-links" id="navLinks">
+    <a href="index.html" id="nav-canvas">🏠 Canvas</a>
+    <a href="CommandCanvas.html" id="nav-timeline">📊 Timeline</a>
+    <a href="ForgeCast.html" id="nav-forgecast">🧠 ForgeCast</a>
+    <a href="OrchestratedPaths.html" id="nav-scenarios">🔄 Scenarios</a>
+    <a href="CrownLens.html" id="nav-crownlens">📈 CrownLens</a>
+    <a href="https://www.magnarix.com" target="_blank">↩ Back to MagnaRix</a>
+  </div>
 </nav>
 
+<section class="page-description">
+  <h2>ForgeCast – AI Insight Generator</h2>
+  <p>ForgeCast simulates an AI assistant that proposes strategic recommendations based on business challenges. This represents how future AI integration in MagnaForge will guide decision-making through contextual understanding.</p>
+  <p><strong>How to use:</strong> Type your strategic challenge and click 'Get Insight'. A suggested course of action and a rationale will be displayed to illustrate AI-guided leadership support.</p>
+</section>
 
-  <h1>ForgeCast – AI Insight Generator</h1>
-  <p><a href="index.html">← Back to Command Canvas</a></p>
-  <div class="column">
-    <h2>Describe Your Strategic Challenge</h2>
-    <textarea id="challenge-input" rows="4" cols="50" placeholder="e.g., Should we expand into Asia this year?"></textarea><br><br>
-    <button onclick="generateInsight()">Get Insight</button>
-    <div id="insight-output" class="card" style="margin-top:1rem;"></div>
-    <div id="rationale-output" style="margin-top:0.5rem; font-size:0.9em; color:#555;"></div>
-  </div>
-  <script>
-    function generateInsight() {
-      const input = document.getElementById('challenge-input').value;
-      const output = document.getElementById('insight-output');
-      const rationale = document.getElementById('rationale-output');
-      if (!input.trim()) {
-        output.textContent = 'Please enter a strategic challenge.';
-        rationale.textContent = '';
-        return;
-      }
-      output.textContent = 'AI Suggestion: Consider a phased approach starting with a market study and pilot rollout.';
-      rationale.textContent = 'Why this? Phased entry lowers risk and validates demand before committing full resources.';
+
+<script>
+  function toggleMenu() {
+    const nav = document.getElementById('navLinks');
+    nav.classList.toggle('show');
+  }
+
+  // Highlight active link
+  const path = window.location.pathname;
+  if (path.includes("index")) document.getElementById("nav-canvas")?.classList.add("active");
+  if (path.includes("CommandCanvas")) document.getElementById("nav-timeline")?.classList.add("active");
+  if (path.includes("ForgeCast")) document.getElementById("nav-forgecast")?.classList.add("active");
+  if (path.includes("OrchestratedPaths")) document.getElementById("nav-scenarios")?.classList.add("active");
+  if (path.includes("CrownLens")) document.getElementById("nav-crownlens")?.classList.add("active");
+</script>
+
+
+<style>
+  html {
+    scroll-behavior: smooth;
+  }
+  .navbar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: linear-gradient(to right, #2c3e50, #4ca1af);
+    color: white;
+    padding: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  }
+  .navbar-brand {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-right: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .navbar-brand span {
+    font-size: 1.5rem;
+  }
+  .nav-links {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  .nav-links a {
+    color: white;
+    text-decoration: none;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+  }
+  .nav-links a.active {
+    background: rgba(255, 255, 255, 0.2);
+  }
+  .hamburger {
+    display: none;
+    font-size: 1.5rem;
+    margin-left: auto;
+    cursor: pointer;
+  }
+  @media (max-width: 768px) {
+    .nav-links {
+      display: none;
+      flex-direction: column;
+      width: 100%;
+      margin-top: 1rem;
     }
-  </script>
-</body>
-</html>
+    .nav-links.show {
+      display: flex;
+    }
+    .hamburger {
+      display: block;
+    }
+  }
+</style>
+
+<nav class="navbar">
+  <div class="navbar-brand"><span>👑</span> MagnaRix</div>
+  <div class="hamburger" onclick="toggleMenu()">☰</div>
+  <div class="nav-links" id="navLinks">
+    <a href="index.html" id="nav-canvas">🏠 Canvas</a>
+    <a href="CommandCanvas.html" id="nav-timeline">📊 Timeline</a>
+    <a href="ForgeCast.html" id="nav-forgecast">🧠 ForgeCast</a>
+    <a href="OrchestratedPaths.html" id="nav-scenarios">🔄 Scenarios</a>
+    <a href="CrownLens.html" id="nav-crownlens">📈 CrownLens</a>
+    <a href="https://www.magnarix.com" target="_blank">↩ Back to MagnaRix</a>
+  </div>
