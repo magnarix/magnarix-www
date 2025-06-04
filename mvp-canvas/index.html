@@ -1,0 +1,31 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MagnaRix Command Canvas</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>MagnaRix Command Canvas</h1>
+  <div class="canvas">
+    <div class="column" ondrop="drop(event)" ondragover="allowDrop(event)">
+      <h2>Goals</h2>
+      <div class="card" draggable="true" ondragstart="drag(event)">Expand to new market</div>
+      <div class="card" draggable="true" ondragstart="drag(event)">Increase revenue by 20%</div>
+    </div>
+    <div class="column" ondrop="drop(event)" ondragover="allowDrop(event)">
+      <h2>Risks</h2>
+      <div class="card" draggable="true" ondragstart="drag(event)">High initial costs</div>
+      <div class="card" draggable="true" ondragstart="drag(event)">Strong competition</div>
+    </div>
+    <div class="column" ondrop="drop(event)" ondragover="allowDrop(event)">
+      <h2>KPIs</h2>
+      <div class="card" draggable="true" ondragstart="drag(event)">Customer Acquisition</div>
+      <div class="card" draggable="true" ondragstart="drag(event)">Market Share</div>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
