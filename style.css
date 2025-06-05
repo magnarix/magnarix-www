@@ -51,7 +51,7 @@ nav a {
   font-size: 1rem;
 }
 
-/* Updated hero styles: dark grey background and white text */
+/* Hero section: dark grey background with white text */
 .hero {
   text-align: center;
   padding: 2rem 1rem;
@@ -107,6 +107,7 @@ nav a {
   background-color: #eaeaea;
 }
 
+/* Section and Section-Wrapper */
 .section {
   padding: 4rem 1rem;
   text-align: center;
@@ -124,10 +125,12 @@ nav a {
   color: #333;
 }
 
+/* Section-wrapper with slightly grayer background */
 .section-wrapper {
   display: flex;
   justify-content: center;
   padding: 2rem 1rem;
+  background: #eaeaea;
 }
 
 .sections {
