@@ -3,347 +3,65 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Command Canvas</title>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap"
-    rel="stylesheet"
-  />
+  <title>Command Canvas – Overview</title>
   <link rel="stylesheet" href="style.css" />
-  <style>
-    /* Hero section overrides */
-    .hero {
-      background: linear-gradient(135deg, #002b5c 0%, #0056b3 100%);
-      color: white;
-      padding: 4rem 2rem;
-      text-align: center;
-      position: relative;
-      margin-bottom: 2rem;
-    }
-    .hero h1 {
-      font-family: "Inter", sans-serif;
-      font-size: 3rem;
-      font-weight: 700;
-      margin-bottom: 1rem;
-      line-height: 1.2;
-    }
-    .hero p {
-      font-family: "Inter", sans-serif;
-      font-size: 1.2rem;
-      font-weight: 300;
-      max-width: 600px;
-      margin: 0 auto 2rem auto;
-      line-height: 1.5;
-    }
-    .hero .cta-button {
-      background-color: #ffdd00;
-      color: #002b5c;
-      font-family: "Inter", sans-serif;
-      font-weight: 600;
-      padding: 0.75rem 2rem;
-      border: none;
-      border-radius: 4px;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: background-color 0.2s ease;
-      text-decoration: none;
-    }
-    .hero .cta-button:hover {
-      background-color: #e6c500;
-    }
-
-    /* Section wrappers */
-    .section-wrapper {
-      background: #ffffff;
-      border-radius: 8px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-      padding: 2rem;
-      margin-bottom: 2rem;
-      font-family: "Inter", sans-serif;
-    }
-    .section-wrapper h2 {
-      font-size: 1.75rem;
-      font-weight: 600;
-      margin-bottom: 1rem;
-      color: #1f2a36;
-    }
-    .section-wrapper p {
-      font-size: 1rem;
-      font-weight: 300;
-      margin-bottom: 1.5rem;
-      color: #555b66;
-      line-height: 1.6;
-    }
-
-    /* Tables redesign */
-    .section-wrapper table {
-      width: 100%;
-      border-collapse: separate;
-      border-spacing: 0;
-      margin-bottom: 1.5rem;
-    }
-    .section-wrapper thead th {
-      background: #002b5c;
-      color: #ffffff;
-      padding: 0.75rem 1rem;
-      text-align: left;
-      font-weight: 600;
-      border-top-left-radius: 4px;
-      border-top-right-radius: 4px;
-    }
-    .section-wrapper tbody tr {
-      background: #f9fafb;
-      border-bottom: 1px solid #e1e7ed;
-    }
-    .section-wrapper tbody tr:nth-child(even) {
-      background: #ffffff;
-    }
-    .section-wrapper tbody td {
-      padding: 0.75rem 1rem;
-      color: #1f2a36;
-      font-weight: 400;
-    }
-    .section-wrapper tbody tr:hover {
-      background: #e8f0fe;
-    }
-
-    /* Quick-Add redesign */
-    .quick-add {
-      display: flex;
-      align-items: center;
-      margin-top: 1rem;
-    }
-    .quick-add input,
-    .quick-add select {
-      flex: 1;
-      padding: 0.5rem;
-      font-size: 0.95rem;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      margin-right: 0.75rem;
-    }
-    .quick-add button {
-      padding: 0.5rem 1.25rem;
-      background: #002b5c;
-      color: #ffffff;
-      border: none;
-      border-radius: 4px;
-      font-size: 0.95rem;
-      cursor: pointer;
-      transition: background-color 0.2s ease;
-    }
-    .quick-add button:hover {
-      background: #001f3d;
-    }
-    .quick-add .error-text {
-      margin-left: 0.75rem;
-      font-size: 0.85rem;
-      color: #d9534f;
-    }
-
-    /* Export button styling */
-    #export-json-btn {
-      display: inline-block;
-      margin-top: 1rem;
-      background: #28a745;
-      color: #ffffff;
-      border: none;
-      border-radius: 4px;
-      padding: 0.75rem 1.5rem;
-      font-size: 1rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: background-color 0.2s ease;
-      font-family: "Inter", sans-serif;
-    }
-    #export-json-btn:hover {
-      background-color: #218838;
-    }
-
-    /* Footer styling */
-    footer {
-      text-align: center;
-      padding: 1.5rem 2rem;
-      background: #f0f4f8;
-      font-family: "Inter", sans-serif;
-      color: #555b66;
-      font-size: 0.9rem;
-    }
-    footer a {
-      color: #002b5c;
-      text-decoration: none;
-      font-weight: 500;
-    }
-    footer a:hover {
-      text-decoration: underline;
-    }
-  </style>
 </head>
 <body>
-  <!-- Sidebar (unchanged) -->
+
+  <!-- Sidebar placeholder (will load sidebar.html here) -->
   <div id="sidebar-placeholder"></div>
 
   <main class="main-content">
-    <!-- Overview Section for Investors -->
-    <div class="section-wrapper">
-      <h2>Command Canvas</h2>
-      <p>
-        Command Canvas is designed for C-suite executives, VPs, and Board members
-        who demand instant insight into strategic objectives. By consolidating your
-        Goals, Risks, and Key Performance Indicators onto a single interactive canvas,
-        you’ll be able to:
-      </p>
-      <ul style="list-style-type: disc; margin-left: 1.5rem; color: #555b66;">
-        <li style="margin-bottom: 0.5rem;">
-          <strong>Align Stakeholders</strong> across departments—everyone sees the same
-          priorities, dependencies, and progress.
-        </li>
-        <li style="margin-bottom: 0.5rem;">
-          <strong>Identify & Mitigate Risks</strong> early—tie each Risk back to the
-          exact Goal it could impact, so you never overlook a critical dependency.
-        </li>
-        <li style="margin-bottom: 0.5rem;">
-          <strong>Track Success with KPIs</strong> that dynamically highlight how each
-          indicator measures against a specific Goal—no more siloed spreadsheets.
-        </li>
-        <li style="margin-bottom: 0.5rem;">
-          <strong>Export & Share</strong> your entire canvas as JSON for board decks,
-          financial models, or due diligence packages with a single click.
-        </li>
-      </ul>
+    <header>
+      <h1>Welcome to Command Canvas</h1>
+      <p class="subtitle">Your strategic overview at a glance</p>
+    </header>
+
+    <div class="canvas">
+      <section class="column" ondrop="drop(event)" ondragover="allowDrop(event)">
+        <h2>Goals</h2>
+        <div class="card" draggable="true" ondragstart="drag(event)">Expand to New Market</div>
+        <div class="card" draggable="true" ondragstart="drag(event)">Increase Revenue by 20%</div>
+        <div class="card" draggable="true" ondragstart="drag(event)">Improve Customer Retention</div>
+      </section>
+
+      <section class="column" ondrop="drop(event)" ondragover="allowDrop(event)">
+        <h2>Risks</h2>
+        <div class="card" draggable="true" ondragstart="drag(event)">High Initial Costs</div>
+        <div class="card" draggable="true" ondragstart="drag(event)">Market Saturation</div>
+        <div class="card" draggable="true" ondragstart="drag(event)">Regulatory Delays</div>
+      </section>
+
+      <section class="column" ondrop="drop(event)" ondragover="allowDrop(event)">
+        <h2>KPIs</h2>
+        <div class="card" draggable="true" ondragstart="drag(event)">Customer Acquisition</div>
+        <div class="card" draggable="true" ondragstart="drag(event)">Monthly Recurring Revenue</div>
+        <div class="card" draggable="true" ondragstart="drag(event)">Net Promoter Score</div>
+      </section>
     </div>
 
-    <!-- Sample Canvas Banner -->
-    <div id="sample-banner">
-      <span>Not sure where to start?</span>
-      <button id="load-sample-btn">Load Sample Canvas</button>
-      <button id="hide-sample-btn" class="hidden">Hide Sample</button>
-    </div>
-
-    <!-- Goals Section -->
-    <section id="goals-section" class="section-wrapper">
-      <h2>
-        Goals
-        <span class="info-icon" data-section="goals">ℹ️</span>
-        <span class="toggle-btn" data-target="goals-details">Explain more →</span>
-      </h2>
-      <div id="goals-details" class="hidden">
-        <p>
-          Goals are the high-level, strategic objectives that you want to achieve.
-          For example: “Expand into two new markets by Q4” or “Increase annual recurring
-          revenue by 25%.” Each Goal should be clear, measurable, and time-bound.
-        </p>
-        <span class="toggle-btn" data-target="goals-details">Collapse ▲</span>
-      </div>
-      <table id="goals-table">
-        <thead>
-          <tr><th>Goal</th></tr>
-        </thead>
-        <tbody>
-          <!-- User-defined goals will appear here -->
-        </tbody>
-      </table>
-      <div class="quick-add">
-        <input type="text" id="new-goal-text" placeholder="Type a new Goal…" />
-        <button id="add-goal-btn">+ Add Goal</button>
-        <small id="goal-error" class="error-text"></small>
-      </div>
-    </section>
-
-    <!-- Risks Section -->
-    <section id="risks-section" class="section-wrapper">
-      <h2>
-        Risks
-        <span class="info-icon" data-section="risks">ℹ️</span>
-        <span class="toggle-btn" data-target="risks-details">Explain more →</span>
-      </h2>
-      <div id="risks-details" class="hidden">
-        <p>
-          Risks capture the uncertainties or obstacles that could derail your Goals.
-          Each Risk should follow the format: “If [condition], then [negative outcome].”
-          For example: “If our vendor delays shipping, then market launch is delayed.”
-        </p>
-        <span class="toggle-btn" data-target="risks-details">Collapse ▲</span>
-      </div>
-      <table id="risks-table">
-        <thead>
-          <tr><th>Risk</th></tr>
-        </thead>
-        <tbody>
-          <!-- User-defined risks will appear here -->
-        </tbody>
-      </table>
-      <div class="quick-add">
-        <input type="text" id="new-risk-text" placeholder="Type a new Risk…" />
-        <select id="new-risk-related">
-          <option value="">–– Select related Goal ––</option>
-        </select>
-        <button id="add-risk-btn">+ Add Risk</button>
-        <small id="risk-error" class="error-text"></small>
-      </div>
-    </section>
-
-    <!-- KPIs Section -->
-    <section id="kpis-section" class="section-wrapper">
-      <h2>
-        KPIs
-        <span class="info-icon" data-section="kpis">ℹ️</span>
-        <span class="toggle-btn" data-target="kpis-details">Explain more →</span>
-      </h2>
-      <div id="kpis-details" class="hidden">
-        <p>
-          KPIs (Key Performance Indicators) are the measurable metrics that tell you
-          if you’re on track. Tie each KPI to a Goal—for example: “Monthly Active Users”
-          for growth or “Net Promoter Score” for customer satisfaction.
-        </p>
-        <span class="toggle-btn" data-target="kpis-details">Collapse ▲</span>
-      </div>
-      <table id="kpis-table">
-        <thead>
-          <tr><th>KPI</th></tr>
-        </thead>
-        <tbody>
-          <!-- User-defined KPIs will appear here -->
-        </tbody>
-      </table>
-      <div class="quick-add">
-        <input type="text" id="new-kpi-text" placeholder="Type a new KPI…" />
-        <select id="new-kpi-related">
-          <option value="">–– Select related Goal ––</option>
-        </select>
-        <button id="add-kpi-btn">+ Add KPI</button>
-        <small id="kpi-error" class="error-text"></small>
-      </div>
-    </section>
-
-    <!-- Export Button -->
-    <button id="export-json-btn">Download Canvas as JSON</button>
   </main>
 
-  <!-- Footer -->
-  <footer>
-    <p>
-      © 2025 Command Canvas. All rights reserved. • Built for Executive Clarity & Speed.
-      <br />
-      Learn more at
-      <a href="https://www.magnarix.com" target="_blank" rel="noopener">MagnaRix.com</a>.
-    </p>
-  </footer>
-
-  <!-- Scripts -->
   <script src="script.js"></script>
+  <!-- Dynamically load the sidebar and set the “active” link -->
   <script>
-    /* Dynamically load sidebar.html and activate the current link */
     fetch('sidebar.html')
       .then(response => response.text())
       .then(html => {
         document.getElementById('sidebar-placeholder').innerHTML = html;
+
+        // Figure out which file is currently loaded
         let page = window.location.pathname.split('/').pop();
         if (!page) page = 'index.html';
-        document.querySelectorAll('.sidebar-nav .nav-item').forEach(link => {
-          if (link.getAttribute('href') === page) {
-            link.classList.add('active');
-          }
-        });
+
+        // Mark the matching nav-item as active
+        document
+          .querySelectorAll('.sidebar-nav .nav-item')
+          .forEach(link => {
+            if (link.getAttribute('href') === page) {
+              link.classList.add('active');
+            }
+          });
       });
   </script>
 </body>
