@@ -1,61 +1,90 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>CommandCanvas – Timeline View</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-<nav style="background:#333; color:white; padding:1rem; display:flex; gap:1rem;">
-  <a href="index.html" style="color:white; text-decoration:none;">🏠 Command Canvas</a>
-  <a href="CommandCanvas.html" style="color:white; text-decoration:none;">📊 Timeline & Dependencies</a>
-  <a href="ForgeCast.html" style="color:white; text-decoration:none;">🧠 ForgeCast Insights</a>
-  <a href="OrchestratedPaths.html" style="color:white; text-decoration:none;">🔄 Scenario Simulation</a>
-  <a href="CrownLens.html" style="color:white; text-decoration:none;">📈 CrownLens Risk View</a>
-  <a href="https://www.magnarix.com" target="_blank" style="color:white; text-decoration:none; margin-left:auto;">↩ Back to MagnaRix</a>
-</nav>
+  <!-- Sidebar placeholder (will load sidebar.html here) -->
+  <div id="sidebar-placeholder"></div>
 
+  <main class="main-content">
+    <header>
+      <h1>Timeline &amp; Dependencies</h1>
+      <p class="subtitle">Visualize your strategy flow over time</p>
+    </header>
 
-  <h1>CommandCanvas with Timeline & Dependencies</h1>
-  <div class="canvas">
-    <div class="column" ondrop="drop(event)" ondragover="allowDrop(event)">
-      <h2>Strategy Elements</h2>
-      <div class="card" draggable="true" ondragstart="drag(event)">Launch Product Alpha</div>
-      <div class="card" draggable="true" ondragstart="drag(event)">Hire Engineering Team</div>
-      <div class="card" draggable="true" ondragstart="drag(event)">Secure Funding</div>
+    <div class="canvas">
+      <section class="column" ondrop="drop(event)" ondragover="allowDrop(event)">
+        <h2>Strategic Initiatives</h2>
+        <div class="card" draggable="true" ondragstart="drag(event)">Launch Product Alpha</div>
+        <div class="card" draggable="true" ondragstart="drag(event)">Hire Engineering Team</div>
+        <div class="card" draggable="true" ondragstart="drag(event)">Secure Funding</div>
+      </section>
+
+      <section class="column">
+        <h2>Timeline Markers</h2>
+        <div class="marker">Q1</div>
+        <div class="marker">Q2</div>
+        <div class="marker">Q3</div>
+        <div class="marker">Q4</div>
+      </section>
+
+      <section class="column dependencies">
+        <h2>Dependencies</h2>
+        <form onsubmit="addDependency(event)" class="dep-form">
+          <div class="form-group">
+            <label for="dep-from">From:</label>
+            <input type="text" id="dep-from" placeholder="e.g. Hire Team" required />
+          </div>
+          <div class="form-group">
+            <label for="dep-to">To:</label>
+            <input type="text" id="dep-to" placeholder="e.g. Launch Alpha" required />
+          </div>
+          <button type="submit" class="btn">Add Dependency</button>
+        </form>
+        <ul id="dependency-list" class="dep-list"></ul>
+      </section>
     </div>
-    <div class="column">
-      <h2>Timeline Markers</h2>
-      <div class="marker">Q1</div>
-      <div class="marker">Q2</div>
-      <div class="marker">Q3</div>
-      <div class="marker">Q4</div>
-    </div>
-    <div class="column">
-      <h2>Dependencies</h2>
-      <form onsubmit="addDependency(event)">
-        <label>From:</label><br/>
-        <input type="text" id="dep-from" required><br/>
-        <label>To:</label><br/>
-        <input type="text" id="dep-to" required><br/>
-        <button type="submit">Add Dependency</button>
-      </form>
-      <ul id="dependency-list"></ul>
-    </div>
-  </div>
+  </main>
+
   <script src="script.js"></script>
+  <!-- Dynamically load the sidebar and set the “active” link -->
   <script>
+    fetch('sidebar.html')
+      .then(response => response.text())
+      .then(html => {
+        document.getElementById('sidebar-placeholder').innerHTML = html;
+
+        // Figure out which file is currently loaded
+        let page = window.location.pathname.split('/').pop();
+        if (!page) page = 'index.html';
+
+        // Mark the matching nav-item as active
+        document
+          .querySelectorAll('.sidebar-nav .nav-item')
+          .forEach(link => {
+            if (link.getAttribute('href') === page) {
+              link.classList.add('active');
+            }
+          });
+      });
+
     function addDependency(event) {
       event.preventDefault();
-      const from = document.getElementById('dep-from').value;
-      const to = document.getElementById('dep-to').value;
+      const from = document.getElementById('dep-from').value.trim();
+      const to = document.getElementById('dep-to').value.trim();
+      if (!from || !to) return;
+
       const list = document.getElementById('dependency-list');
       const item = document.createElement('li');
-      item.textContent = `${from} → ${to}`;
+      item.className = 'dep-item';
+      item.innerHTML = `<span class="dep-from">${from}</span> → <span class="dep-to">${to}</span>`;
       list.appendChild(item);
+
       event.target.reset();
     }
   </script>
