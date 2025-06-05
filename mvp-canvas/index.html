@@ -11,57 +11,143 @@
   <!-- Sidebar placeholder (will load sidebar.html here) -->
   <div id="sidebar-placeholder"></div>
 
+  <!-- Summary Panel -->
+  <aside id="summary-panel">
+    <h3>Canvas Summary</h3>
+    <p id="counts-text"></p>
+    <ul id="connections-list"></ul>
+    <ul id="missing-list"></ul>
+  </aside>
+
   <main class="main-content">
     <header>
       <h1>Welcome to Command Canvas</h1>
-      <p class="subtitle">Your strategic overview at a glance</p>
+      <p>
+        Use the sections below to define your Goals, Risks, and KPIs.
+        Click the ℹ️ icons for a quick definition, or “Explain more →” to see examples.
+      </p>
     </header>
 
-    <div class="canvas">
-      <section class="column" ondrop="drop(event)" ondragover="allowDrop(event)">
-        <h2>Goals</h2>
-        <div class="card" draggable="true" ondragstart="drag(event)">Expand to New Market</div>
-        <div class="card" draggable="true" ondragstart="drag(event)">Increase Revenue by 20%</div>
-        <div class="card" draggable="true" ondragstart="drag(event)">Improve Customer Retention</div>
-      </section>
-
-      <section class="column" ondrop="drop(event)" ondragover="allowDrop(event)">
-        <h2>Risks</h2>
-        <div class="card" draggable="true" ondragstart="drag(event)">High Initial Costs</div>
-        <div class="card" draggable="true" ondragstart="drag(event)">Market Saturation</div>
-        <div class="card" draggable="true" ondragstart="drag(event)">Regulatory Delays</div>
-      </section>
-
-      <section class="column" ondrop="drop(event)" ondragover="allowDrop(event)">
-        <h2>KPIs</h2>
-        <div class="card" draggable="true" ondragstart="drag(event)">Customer Acquisition</div>
-        <div class="card" draggable="true" ondragstart="drag(event)">Monthly Recurring Revenue</div>
-        <div class="card" draggable="true" ondragstart="drag(event)">Net Promoter Score</div>
-      </section>
+    <!-- Sample Canvas Banner -->
+    <div id="sample-banner">
+      <span>Not sure where to start?</span>
+      <button id="load-sample-btn">Load Sample Canvas</button>
+      <button id="hide-sample-btn" class="hidden">Hide Sample</button>
     </div>
 
+    <!-- Goals Section -->
+    <section id="goals-section">
+      <h2>
+        Goals 
+        <span class="info-icon" data-section="goals">ℹ️</span>
+        <span class="toggle-btn" data-target="goals-details">Explain more →</span>
+      </h2>
+      <div id="goals-details" class="hidden">
+        <p>
+          Goals are top-level objectives you want to accomplish – in plain language,
+          “What do we hope to achieve this quarter?”
+        </p>
+        <span class="toggle-btn" data-target="goals-details">Collapse ▲</span>
+      </div>
+      <table id="goals-table">
+        <thead>
+          <tr><th>Goal</th></tr>
+        </thead>
+        <tbody>
+          <!-- User-defined goals will appear here -->
+        </tbody>
+      </table>
+      <div class="quick-add">
+        <input type="text" id="new-goal-text" placeholder="Type a new Goal…" />
+        <button id="add-goal-btn">+ Add Goal</button>
+        <small id="goal-error" class="error-text"></small>
+      </div>
+    </section>
+
+    <!-- Risks Section -->
+    <section id="risks-section">
+      <h2>
+        Risks 
+        <span class="info-icon" data-section="risks">ℹ️</span>
+        <span class="toggle-btn" data-target="risks-details">Explain more →</span>
+      </h2>
+      <div id="risks-details" class="hidden">
+        <p>
+          Each Risk should follow: “If [condition], then [consequence].”
+          Example: “If regulatory changes occur, then our timeline shifts by two quarters.”
+        </p>
+        <span class="toggle-btn" data-target="risks-details">Collapse ▲</span>
+      </div>
+      <table id="risks-table">
+        <thead>
+          <tr><th>Risk</th></tr>
+        </thead>
+        <tbody>
+          <!-- User-defined risks will appear here -->
+        </tbody>
+      </table>
+      <div class="quick-add">
+        <input type="text" id="new-risk-text" placeholder="Type a new Risk…" />
+        <select id="new-risk-related">
+          <option value="">–– Select related Goal ––</option>
+        </select>
+        <button id="add-risk-btn">+ Add Risk</button>
+        <small id="risk-error" class="error-text"></small>
+      </div>
+    </section>
+
+    <!-- KPIs Section -->
+    <section id="kpis-section">
+      <h2>
+        KPIs 
+        <span class="info-icon" data-section="kpis">ℹ️</span>
+        <span class="toggle-btn" data-target="kpis-details">Explain more →</span>
+      </h2>
+      <div id="kpis-details" class="hidden">
+        <p>
+          KPIs (Key Performance Indicators) are the measurable metrics that tell us
+          whether we succeeded – e.g., revenue targets, user-growth percentages, or NPS scores.
+        </p>
+        <span class="toggle-btn" data-target="kpis-details">Collapse ▲</span>
+      </div>
+      <table id="kpis-table">
+        <thead>
+          <tr><th>KPI</th></tr>
+        </thead>
+        <tbody>
+          <!-- User-defined KPIs will appear here -->
+        </tbody>
+      </table>
+      <div class="quick-add">
+        <input type="text" id="new-kpi-text" placeholder="Type a new KPI…" />
+        <select id="new-kpi-related">
+          <option value="">–– Select related Goal ––</option>
+        </select>
+        <button id="add-kpi-btn">+ Add KPI</button>
+        <small id="kpi-error" class="error-text"></small>
+      </div>
+    </section>
+
+    <!-- Export Button -->
+    <button id="export-json-btn">Download Canvas as JSON</button>
   </main>
 
+  <!-- Load our script last so the DOM is present -->
   <script src="script.js"></script>
-  <!-- Dynamically load the sidebar and set the “active” link -->
+
+  <!-- Dynamically load sidebar.html and mark the active nav‐item -->
   <script>
     fetch('sidebar.html')
       .then(response => response.text())
       .then(html => {
         document.getElementById('sidebar-placeholder').innerHTML = html;
-
-        // Figure out which file is currently loaded
         let page = window.location.pathname.split('/').pop();
         if (!page) page = 'index.html';
-
-        // Mark the matching nav-item as active
-        document
-          .querySelectorAll('.sidebar-nav .nav-item')
-          .forEach(link => {
-            if (link.getAttribute('href') === page) {
-              link.classList.add('active');
-            }
-          });
+        document.querySelectorAll('.sidebar-nav .nav-item').forEach(link => {
+          if (link.getAttribute('href') === page) {
+            link.classList.add('active');
+          }
+        });
       });
   </script>
 </body>
