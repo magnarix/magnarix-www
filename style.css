@@ -51,10 +51,11 @@ nav a {
   font-size: 1rem;
 }
 
+/* Updated hero styles: dark grey background and white text */
 .hero {
   text-align: center;
   padding: 2rem 1rem;
-  background: var(--bg-gray);
+  background: #333333;
 }
 
 .hero h2 {
@@ -63,14 +64,14 @@ nav a {
   max-width: 800px;
   margin-left: auto;
   margin-right: auto;
-  color: #444;
+  color: var(--text-light);
 }
 
 .hero p {
   font-size: 1.15rem;
   max-width: 700px;
   margin: 0 auto;
-  color: #444;
+  color: var(--text-light);
 }
 
 .cta-buttons {
