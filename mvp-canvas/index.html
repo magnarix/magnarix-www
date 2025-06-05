@@ -7,79 +7,67 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="container">
-    <!-- Left-hand sidebar -->
-    <nav class="sidebar">
-      <div class="sidebar-logo">
-        <h2>MagnaRix</h2>
+  <nav class="sidebar">
+    <div class="sidebar-header">
+      <a href="index.html" class="sidebar-brand">🏠 Command Canvas</a>
+    </div>
+    <ul class="sidebar-nav">
+      <li><a href="index.html">🏠 Command Canvas</a></li>
+      <li><a href="CommandCanvas.html">📊 Timeline & Dependencies</a></li>
+      <li><a href="ForgeCast.html">🧠 ForgeCast Insights</a></li>
+      <li><a href="OrchestratedPaths.html">🔄 Scenario Simulation</a></li>
+      <li><a href="CrownLens.html">📈 CrownLens Risk View</a></li>
+      <li class="nav-spacer"></li>
+      <li><a href="https://www.magnarix.com" target="_blank">↩ Back to MagnaRix</a></li>
+    </ul>
+  </nav>
+
+  <main class="main-content">
+    <header>
+      <h1>MagnaRix Command Canvas</h1>
+    </header>
+
+    <div class="canvas">
+      <div class="column" ondrop="drop(event)" ondragover="allowDrop(event)">
+        <h2>Goals</h2>
+        <div class="card" draggable="true" ondragstart="drag(event)">Expand to new market</div>
+        <div class="card" draggable="true" ondragstart="drag(event)">Increase revenue by 20%</div>
       </div>
-      <ul class="nav-links">
-        <li><a href="index.html">Command Canvas</a></li>
-        <li><a href="CommandCanvas.html">Timeline &amp; Dependencies</a></li>
-        <li><a href="ForgeCast.html">ForgeCast Insights</a></li>
-        <li><a href="OrchestratedPaths.html">Scenario Simulation</a></li>
-        <li><a href="CrownLens.html">CrownLens Risk View</a></li>
-      </ul>
-      <div class="sidebar-footer">
-        <a href="https://www.magnarix.com" target="_blank">Back to MagnaRix</a>
+      <div class="column" ondrop="drop(event)" ondragover="allowDrop(event)">
+        <h2>Risks</h2>
+        <div class="card" draggable="true" ondragstart="drag(event)">High initial costs</div>
+        <div class="card" draggable="true" ondragstart="drag(event)">Strong competition</div>
       </div>
-    </nav>
+      <div class="column" ondrop="drop(event)" ondragover="allowDrop(event)">
+        <h2>KPIs</h2>
+        <div class="card" draggable="true" ondragstart="drag(event)">Customer Acquisition</div>
+        <div class="card" draggable="true" ondragstart="drag(event)">Market Share</div>
+      </div>
+    </div>
 
-    <!-- Main content -->
-    <main class="main-content">
-      <!-- Hero/header section -->
-      <header class="hero">
-        <h1>MagnaRix Command Canvas</h1>
-        <p class="subtitle">Where decisions turn into action</p>
-      </header>
+    <section class="info">
+      <h2>What is Command Canvas?</h2>
+      <p>
+        The <strong>MagnaRix Command Canvas</strong> is a visual strategy workspace that helps you map initiatives, assign ownership, simulate timelines, and align execution—all in one place. It's where decisions turn into action.
+      </p>
 
-      <!-- Interactive canvas area -->
-      <section class="canvas-section">
-        <div class="canvas">
-          <div class="column" ondrop="drop(event)" ondragover="allowDrop(event)">
-            <h2>Goals</h2>
-            <div class="card" draggable="true" ondragstart="drag(event)">Expand to new market</div>
-            <div class="card" draggable="true" ondragstart="drag(event)">Increase revenue by 20%</div>
-          </div>
-          <div class="column" ondrop="drop(event)" ondragover="allowDrop(event)">
-            <h2>Risks</h2>
-            <div class="card" draggable="true" ondragstart="drag(event)">High initial costs</div>
-            <div class="card" draggable="true" ondragstart="drag(event)">Strong competition</div>
-          </div>
-          <div class="column" ondrop="drop(event)" ondragover="allowDrop(event)">
-            <h2>KPIs</h2>
-            <div class="card" draggable="true" ondragstart="drag(event)">Customer Acquisition</div>
-            <div class="card" draggable="true" ondragstart="drag(event)">Market Share</div>
-          </div>
-        </div>
-      </section>
+      <h2>Why It Matters</h2>
+      <p>
+        Most strategy fails due to misalignment, delays, and unclear execution. Command Canvas fixes this by showing how your goals, teams, and timelines connect—making it easier to act decisively and adapt quickly.
+      </p>
 
-      <!-- Descriptive content -->
-      <section class="description">
-        <h2>What is Command Canvas?</h2>
-        <p>
-          The <strong>MagnaRix Command Canvas</strong> is a visual strategy workspace that helps you map initiatives, assign ownership, simulate timelines, and align execution—all in one place. It’s where decisions become action and every stakeholder sees the big picture.
-        </p>
+      <h2>What You Get</h2>
+      <p>
+        Financially, it saves time and cost by reducing wasted effort, shortening planning cycles, and improving ROI. Every decision is traceable, every dollar is accountable.
+      </p>
 
-        <h2>Why It Matters</h2>
-        <p>
-          Most strategy efforts fail due to misalignment, delays, and unclear execution. Command Canvas fixes this by showing how your goals, teams, and timelines connect—making it easier to act decisively, pivot when needed, and maintain full accountability.
-        </p>
+      <h2>How to Use</h2>
+      <p>
+        Define initiatives, break them into tasks, add dependencies, assign owners, and set timelines. Use the canvas to simulate outcomes and collaborate across teams.
+      </p>
+    </section>
+  </main>
 
-        <h2>What You Get</h2>
-        <p>
-          Financially, Command Canvas saves time and cost by reducing wasted effort, shortening planning cycles, and improving ROI. It ensures that every decision is traceable, every dollar is accountable, and every milestone is measurable.
-        </p>
-
-        <h2>How to Use</h2>
-        <p>
-          Simply define initiatives, break them into tasks, add dependencies, assign owners, and set timelines. Use the canvas to simulate outcomes, adjust priorities on the fly, and collaborate across teams with real-time visibility.
-        </p>
-      </section>
-    </main>
-  </div>
-
-  <!-- External script (e.g., drag/drop functionality) -->
   <script src="script.js"></script>
 </body>
 </html>
