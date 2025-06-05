@@ -1,4 +1,3 @@
-
 :root {
   --primary: #111111;
   --accent: #007fff;
@@ -19,7 +18,6 @@ body {
   background: var(--bg-light);
   color: var(--text-dark);
   line-height: 1.65;
-  font-size: 16px;
 }
 
 header {
@@ -60,9 +58,7 @@ nav a {
 
 .hero h2 {
   font-size: 2rem;
-  max-width: 800px;
-  margin: 0 auto;
-  color: #444;
+  margin-bottom: 1rem;
 }
 
 .hero p {
@@ -125,7 +121,7 @@ nav a {
 .section-wrapper {
   display: flex;
   justify-content: center;
-  padding: 4rem 1rem;
+  padding: 2rem 1rem;
 }
 
 .sections {
@@ -158,7 +154,6 @@ nav a {
 .card p {
   font-size: 1rem;
   color: #333;
-  margin: 0.25rem 0 0;
 }
 
 footer {
@@ -174,50 +169,8 @@ footer a {
   text-decoration: none;
 }
 
-form label {
-  display: block;
-  margin-top: 1rem;
-  font-weight: 600;
-}
-
-form input,
-form textarea {
-  width: 100%;
-  padding: 10px;
-  margin-top: 6px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  font-size: 1rem;
-}
-
-form textarea {
-  resize: vertical;
-}
-
-form button {
-  margin-top: 1.5rem;
-  padding: 12px 20px;
-  border: none;
-  background: var(--primary);
-  color: var(--text-light);
-  font-weight: 600;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: background 0.3s ease;
-}
-
-form button:hover {
-  background: #333;
-}
-
 @media (min-width: 768px) {
   .sections {
     grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (min-width: 1024px) {
-  .sections {
-    grid-template-columns: repeat(3, 1fr);
   }
 }
