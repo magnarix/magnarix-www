@@ -18,6 +18,7 @@ body {
   background: var(--bg-light);
   color: var(--text-dark);
   line-height: 1.65;
+  font-size: 16px;
 }
 
 header {
@@ -59,6 +60,10 @@ nav a {
 .hero h2 {
   font-size: 2rem;
   margin-bottom: 1rem;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  color: #444;
 }
 
 .hero p {
@@ -154,6 +159,7 @@ nav a {
 .card p {
   font-size: 1rem;
   color: #333;
+  margin: 0.25rem 0 0;
 }
 
 footer {
@@ -169,8 +175,58 @@ footer a {
   text-decoration: none;
 }
 
+/* Media Queries */
 @media (min-width: 768px) {
   .sections {
     grid-template-columns: repeat(2, 1fr);
   }
+}
+
+@media (min-width: 1024px) {
+  .sections {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* FAQ-specific styling */
+body.faq .card h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+/* Contact form styles */
+form label {
+  display: block;
+  margin-top: 1rem;
+  font-weight: 600;
+}
+
+form input,
+form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 6px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+form textarea {
+  resize: vertical;
+}
+
+form button {
+  margin-top: 1.5rem;
+  padding: 12px 20px;
+  border: none;
+  background: var(--primary);
+  color: var(--text-light);
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+form button:hover {
+  background: #333;
 }
