@@ -95,13 +95,6 @@
   </div>
 </nav>
 
-<section class="page-description">
-  <h2>What is the Command Canvas?</h2>
-  <p>This page provides a visual interface for mapping core executive concerns—such as strategic goals, key risks, and KPIs. Users can drag and rearrange decision elements across categories, helping leaders clarify priorities and align initiatives visually. It serves as the central control board for strategic orchestration.</p>
-  <p><strong>How to use:</strong> Drag items between categories to simulate prioritization. Add custom elements by modifying the HTML or extending the backend in future versions.</p>
-</section>
-
-
 <script>
   function toggleMenu() {
     const nav = document.getElementById('navLinks');
@@ -192,3 +185,151 @@
     <a href="CrownLens.html" id="nav-crownlens">📈 CrownLens</a>
     <a href="https://www.magnarix.com" target="_blank">↩ Back to MagnaRix</a>
   </div>
+</nav>
+
+<script>
+  function toggleMenu() {
+    const nav = document.getElementById('navLinks');
+    nav.classList.toggle('show');
+  }
+
+  // Highlight active link
+  const path = window.location.pathname;
+  if (path.includes("index")) document.getElementById("nav-canvas")?.classList.add("active");
+  if (path.includes("CommandCanvas")) document.getElementById("nav-timeline")?.classList.add("active");
+  if (path.includes("ForgeCast")) document.getElementById("nav-forgecast")?.classList.add("active");
+  if (path.includes("OrchestratedPaths")) document.getElementById("nav-scenarios")?.classList.add("active");
+  if (path.includes("CrownLens")) document.getElementById("nav-crownlens")?.classList.add("active");
+</script>
+
+
+
+<style>
+  .navbar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: linear-gradient(to right, #2c3e50, #4ca1af);
+    color: white;
+    padding: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  }
+  .navbar-brand {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-right: 1rem;
+  }
+  .nav-links {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  .nav-links a {
+    color: white;
+    text-decoration: none;
+  }
+  .hamburger {
+    display: none;
+    font-size: 1.5rem;
+    margin-left: auto;
+    cursor: pointer;
+  }
+  @media (max-width: 768px) {
+    .nav-links {
+      display: none;
+      flex-direction: column;
+      width: 100%;
+      margin-top: 1rem;
+    }
+    .nav-links.show {
+      display: flex;
+    }
+    .hamburger {
+      display: block;
+    }
+  }
+</style>
+
+<nav class="navbar">
+  <div class="navbar-brand">MagnaRix</div>
+  <div class="hamburger" onclick="toggleMenu()">☰</div>
+  <div class="nav-links" id="navLinks">
+    <a href="index.html">🏠 Canvas</a>
+    <a href="CommandCanvas.html">📊 Timeline</a>
+    <a href="ForgeCast.html">🧠 ForgeCast</a>
+    <a href="OrchestratedPaths.html">🔄 Scenarios</a>
+    <a href="CrownLens.html">📈 CrownLens</a>
+    <a href="https://www.magnarix.com" target="_blank">↩ Back to MagnaRix</a>
+  </div>
+</nav>
+
+<script>
+  function toggleMenu() {
+    const nav = document.getElementById('navLinks');
+    nav.classList.toggle('show');
+  }
+</script>
+
+
+
+<nav style="
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: linear-gradient(to right, #2c3e50, #4ca1af);
+  color: white;
+  padding: 1rem;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+">
+  <strong style="font-size:1.2rem;">MagnaRix</strong>
+  <a href="index.html" style="color:white; text-decoration:none;">🏠 Canvas</a>
+  <a href="CommandCanvas.html" style="color:white; text-decoration:none;">📊 Timeline</a>
+  <a href="ForgeCast.html" style="color:white; text-decoration:none;">🧠 ForgeCast</a>
+  <a href="OrchestratedPaths.html" style="color:white; text-decoration:none;">🔄 Scenarios</a>
+  <a href="CrownLens.html" style="color:white; text-decoration:none;">📈 CrownLens</a>
+  <a href="https://www.magnarix.com" target="_blank" style="color:white; text-decoration:none; margin-left:auto;">↩ Back to MagnaRix</a>
+</nav>
+
+
+
+<nav style="background:#333; color:white; padding:1rem; display:flex; gap:1rem;">
+  <a href="index.html" style="color:white; text-decoration:none;">🏠 Command Canvas</a>
+  <a href="CommandCanvas.html" style="color:white; text-decoration:none;">📊 Timeline & Dependencies</a>
+  <a href="ForgeCast.html" style="color:white; text-decoration:none;">🧠 ForgeCast Insights</a>
+  <a href="OrchestratedPaths.html" style="color:white; text-decoration:none;">🔄 Scenario Simulation</a>
+  <a href="CrownLens.html" style="color:white; text-decoration:none;">📈 CrownLens Risk View</a>
+  <a href="https://www.magnarix.com" target="_blank" style="color:white; text-decoration:none; margin-left:auto;">↩ Back to MagnaRix</a>
+</nav>
+
+
+  <h1>MagnaRix Command Canvas</h1>
+  <div class="canvas">
+    <div class="column" ondrop="drop(event)" ondragover="allowDrop(event)">
+      <h2>Goals</h2>
+      <div class="card" draggable="true" ondragstart="drag(event)">Expand to new market</div>
+      <div class="card" draggable="true" ondragstart="drag(event)">Increase revenue by 20%</div>
+    </div>
+    <div class="column" ondrop="drop(event)" ondragover="allowDrop(event)">
+      <h2>Risks</h2>
+      <div class="card" draggable="true" ondragstart="drag(event)">High initial costs</div>
+      <div class="card" draggable="true" ondragstart="drag(event)">Strong competition</div>
+    </div>
+    <div class="column" ondrop="drop(event)" ondragover="allowDrop(event)">
+      <h2>KPIs</h2>
+      <div class="card" draggable="true" ondragstart="drag(event)">Customer Acquisition</div>
+      <div class="card" draggable="true" ondragstart="drag(event)">Market Share</div>
+    </div>
+  </div>
+  <script src="script.js"></script>
+
+<footer>
+  © 2025 MagnaRix Corp. All rights reserved.
+</footer>
+</body>
+</html>

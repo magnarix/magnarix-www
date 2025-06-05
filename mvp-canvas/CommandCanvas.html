@@ -95,13 +95,6 @@
   </div>
 </nav>
 
-<section class="page-description">
-  <h2>Timeline & Dependency Tracker</h2>
-  <p>This interface allows strategy officers to simulate project dependencies and timeline alignment. It is designed to help identify bottlenecks and coordinate team efforts around interdependent milestones.</p>
-  <p><strong>How to use:</strong> Drag strategy items visually and manually enter dependencies in the form provided. This helps in anticipating how a delay in one area might impact another.</p>
-</section>
-
-
 <script>
   function toggleMenu() {
     const nav = document.getElementById('navLinks');
@@ -192,3 +185,172 @@
     <a href="CrownLens.html" id="nav-crownlens">📈 CrownLens</a>
     <a href="https://www.magnarix.com" target="_blank">↩ Back to MagnaRix</a>
   </div>
+</nav>
+
+<script>
+  function toggleMenu() {
+    const nav = document.getElementById('navLinks');
+    nav.classList.toggle('show');
+  }
+
+  // Highlight active link
+  const path = window.location.pathname;
+  if (path.includes("index")) document.getElementById("nav-canvas")?.classList.add("active");
+  if (path.includes("CommandCanvas")) document.getElementById("nav-timeline")?.classList.add("active");
+  if (path.includes("ForgeCast")) document.getElementById("nav-forgecast")?.classList.add("active");
+  if (path.includes("OrchestratedPaths")) document.getElementById("nav-scenarios")?.classList.add("active");
+  if (path.includes("CrownLens")) document.getElementById("nav-crownlens")?.classList.add("active");
+</script>
+
+
+
+<style>
+  .navbar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: linear-gradient(to right, #2c3e50, #4ca1af);
+    color: white;
+    padding: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  }
+  .navbar-brand {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-right: 1rem;
+  }
+  .nav-links {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  .nav-links a {
+    color: white;
+    text-decoration: none;
+  }
+  .hamburger {
+    display: none;
+    font-size: 1.5rem;
+    margin-left: auto;
+    cursor: pointer;
+  }
+  @media (max-width: 768px) {
+    .nav-links {
+      display: none;
+      flex-direction: column;
+      width: 100%;
+      margin-top: 1rem;
+    }
+    .nav-links.show {
+      display: flex;
+    }
+    .hamburger {
+      display: block;
+    }
+  }
+</style>
+
+<nav class="navbar">
+  <div class="navbar-brand">MagnaRix</div>
+  <div class="hamburger" onclick="toggleMenu()">☰</div>
+  <div class="nav-links" id="navLinks">
+    <a href="index.html">🏠 Canvas</a>
+    <a href="CommandCanvas.html">📊 Timeline</a>
+    <a href="ForgeCast.html">🧠 ForgeCast</a>
+    <a href="OrchestratedPaths.html">🔄 Scenarios</a>
+    <a href="CrownLens.html">📈 CrownLens</a>
+    <a href="https://www.magnarix.com" target="_blank">↩ Back to MagnaRix</a>
+  </div>
+</nav>
+
+<script>
+  function toggleMenu() {
+    const nav = document.getElementById('navLinks');
+    nav.classList.toggle('show');
+  }
+</script>
+
+
+
+<nav style="
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: linear-gradient(to right, #2c3e50, #4ca1af);
+  color: white;
+  padding: 1rem;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+">
+  <strong style="font-size:1.2rem;">MagnaRix</strong>
+  <a href="index.html" style="color:white; text-decoration:none;">🏠 Canvas</a>
+  <a href="CommandCanvas.html" style="color:white; text-decoration:none;">📊 Timeline</a>
+  <a href="ForgeCast.html" style="color:white; text-decoration:none;">🧠 ForgeCast</a>
+  <a href="OrchestratedPaths.html" style="color:white; text-decoration:none;">🔄 Scenarios</a>
+  <a href="CrownLens.html" style="color:white; text-decoration:none;">📈 CrownLens</a>
+  <a href="https://www.magnarix.com" target="_blank" style="color:white; text-decoration:none; margin-left:auto;">↩ Back to MagnaRix</a>
+</nav>
+
+
+
+<nav style="background:#333; color:white; padding:1rem; display:flex; gap:1rem;">
+  <a href="index.html" style="color:white; text-decoration:none;">🏠 Command Canvas</a>
+  <a href="CommandCanvas.html" style="color:white; text-decoration:none;">📊 Timeline & Dependencies</a>
+  <a href="ForgeCast.html" style="color:white; text-decoration:none;">🧠 ForgeCast Insights</a>
+  <a href="OrchestratedPaths.html" style="color:white; text-decoration:none;">🔄 Scenario Simulation</a>
+  <a href="CrownLens.html" style="color:white; text-decoration:none;">📈 CrownLens Risk View</a>
+  <a href="https://www.magnarix.com" target="_blank" style="color:white; text-decoration:none; margin-left:auto;">↩ Back to MagnaRix</a>
+</nav>
+
+
+  <h1>CommandCanvas with Timeline & Dependencies</h1>
+  <div class="canvas">
+    <div class="column" ondrop="drop(event)" ondragover="allowDrop(event)">
+      <h2>Strategy Elements</h2>
+      <div class="card" draggable="true" ondragstart="drag(event)">Launch Product Alpha</div>
+      <div class="card" draggable="true" ondragstart="drag(event)">Hire Engineering Team</div>
+      <div class="card" draggable="true" ondragstart="drag(event)">Secure Funding</div>
+    </div>
+    <div class="column">
+      <h2>Timeline Markers</h2>
+      <div class="marker">Q1</div>
+      <div class="marker">Q2</div>
+      <div class="marker">Q3</div>
+      <div class="marker">Q4</div>
+    </div>
+    <div class="column">
+      <h2>Dependencies</h2>
+      <form onsubmit="addDependency(event)">
+        <label>From:</label><br/>
+        <input type="text" id="dep-from" required><br/>
+        <label>To:</label><br/>
+        <input type="text" id="dep-to" required><br/>
+        <button type="submit">Add Dependency</button>
+      </form>
+      <ul id="dependency-list"></ul>
+    </div>
+  </div>
+  <script src="script.js"></script>
+  <script>
+    function addDependency(event) {
+      event.preventDefault();
+      const from = document.getElementById('dep-from').value;
+      const to = document.getElementById('dep-to').value;
+      const list = document.getElementById('dependency-list');
+      const item = document.createElement('li');
+      item.textContent = `${from} → ${to}`;
+      list.appendChild(item);
+      event.target.reset();
+    }
+  </script>
+
+<footer>
+  © 2025 MagnaRix Corp. All rights reserved.
+</footer>
+</body>
+</html>
