@@ -1,33 +1,60 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Orchestrated Paths – Scenario Simulation</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-<nav style="background:#333; color:white; padding:1rem; display:flex; gap:1rem;">
-  <a href="index.html" style="color:white; text-decoration:none;">🏠 Command Canvas</a>
-  <a href="CommandCanvas.html" style="color:white; text-decoration:none;">📊 Timeline & Dependencies</a>
-  <a href="ForgeCast.html" style="color:white; text-decoration:none;">🧠 ForgeCast Insights</a>
-  <a href="OrchestratedPaths.html" style="color:white; text-decoration:none;">🔄 Scenario Simulation</a>
-  <a href="CrownLens.html" style="color:white; text-decoration:none;">📈 CrownLens Risk View</a>
-  <a href="https://www.magnarix.com" target="_blank" style="color:white; text-decoration:none; margin-left:auto;">↩ Back to MagnaRix</a>
-</nav>
+  <!-- Sidebar placeholder (will load sidebar.html here) -->
+  <div id="sidebar-placeholder"></div>
 
+  <main class="main-content">
+    <header>
+      <h1>Orchestrated Paths – Scenario Simulation</h1>
+      <p class="subtitle">Run hypothetical decision scenarios</p>
+    </header>
 
-  <h1>Orchestrated Paths – Scenario Simulation</h1>
-  <p><a href="index.html">← Back to Command Canvas</a></p>
-  <div class="column">
-    <h2>Simulate Decisions</h2>
-    <label><input type="checkbox" id="hireToggle" onchange="updateScenario()"> Hire aggressively</label><br>
-    <label><input type="checkbox" id="fundToggle" onchange="updateScenario()"> Delay fundraising</label>
-    <div id="scenario-output" class="card" style="margin-top:1rem;"></div>
-  </div>
+    <div class="canvas">
+      <section class="column">
+        <h2>Simulate Decisions</h2>
+        <label class="form-group checkbox">
+          <input type="checkbox" id="hireToggle" onchange="updateScenario()" />
+          Hire aggressively
+        </label>
+        <label class="form-group checkbox">
+          <input type="checkbox" id="fundToggle" onchange="updateScenario()" />
+          Delay fundraising
+        </label>
+        <div id="scenario-output" class="card" style="margin-top: 1rem;">
+          Scenario Result: Conservative path, steady but slow growth.
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+  <!-- Dynamically load the sidebar and set the “active” link -->
   <script>
+    fetch('sidebar.html')
+      .then(response => response.text())
+      .then(html => {
+        document.getElementById('sidebar-placeholder').innerHTML = html;
+
+        let page = window.location.pathname.split('/').pop();
+        if (!page) page = 'index.html';
+
+        document
+          .querySelectorAll('.sidebar-nav .nav-item')
+          .forEach(link => {
+            if (link.getAttribute('href') === page) {
+              link.classList.add('active');
+            }
+          });
+      });
+
     function updateScenario() {
       const hire = document.getElementById('hireToggle').checked;
       const fund = document.getElementById('fundToggle').checked;
