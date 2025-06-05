@@ -2,72 +2,92 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>MagnaRix Command Canvas</title>
-  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Command Canvas – Overview</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <nav class="sidebar">
-    <div class="sidebar-header">
-      <a href="index.html" class="sidebar-brand">🏠 Command Canvas</a>
-    </div>
-    <ul class="sidebar-nav">
-      <li><a href="index.html">🏠 Command Canvas</a></li>
-      <li><a href="CommandCanvas.html">📊 Timeline & Dependencies</a></li>
-      <li><a href="ForgeCast.html">🧠 ForgeCast Insights</a></li>
-      <li><a href="OrchestratedPaths.html">🔄 Scenario Simulation</a></li>
-      <li><a href="CrownLens.html">📈 CrownLens Risk View</a></li>
-      <li class="nav-spacer"></li>
-      <li><a href="https://www.magnarix.com" target="_blank">↩ Back to MagnaRix</a></li>
-    </ul>
-  </nav>
+
+  <!-- Sidebar placeholder (will load sidebar.html here) -->
+  <div id="sidebar-placeholder"></div>
 
   <main class="main-content">
     <header>
-      <h1>MagnaRix Command Canvas</h1>
+      <h1>Welcome to Command Canvas</h1>
+      <p class="subtitle">Your strategic overview at a glance</p>
     </header>
 
     <div class="canvas">
-      <div class="column" ondrop="drop(event)" ondragover="allowDrop(event)">
+      <section class="column" ondrop="drop(event)" ondragover="allowDrop(event)">
         <h2>Goals</h2>
-        <div class="card" draggable="true" ondragstart="drag(event)">Expand to new market</div>
-        <div class="card" draggable="true" ondragstart="drag(event)">Increase revenue by 20%</div>
-      </div>
-      <div class="column" ondrop="drop(event)" ondragover="allowDrop(event)">
+        <div class="card" draggable="true" ondragstart="drag(event)">Expand to New Market</div>
+        <div class="card" draggable="true" ondragstart="drag(event)">Increase Revenue by 20%</div>
+        <div class="card" draggable="true" ondragstart="drag(event)">Improve Customer Retention</div>
+      </section>
+
+      <section class="column" ondrop="drop(event)" ondragover="allowDrop(event)">
         <h2>Risks</h2>
-        <div class="card" draggable="true" ondragstart="drag(event)">High initial costs</div>
-        <div class="card" draggable="true" ondragstart="drag(event)">Strong competition</div>
-      </div>
-      <div class="column" ondrop="drop(event)" ondragover="allowDrop(event)">
+        <div class="card" draggable="true" ondragstart="drag(event)">High Initial Costs</div>
+        <div class="card" draggable="true" ondragstart="drag(event)">Market Saturation</div>
+        <div class="card" draggable="true" ondragstart="drag(event)">Regulatory Delays</div>
+      </section>
+
+      <section class="column" ondrop="drop(event)" ondragover="allowDrop(event)">
         <h2>KPIs</h2>
         <div class="card" draggable="true" ondragstart="drag(event)">Customer Acquisition</div>
-        <div class="card" draggable="true" ondragstart="drag(event)">Market Share</div>
-      </div>
+        <div class="card" draggable="true" ondragstart="drag(event)">Monthly Recurring Revenue</div>
+        <div class="card" draggable="true" ondragstart="drag(event)">Net Promoter Score</div>
+      </section>
     </div>
 
     <section class="info">
       <h2>What is Command Canvas?</h2>
       <p>
-        The <strong>MagnaRix Command Canvas</strong> is a visual strategy workspace that helps you map initiatives, assign ownership, simulate timelines, and align execution—all in one place. It's where decisions turn into action.
+        The <strong>MagnaRix Command Canvas</strong> offers a unified view of your strategic goals, risks, and key performance indicators. 
+        Every element is drag-and-drop enabled so you can quickly adapt your plan as conditions change.
       </p>
 
       <h2>Why It Matters</h2>
       <p>
-        Most strategy fails due to misalignment, delays, and unclear execution. Command Canvas fixes this by showing how your goals, teams, and timelines connect—making it easier to act decisively and adapt quickly.
+        Aligning strategic objectives, identifying potential obstacles, and measuring success metrics all on one board boosts transparency and accelerates decision-making. 
+        Investors gain confidence when they see a clear roadmap.
       </p>
 
       <h2>What You Get</h2>
       <p>
-        Financially, it saves time and cost by reducing wasted effort, shortening planning cycles, and improving ROI. Every decision is traceable, every dollar is accountable.
+        By visualizing high-level goals alongside associated risks and KPIs, you enhance accountability and focus. 
+        Financially, this translates into reduced planning waste, faster pivots, and higher ROI.
       </p>
 
       <h2>How to Use</h2>
       <p>
-        Define initiatives, break them into tasks, add dependencies, assign owners, and set timelines. Use the canvas to simulate outcomes and collaborate across teams.
+        Simply drag initiative cards into “Goals,” “Risks,” or “KPIs.” Use the Timeline page to set quarters, assign dependencies, and simulate outcomes. 
+        Collaborate with your team to keep everyone aligned.
       </p>
     </section>
   </main>
 
   <script src="script.js"></script>
+  <!-- Dynamically load the sidebar and set the “active” link -->
+  <script>
+    fetch('sidebar.html')
+      .then(response => response.text())
+      .then(html => {
+        document.getElementById('sidebar-placeholder').innerHTML = html;
+
+        // Figure out which file is currently loaded
+        let page = window.location.pathname.split('/').pop();
+        if (!page) page = 'index.html';
+
+        // Mark the matching nav-item as active
+        document
+          .querySelectorAll('.sidebar-nav .nav-item')
+          .forEach(link => {
+            if (link.getAttribute('href') === page) {
+              link.classList.add('active');
+            }
+          });
+      });
+  </script>
 </body>
 </html>
