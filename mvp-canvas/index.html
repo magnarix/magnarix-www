@@ -18,50 +18,99 @@
     </header>
 
     <div class="canvas">
+      <!-- ========== Goals Column ========== -->
       <section class="column" ondrop="drop(event)" ondragover="allowDrop(event)">
         <h2>Goals</h2>
-        <div class="card" draggable="true" ondragstart="drag(event)">Expand to New Market</div>
-        <div class="card" draggable="true" ondragstart="drag(event)">Increase Revenue by 20%</div>
-        <div class="card" draggable="true" ondragstart="drag(event)">Improve Customer Retention</div>
+        <p>Key objectives to drive strategic growth.</p>
+
+        <!-- Add-card input + button -->
+        <div class="add-card">
+          <input type="text" class="new-card-input" placeholder="New card…" />
+          <button class="add-card-btn">Add</button>
+        </div>
+
+        <!-- Existing cards (now with remove “×”) -->
+        <div class="card" draggable="true" ondragstart="drag(event)">
+          <span class="card-text">Expand to New Market</span>
+          <span class="remove-btn" style="float:right; cursor:pointer; color:#900;">×</span>
+        </div>
+        <div class="card" draggable="true" ondragstart="drag(event)">
+          <span class="card-text">Increase Revenue by 20%</span>
+          <span class="remove-btn" style="float:right; cursor:pointer; color:#900;">×</span>
+        </div>
+        <div class="card" draggable="true" ondragstart="drag(event)">
+          <span class="card-text">Improve Customer Retention</span>
+          <span class="remove-btn" style="float:right; cursor:pointer; color:#900;">×</span>
+        </div>
       </section>
 
+      <!-- ========== Risks Column ========== -->
       <section class="column" ondrop="drop(event)" ondragover="allowDrop(event)">
         <h2>Risks</h2>
-        <div class="card" draggable="true" ondragstart="drag(event)">High Initial Costs</div>
-        <div class="card" draggable="true" ondragstart="drag(event)">Market Saturation</div>
-        <div class="card" draggable="true" ondragstart="drag(event)">Regulatory Delays</div>
+        <p>Potential obstacles that may impede progress.</p>
+
+        <!-- Add-card input + button -->
+        <div class="add-card">
+          <input type="text" class="new-card-input" placeholder="New card…" />
+          <button class="add-card-btn">Add</button>
+        </div>
+
+        <!-- Existing cards (with remove “×”) -->
+        <div class="card" draggable="true" ondragstart="drag(event)">
+          <span class="card-text">High Initial Costs</span>
+          <span class="remove-btn" style="float:right; cursor:pointer; color:#900;">×</span>
+        </div>
+        <div class="card" draggable="true" ondragstart="drag(event)">
+          <span class="card-text">Market Saturation</span>
+          <span class="remove-btn" style="float:right; cursor:pointer; color:#900;">×</span>
+        </div>
+        <div class="card" draggable="true" ondragstart="drag(event)">
+          <span class="card-text">Regulatory Delays</span>
+          <span class="remove-btn" style="float:right; cursor:pointer; color:#900;">×</span>
+        </div>
       </section>
 
+      <!-- ========== KPIs Column ========== -->
       <section class="column" ondrop="drop(event)" ondragover="allowDrop(event)">
         <h2>KPIs</h2>
-        <div class="card" draggable="true" ondragstart="drag(event)">Customer Acquisition</div>
-        <div class="card" draggable="true" ondragstart="drag(event)">Monthly Recurring Revenue</div>
-        <div class="card" draggable="true" ondragstart="drag(event)">Net Promoter Score</div>
+        <p>Metrics to measure success and performance.</p>
+
+        <!-- Add-card input + button -->
+        <div class="add-card">
+          <input type="text" class="new-card-input" placeholder="New card…" />
+          <button class="add-card-btn">Add</button>
+        </div>
+
+        <!-- Existing cards (with remove “×”) -->
+        <div class="card" draggable="true" ondragstart="drag(event)">
+          <span class="card-text">Customer Acquisition</span>
+          <span class="remove-btn" style="float:right; cursor:pointer; color:#900;">×</span>
+        </div>
+        <div class="card" draggable="true" ondragstart="drag(event)">
+          <span class="card-text">Monthly Recurring Revenue</span>
+          <span class="remove-btn" style="float:right; cursor:pointer; color:#900;">×</span>
+        </div>
+        <div class="card" draggable="true" ondragstart="drag(event)">
+          <span class="card-text">Net Promoter Score</span>
+          <span class="remove-btn" style="float:right; cursor:pointer; color:#900;">×</span>
+        </div>
       </section>
     </div>
-
   </main>
 
   <script src="script.js"></script>
-  <!-- Dynamically load the sidebar and set the “active” link -->
+  <!-- Dynamically load sidebar.html and mark active link -->
   <script>
     fetch('sidebar.html')
       .then(response => response.text())
       .then(html => {
         document.getElementById('sidebar-placeholder').innerHTML = html;
-
-        // Figure out which file is currently loaded
-        let page = window.location.pathname.split('/').pop();
-        if (!page) page = 'index.html';
-
-        // Mark the matching nav-item as active
-        document
-          .querySelectorAll('.sidebar-nav .nav-item')
-          .forEach(link => {
-            if (link.getAttribute('href') === page) {
-              link.classList.add('active');
-            }
-          });
+        let page = window.location.pathname.split('/').pop() || 'index.html';
+        document.querySelectorAll('.sidebar-nav .nav-item').forEach(link => {
+          if (link.getAttribute('href') === page) {
+            link.classList.add('active');
+          }
+        });
       });
   </script>
 </body>
