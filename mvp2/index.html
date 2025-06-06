@@ -2,29 +2,116 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>MagnaRix Command Canvas</title>
-  <link rel="stylesheet" href="style.css">
-</head>        
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Command Canvas – Overview</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
 <body>
-  <h1>MagnaRix Command Canvas</h1>
-  <div class="canvas">
-    <div class="column" ondrop="drop(event)" ondragover="allowDrop(event)">
-      <h2>Goals</h2>
-      <div class="card" draggable="true" ondragstart="drag(event)">Expand to new market</div>
-      <div class="card" draggable="true" ondragstart="drag(event)">Increase revenue by 20%</div>
+
+  <!-- Sidebar placeholder (will load sidebar.html here) -->
+  <div id="sidebar-placeholder"></div>
+
+  <main class="main-content">
+    <header>
+      <h1>Welcome to Command Canvas</h1>
+      <p class="subtitle">Your strategic overview at a glance</p>
+    </header>
+
+    <div class="canvas">
+      <!-- ========== Goals Column ========== -->
+      <section class="column" ondrop="drop(event)" ondragover="allowDrop(event)">
+        <h2>Goals</h2>
+        <p>Key objectives to drive strategic growth.</p>
+
+        <!-- Add-card input + button -->
+        <div class="add-card">
+          <input type="text" class="new-card-input" placeholder="New card…" />
+          <button class="add-card-btn">Add</button>
+        </div>
+
+        <!-- Existing cards (now with remove “×”) -->
+        <div class="card" draggable="true" ondragstart="drag(event)">
+          <span class="card-text">Expand to New Market</span>
+          <span class="remove-btn" style="float:right; cursor:pointer; color:#900;">×</span>
+        </div>
+        <div class="card" draggable="true" ondragstart="drag(event)">
+          <span class="card-text">Increase Revenue by 20%</span>
+          <span class="remove-btn" style="float:right; cursor:pointer; color:#900;">×</span>
+        </div>
+        <div class="card" draggable="true" ondragstart="drag(event)">
+          <span class="card-text">Improve Customer Retention</span>
+          <span class="remove-btn" style="float:right; cursor:pointer; color:#900;">×</span>
+        </div>
+      </section>
+
+      <!-- ========== Risks Column ========== -->
+      <section class="column" ondrop="drop(event)" ondragover="allowDrop(event)">
+        <h2>Risks</h2>
+        <p>Potential obstacles that may impede progress.</p>
+
+        <!-- Add-card input + button -->
+        <div class="add-card">
+          <input type="text" class="new-card-input" placeholder="New card…" />
+          <button class="add-card-btn">Add</button>
+        </div>
+
+        <!-- Existing cards (with remove “×”) -->
+        <div class="card" draggable="true" ondragstart="drag(event)">
+          <span class="card-text">High Initial Costs</span>
+          <span class="remove-btn" style="float:right; cursor:pointer; color:#900;">×</span>
+        </div>
+        <div class="card" draggable="true" ondragstart="drag(event)">
+          <span class="card-text">Market Saturation</span>
+          <span class="remove-btn" style="float:right; cursor:pointer; color:#900;">×</span>
+        </div>
+        <div class="card" draggable="true" ondragstart="drag(event)">
+          <span class="card-text">Regulatory Delays</span>
+          <span class="remove-btn" style="float:right; cursor:pointer; color:#900;">×</span>
+        </div>
+      </section>
+
+      <!-- ========== KPIs Column ========== -->
+      <section class="column" ondrop="drop(event)" ondragover="allowDrop(event)">
+        <h2>KPIs</h2>
+        <p>Metrics to measure success and performance.</p>
+
+        <!-- Add-card input + button -->
+        <div class="add-card">
+          <input type="text" class="new-card-input" placeholder="New card…" />
+          <button class="add-card-btn">Add</button>
+        </div>
+
+        <!-- Existing cards (with remove “×”) -->
+        <div class="card" draggable="true" ondragstart="drag(event)">
+          <span class="card-text">Customer Acquisition</span>
+          <span class="remove-btn" style="float:right; cursor:pointer; color:#900;">×</span>
+        </div>
+        <div class="card" draggable="true" ondragstart="drag(event)">
+          <span class="card-text">Monthly Recurring Revenue</span>
+          <span class="remove-btn" style="float:right; cursor:pointer; color:#900;">×</span>
+        </div>
+        <div class="card" draggable="true" ondragstart="drag(event)">
+          <span class="card-text">Net Promoter Score</span>
+          <span class="remove-btn" style="float:right; cursor:pointer; color:#900;">×</span>
+        </div>
+      </section>
     </div>
-    <div class="column" ondrop="drop(event)" ondragover="allowDrop(event)">
-      <h2>Risks</h2>
-      <div class="card" draggable="true" ondragstart="drag(event)">High initial costs</div>
-      <div class="card" draggable="true" ondragstart="drag(event)">Strong competition</div>
-    </div>
-    <div class="column" ondrop="drop(event)" ondragover="allowDrop(event)">
-      <h2>KPIs</h2>
-      <div class="card" draggable="true" ondragstart="drag(event)">Customer Acquisition</div>
-      <div class="card" draggable="true" ondragstart="drag(event)">Market Share</div>
-    </div>
-  </div>
+  </main>
+
   <script src="script.js"></script>
+  <!-- Dynamically load sidebar.html and mark active link -->
+  <script>
+    fetch('sidebar.html')
+      .then(response => response.text())
+      .then(html => {
+        document.getElementById('sidebar-placeholder').innerHTML = html;
+        let page = window.location.pathname.split('/').pop() || 'index.html';
+        document.querySelectorAll('.sidebar-nav .nav-item').forEach(link => {
+          if (link.getAttribute('href') === page) {
+            link.classList.add('active');
+          }
+        });
+      });
+  </script>
 </body>
 </html>
