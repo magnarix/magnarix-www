@@ -1,3 +1,4 @@
+<!-- 2025-06-06T09:00:00-04:00 -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,35 +8,66 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-
-  <!-- Sidebar placeholder (will load sidebar.html here) -->
+  <!-- Sidebar placeholder -->
+  <button class="hamburger-btn" style="display:none;">☰</button>
   <div id="sidebar-placeholder"></div>
 
   <main class="main-content">
     <header>
+      <img src="logo.png" alt="MagnaRix Logo" />
       <h1>Timeline &amp; Dependencies</h1>
       <p class="subtitle">Visualize your strategy flow over time</p>
     </header>
 
     <div class="canvas">
-      <section class="column" ondrop="drop(event)" ondragover="allowDrop(event)">
+      <!-- ========== Strategic Initiatives (Unplaced Cards) ========== -->
+      <section class="column">
         <h2>Strategic Initiatives</h2>
-        <div class="card" draggable="true" ondragstart="drag(event)">Launch Product Alpha</div>
-        <div class="card" draggable="true" ondragstart="drag(event)">Hire Engineering Team</div>
-        <div class="card" draggable="true" ondragstart="drag(event)">Secure Funding</div>
+        <div id="cards-container" style="overflow-y: auto; flex-grow: 1;"></div>
       </section>
 
+      <!-- ========== Timeline Markers ========== -->
       <section class="column">
         <h2>Timeline Markers</h2>
-        <div class="marker">Q1</div>
-        <div class="marker">Q2</div>
-        <div class="marker">Q3</div>
-        <div class="marker">Q4</div>
+        <!-- Each marker is a drop zone -->
+        <div
+          class="marker"
+          data-column="Q1"
+          ondrop="drop(event)"
+          ondragover="allowDrop(event)"
+        >
+          Q1
+        </div>
+        <div
+          class="marker"
+          data-column="Q2"
+          ondrop="drop(event)"
+          ondragover="allowDrop(event)"
+        >
+          Q2
+        </div>
+        <div
+          class="marker"
+          data-column="Q3"
+          ondrop="drop(event)"
+          ondragover="allowDrop(event)"
+        >
+          Q3
+        </div>
+        <div
+          class="marker"
+          data-column="Q4"
+          ondrop="drop(event)"
+          ondragover="allowDrop(event)"
+        >
+          Q4
+        </div>
       </section>
 
-      <section class="column dependencies">
+      <!-- ========== Dependencies ========== -->
+      <section class="column">
         <h2>Dependencies</h2>
-        <form onsubmit="addDependency(event)" class="dep-form">
+        <form id="dep-form" class="dep-form">
           <div class="form-group">
             <label for="dep-from">From:</label>
             <input type="text" id="dep-from" placeholder="e.g. Hire Team" required />
@@ -54,39 +86,20 @@
   <script src="script.js"></script>
   <!-- Dynamically load the sidebar and set the “active” link -->
   <script>
-    fetch('sidebar.html')
-      .then(response => response.text())
-      .then(html => {
-        document.getElementById('sidebar-placeholder').innerHTML = html;
-
-        // Figure out which file is currently loaded
-        let page = window.location.pathname.split('/').pop();
-        if (!page) page = 'index.html';
-
-        // Mark the matching nav-item as active
-        document
-          .querySelectorAll('.sidebar-nav .nav-item')
-          .forEach(link => {
-            if (link.getAttribute('href') === page) {
-              link.classList.add('active');
-            }
-          });
+    fetch("sidebar.html")
+      .then((res) => res.text())
+      .then((html) => {
+        document.getElementById("sidebar-placeholder").innerHTML = html;
+        let page = window.location.pathname.split("/").pop() || "CommandCanvas.html";
+        document.querySelectorAll(".sidebar-nav .nav-item").forEach((link) => {
+          if (link.getAttribute("href") === page) {
+            link.classList.add("active");
+          }
+        });
+        if (window.innerWidth <= 768) {
+          document.querySelector(".hamburger-btn").style.display = "inline-block";
+        }
       });
-
-    function addDependency(event) {
-      event.preventDefault();
-      const from = document.getElementById('dep-from').value.trim();
-      const to = document.getElementById('dep-to').value.trim();
-      if (!from || !to) return;
-
-      const list = document.getElementById('dependency-list');
-      const item = document.createElement('li');
-      item.className = 'dep-item';
-      item.innerHTML = `<span class="dep-from">${from}</span> → <span class="dep-to">${to}</span>`;
-      list.appendChild(item);
-
-      event.target.reset();
-    }
   </script>
 </body>
 </html>
