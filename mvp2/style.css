@@ -1,4 +1,6 @@
-/* 2025-06-06T09:00:00-04:00 */
+/*---------------------------------------
+  Global Reset & Base Styles
+---------------------------------------*/
 * {
   box-sizing: border-box;
   margin: 0;
@@ -102,7 +104,7 @@ header {
 
 /* Logo is now twice as big (80px) */
 header img {
-  width: 80px;
+  width: 80px;   /* was 40px, now doubled */
   height: auto;
   margin-bottom: 0.75rem;
 }
