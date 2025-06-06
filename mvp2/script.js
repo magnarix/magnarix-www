@@ -3,16 +3,81 @@
 // ==========================
 const STORAGE_KEY = "mvp2State";
 let state = {
-  goals: [],          // { id, title, desc, dueDate, owner }
-  risks: [],          // { id, title, likelihood, impact, mitigation }
-  kpis: [],           // { id, name, metricType, target, frequency }
-  dependencies: [],   // [ { from: "...", to: "..." } ]
-  placements: {},     // { [cardId]: { column: "Q1", x: 10, y: 20 } }
-  links: [],          // future use (risk-goal, kpi-goal)
-  scenarioOptions: { hire: false, fund: false },
+  // ↘ Prepopulate with two sample Goals
+  goals: [
+    {
+      id: "G_sample1",
+      title: "Increase Market Share",
+      desc: "Expand into new regions by Q4 2025",
+      dueDate: "2025-12-31",
+      owner: "Alice"
+    },
+    {
+      id: "G_sample2",
+      title: "Improve Customer Satisfaction",
+      desc: "Implement NPS surveys across all products",
+      dueDate: "2025-06-30",
+      owner: "Bob"
+    }
+  ],
+
+  // ↘ Prepopulate with two sample Risks
+  risks: [
+    {
+      id: "R_sample1",
+      title: "Budget Overrun",
+      likelihood: "High",
+      impact: "High",
+      mitigation: "Negotiate vendor contracts early"
+    },
+    {
+      id: "R_sample2",
+      title: "Staff Turnover",
+      likelihood: "Medium",
+      impact: "Medium",
+      mitigation: "Offer retention bonuses"
+    }
+  ],
+
+  // ↘ Prepopulate with two sample KPIs
+  kpis: [
+    {
+      id: "K_sample1",
+      name: "Monthly Recurring Revenue",
+      metricType: "$",
+      target: "100K",
+      frequency: "Monthly"
+    },
+    {
+      id: "K_sample2",
+      name: "Customer NPS",
+      metricType: "%",
+      target: "50",
+      frequency: "Quarterly"
+    }
+  ],
+
+  // No initial placements, so all samples appear unplaced in index.html
+  placements: {},
+
+  // No sample dependencies to start
+  dependencies: [],
+
+  // (For future) risk-goal or kpi-goal links
+  links: [],
+
+  // Prepopulate scenarioOptions as false
+  scenarioOptions: {
+    hire: false,
+    fund: false
+  },
+
+  // ForgeCast default
   forgeCastChallenge: "",
   forgeCastResult: { suggestion: "", rationale: "" },
-  crownLensRisks: []  // string titles of top risks
+
+  // CrownLensRisks must contain each Risk’s title so they show up in Risk Dashboard
+  crownLensRisks: ["Budget Overrun", "Staff Turnover"]
 };
 
 // Load saved state from localStorage if available
@@ -21,7 +86,7 @@ function loadState() {
   if (saved) {
     try {
       const parsed = JSON.parse(saved);
-      // Merge into default structure (avoid missing keys)
+      // Merge into existing (so that default samples are overwritten if the user has saved data)
       state = { ...state, ...parsed };
     } catch (err) {
       console.warn("Failed to parse saved state:", err);
@@ -50,7 +115,6 @@ function allowDrop(ev) {
 }
 
 function drag(ev) {
-  // carry card-type and id
   const cardEl = ev.target.closest(".card");
   if (!cardEl) return;
   const cardId = cardEl.getAttribute("data-id");
@@ -64,19 +128,15 @@ function drag(ev) {
 
 function drop(ev) {
   ev.preventDefault();
-  if (!ev.target.classList.contains("marker")) {
-    // if marker has inner elements, find the marker parent
-    if (ev.target.closest && ev.target.closest(".marker")) {
-      ev.target.closest(".marker").classList.remove("dragover");
-      handleCardDrop(ev, ev.target.closest(".marker"));
-    }
-    return;
+  if (ev.target.classList.contains("marker")) {
+    ev.target.classList.remove("dragover");
+    handleCardDrop(ev, ev.target);
+  } else if (ev.target.closest && ev.target.closest(".marker")) {
+    ev.target.closest(".marker").classList.remove("dragover");
+    handleCardDrop(ev, ev.target.closest(".marker"));
   }
-  ev.target.classList.remove("dragover");
-  handleCardDrop(ev, ev.target);
 }
 
-// Called when a draggable card is dropped onto a marker
 function handleCardDrop(ev, markerEl) {
   const data = ev.dataTransfer.getData("application/json");
   if (!data) return;
@@ -84,18 +144,17 @@ function handleCardDrop(ev, markerEl) {
   const column = markerEl.getAttribute("data-column");
   const rect = markerEl.getBoundingClientRect();
 
-  // Compute relative x/y within marker
+  // Calculate the drop position relative to the marker
   const offsetX = ev.clientX - rect.left;
   const offsetY = ev.clientY - rect.top;
 
-  // Update placement in state
+  // Update state.placements so this card is “pinned” in that column + coords
   state.placements[id] = {
     column: column,
     x: offsetX,
     y: offsetY
   };
 
-  // Persist and re-render
   saveState();
   renderAllPages();
 }
@@ -117,7 +176,6 @@ function renderAllPages() {
   } else if (page === "CrownLens.html") {
     renderCrownLens();
   }
-  // Highlight active nav-item (if sidebar is loaded)
   highlightActiveNav(page);
 }
 
@@ -125,16 +183,21 @@ function renderAllPages() {
 //       INDEX.HTML
 // --------------------------
 function renderIndex() {
-  // 1) Goals: list existing goals
+  // 1) Goals List
   const goalsList = document.getElementById("goals-list");
   goalsList.innerHTML = "";
   state.goals.forEach((g) => {
+    // If a goal is already placed on the timeline, skip it here
+    if (state.placements[g.id]) return;
+
     const card = document.createElement("div");
     card.className = "card goal list-card";
     card.setAttribute("data-id", g.id);
     card.setAttribute("data-type", "goal");
     card.setAttribute("draggable", "true");
     card.setAttribute("ondragstart", "drag(event)");
+    card.style.position = "static";
+    card.style.marginBottom = "0.75rem";
 
     const title = document.createElement("div");
     title.textContent = g.title;
@@ -170,16 +233,20 @@ function renderIndex() {
     goalsList.appendChild(card);
   });
 
-  // 2) Risks: list existing risks
+  // 2) Risks List
   const risksList = document.getElementById("risks-list");
   risksList.innerHTML = "";
   state.risks.forEach((r) => {
+    if (state.placements[r.id]) return;
+
     const card = document.createElement("div");
     card.className = "card risk list-card";
     card.setAttribute("data-id", r.id);
     card.setAttribute("data-type", "risk");
     card.setAttribute("draggable", "true");
     card.setAttribute("ondragstart", "drag(event)");
+    card.style.position = "static";
+    card.style.marginBottom = "0.75rem";
 
     const title = document.createElement("div");
     title.textContent = r.title;
@@ -213,16 +280,20 @@ function renderIndex() {
     risksList.appendChild(card);
   });
 
-  // 3) KPIs: list existing KPIs
+  // 3) KPIs List
   const kpisList = document.getElementById("kpis-list");
   kpisList.innerHTML = "";
   state.kpis.forEach((k) => {
+    if (state.placements[k.id]) return;
+
     const card = document.createElement("div");
     card.className = "card kpi list-card";
     card.setAttribute("data-id", k.id);
     card.setAttribute("data-type", "kpi");
     card.setAttribute("draggable", "true");
     card.setAttribute("ondragstart", "drag(event)");
+    card.style.position = "static";
+    card.style.marginBottom = "0.75rem";
 
     const title = document.createElement("div");
     title.textContent = k.name;
@@ -287,7 +358,7 @@ function attachIndexFormHandlers() {
       if (!title) return;
       const id = generateId("R");
       state.risks.push({ id, title, likelihood, impact, mitigation });
-      // Also add to crownLensRisks if not present
+      // Also add to crownLensRisks so it shows up in CrownLens
       if (!state.crownLensRisks.includes(title)) {
         state.crownLensRisks.push(title);
       }
@@ -331,13 +402,18 @@ function deleteGoal(id) {
 }
 
 function deleteRisk(id) {
+  // Find the title before removal
+  const r = state.risks.find((r) => r.id === id);
+  const title = r ? r.title : null;
+
+  // Remove from risks array
   state.risks = state.risks.filter((r) => r.id !== id);
-  state.crownLensRisks = state.crownLensRisks.filter((title) => {
-    // If multiple risks share text, we keep the others untouched.
-    // We'll only remove if exact text matches one risk we removed.
-    return true; // for simplicity, keep all in crownLensRisks
-  });
   delete state.placements[id];
+
+  // Optionally remove from crownLensRisks if you want (but might leave it if you prefer)
+  if (title) {
+    state.crownLensRisks = state.crownLensRisks.filter((t) => t !== title);
+  }
   saveState();
   renderAllPages();
 }
@@ -353,10 +429,9 @@ function deleteKpi(id) {
 //   COMMANDCANVAS.HTML
 // --------------------------
 function renderCommandCanvas() {
-  // 1) Clear and rebuild Strategic Initiatives column
+  // 1) Unplaced cards (Goals/Risks/KPIs) go in the "Strategic Initiatives" column
   const cardsContainer = document.getElementById("cards-container");
   cardsContainer.innerHTML = "";
-  // For each goal/risk/kpi that has NOT been placed, create a card in the left column
   const unplaced = [
     ...state.goals.map((g) => ({ ...g, type: "goal" })),
     ...state.risks.map((r) => ({ ...r, type: "risk" })),
@@ -376,21 +451,21 @@ function renderCommandCanvas() {
     const title = document.createElement("div");
     title.textContent = item.title;
     title.style.fontWeight = "600";
+    title.style.color = "#ffffff"; // keep text visible on colored card
 
     card.appendChild(title);
     cardsContainer.appendChild(card);
   });
 
-  // 2) Render placed cards inside each marker
+  // 2) Render placed cards in markers
   document.querySelectorAll(".marker").forEach((markerEl) => {
     const column = markerEl.getAttribute("data-column");
-    // Clear existing dynamic children (but keep the marker label)
+    // Remove any existing card elements (except the marker label)
     Array.from(markerEl.querySelectorAll(".card")).forEach((c) => c.remove());
 
-    // Find all items placed in this column
+    // For each placement in state, if column matches, render it
     Object.entries(state.placements).forEach(([cardId, placement]) => {
       if (placement.column === column) {
-        // Find item in goals/risks/kpis
         let item =
           state.goals.find((g) => g.id === cardId) ||
           state.risks.find((r) => r.id === cardId) ||
@@ -420,7 +495,7 @@ function renderCommandCanvas() {
     });
   });
 
-  // 3) Dependencies
+  // 3) Dependencies List
   const depList = document.getElementById("dependency-list");
   depList.innerHTML = "";
   state.dependencies.forEach((d) => {
@@ -430,11 +505,10 @@ function renderCommandCanvas() {
     depList.appendChild(item);
   });
 
-  // 4) Attach form handler for dependencies if not already
+  // 4) Attach dependency form handler
   attachDependencyHandler();
 }
 
-// Handle "Add Dependency" form submission
 function attachDependencyHandler() {
   const depForm = document.getElementById("dep-form");
   if (depForm && !depForm.dataset.bound) {
@@ -509,7 +583,6 @@ function renderForgeCast() {
   }
 }
 
-// Called when "Get Insight" button is clicked
 function generateInsight() {
   const inputEl = document.getElementById("challenge-input");
   const output = document.getElementById("insight-output");
@@ -526,12 +599,10 @@ function generateInsight() {
   const rationaleText =
     "Why this? Phased entry lowers risk and validates demand before committing full resources.";
 
-  // Save into state
   state.forgeCastChallenge = input;
   state.forgeCastResult = { suggestion, rationale: rationaleText };
   saveState();
 
-  // Update UI
   output.textContent = suggestion;
   rationale.textContent = rationaleText;
 }
@@ -549,7 +620,6 @@ function renderCrownLens() {
     ul.appendChild(li);
   });
 
-  // Attach Export button handler
   const exportBtn = document.getElementById("exportCSVBtn");
   if (exportBtn && !exportBtn.dataset.bound) {
     exportBtn.dataset.bound = "true";
@@ -557,7 +627,6 @@ function renderCrownLens() {
   }
 }
 
-// Export crownLensRisks to CSV
 function downloadRisksCSV() {
   const header = ["Risk Title"];
   const rows = state.crownLensRisks.map((r) => [r]);
