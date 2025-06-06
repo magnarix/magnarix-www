@@ -1,3 +1,4 @@
+<!-- 2025-06-06T09:00:00-04:00 -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,12 +8,13 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-
-  <!-- Sidebar placeholder (will load sidebar.html here) -->
+  <!-- Sidebar placeholder -->
+  <button class="hamburger-btn" style="display:none;">☰</button>
   <div id="sidebar-placeholder"></div>
 
   <main class="main-content">
     <header>
+      <img src="logo.png" alt="MagnaRix Logo" />
       <h1>ForgeCast – AI Insight Generator</h1>
       <p class="subtitle">Generate AI-driven strategic insights</p>
     </header>
@@ -36,7 +38,7 @@
         <div
           id="insight-output"
           class="card"
-          style="margin-top: 1.5rem; background: #e7f2ff; padding: 1rem; border-radius: 8px;"
+          style="margin-top: 1.5rem; background: #e7f2ff; padding: 1rem; border-radius: 8px; position: static;"
         ></div>
         <div
           id="rationale-output"
@@ -49,39 +51,21 @@
   <script src="script.js"></script>
   <!-- Dynamically load the sidebar and set the “active” link -->
   <script>
-    fetch('sidebar.html')
-      .then(response => response.text())
-      .then(html => {
-        document.getElementById('sidebar-placeholder').innerHTML = html;
-
-        // Determine current page name
-        let page = window.location.pathname.split('/').pop();
-        if (!page) page = 'index.html';
-
-        // Highlight the matching nav-item
-        document
-          .querySelectorAll('.sidebar-nav .nav-item')
-          .forEach(link => {
-            if (link.getAttribute('href') === page) {
-              link.classList.add('active');
-            }
-          });
+    fetch("sidebar.html")
+      .then((res) => res.text())
+      .then((html) => {
+        document.getElementById("sidebar-placeholder").innerHTML = html;
+        let page = window.location.pathname.split("/").pop() || "ForgeCast.html";
+        document.querySelectorAll(".sidebar-nav .nav-item").forEach((link) => {
+          if (link.getAttribute("href") === page) {
+            link.classList.add("active");
+          }
+        });
+        if (window.innerWidth <= 768) {
+          document.querySelector(".hamburger-btn").style.display = "inline-block";
+        }
+        renderAllPages();
       });
-
-    function generateInsight() {
-      const input = document.getElementById('challenge-input').value;
-      const output = document.getElementById('insight-output');
-      const rationale = document.getElementById('rationale-output');
-      if (!input.trim()) {
-        output.textContent = 'Please enter a strategic challenge.';
-        rationale.textContent = '';
-        return;
-      }
-      output.textContent =
-        'AI Suggestion: Consider a phased approach starting with a market study and pilot rollout.';
-      rationale.textContent =
-        'Why this? Phased entry lowers risk and validates demand before committing full resources.';
-    }
   </script>
 </body>
 </html>
