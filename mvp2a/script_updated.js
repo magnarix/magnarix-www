@@ -1,26 +1,29 @@
-
 // JavaScript Updates for MVP Enhancements - 2025-06-06
 
 // 1. Inline Editing for Goals, Risks, and KPIs
 document.addEventListener('click', (e) => {
   if (e.target.classList.contains('list-card')) {
     const card = e.target;
-    const content = card.textContent.trim();
+    const content = card.querySelector('div')?.textContent?.trim() || '';
     const newValue = prompt('Edit item:', content);
     if (newValue !== null && newValue.trim() !== '') {
-      card.querySelector('div').textContent = newValue;
       const id = card.getAttribute('data-id');
       const type = card.getAttribute('data-type');
       updateStateItem(id, type, newValue);
+      card.querySelector('div').textContent = newValue;
       saveState();
     }
   }
 });
 
 function updateStateItem(id, type, newValue) {
-  const collection = state[type + 's']; // dynamically accessing goals, risks, kpis
+  const collection = state[type + 's']; // dynamically access goals, risks, kpis
   const item = collection.find(i => i.id === id);
-  if (item) item.title = newValue;
+  if (item) {
+    if (type === 'goal') item.title = newValue;
+    if (type === 'risk') item.title = newValue;
+    if (type === 'kpi') item.name = newValue;
+  }
 }
 
 // 2. Enhanced Drag-and-Drop Visual Feedback
@@ -48,31 +51,53 @@ function renderDependenciesVisual() {
       const line = document.createElement('div');
       line.className = 'dep-line';
       line.style.position = 'absolute';
-      line.style.border = '1px solid #0070f3';
+      line.style.borderLeft = '2px dashed #0070f3';
+      line.style.height = Math.abs(toCard.offsetTop - fromCard.offsetTop) + 'px';
+      line.style.left = fromCard.offsetLeft + 80 + 'px';
       line.style.top = Math.min(fromCard.offsetTop, toCard.offsetTop) + 'px';
-      line.style.left = fromCard.offsetLeft + 'px';
-      line.style.width = '2px';
-      line.style.height = Math.abs(fromCard.offsetTop - toCard.offsetTop) + 'px';
       canvas.appendChild(line);
     }
   });
 }
 
-// Call this in renderAllPages()
+// Add this to renderAllPages or relevant render function
 function renderAllPages() {
   const page = window.location.pathname.split("/").pop() || "index.html";
-  if (page === "CommandCanvas.html") {
+
+  if (page === "index.html") {
+    renderIndex();
+  } else if (page === "CommandCanvas.html") {
+    renderCommandCanvas();
     renderDependenciesVisual();
+  } else if (page === "OrchestratedPaths.html") {
+    renderOrchestratedPaths();
+  } else if (page === "ForgeCast.html") {
+    renderForgeCast();
+  } else if (page === "CrownLens.html") {
+    renderCrownLens();
   }
+
+  highlightActiveNav(page);
 }
 
 // 4. Advanced Scenario Logic
-document.getElementById('hireToggle')?.addEventListener('change', updateScenarioText);
-document.getElementById('fundToggle')?.addEventListener('change', updateScenarioText);
+function renderOrchestratedPaths() {
+  const hireCB = document.getElementById("hireToggle");
+  const fundCB = document.getElementById("fundToggle");
+  if (hireCB) {
+    hireCB.checked = state.scenarioOptions?.hire || false;
+    hireCB.onchange = updateScenarioText;
+  }
+  if (fundCB) {
+    fundCB.checked = state.scenarioOptions?.fund || false;
+    fundCB.onchange = updateScenarioText;
+  }
+  updateScenarioText();
+}
 
 function updateScenarioText() {
-  const hire = document.getElementById("hireToggle").checked;
-  const fund = document.getElementById("fundToggle").checked;
+  const hire = document.getElementById("hireToggle")?.checked;
+  const fund = document.getElementById("fundToggle")?.checked;
   const output = document.getElementById("scenario-output");
   let result = "Scenario Result: ";
   if (hire && fund) {
@@ -84,32 +109,27 @@ function updateScenarioText() {
   } else {
     result += "Steady, predictable progress.";
   }
-  output.textContent = result;
+  if (output) output.textContent = result;
 }
 
-// 5. Basic Graphical Visualization for Risk Dashboard using simple bar chart
+// 5. Risk Dashboard: Simple Bar Chart
 function renderCrownLens() {
   const ul = document.getElementById("risks-list");
-  ul.innerHTML = "";
-  state.risks.forEach((risk) => {
-    const li = document.createElement("li");
-    li.textContent = `${risk.title} (Likelihood: ${risk.likelihood}, Impact: ${risk.impact})`;
-    li.style.marginBottom = "0.5rem";
-    ul.appendChild(li);
-  });
-
-  // Simple Bar Chart visualization
+  if (ul) ul.innerHTML = "";
   const canvas = document.createElement('canvas');
   canvas.width = 300;
   canvas.height = 150;
-  document.querySelector('.canvas').appendChild(canvas);
+  document.querySelector('.canvas')?.appendChild(canvas);
   const ctx = canvas.getContext('2d');
 
-  state.risks.forEach((risk, index) => {
+  const risks = state.risks || [];
+  risks.forEach((risk, index) => {
     const height = risk.likelihood === "High" ? 100 : risk.likelihood === "Medium" ? 70 : 40;
     ctx.fillStyle = "#0070f3";
     ctx.fillRect(index * 70, 150 - height, 50, height);
     ctx.fillStyle = "#000";
-    ctx.fillText(risk.title, index * 70, 145);
+    ctx.fillText(risk.title.substring(0, 6), index * 70, 145);
   });
 }
+
+// You can still append this file to your project as script_updated.js and reference it in index.html
