@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CommandCanvas – Timeline View</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Sidebar placeholder (will load sidebar.html here) -->
+  <button class="hamburger-btn" style="display:none;">☰</button>
+  <div id="sidebar-placeholder"></div>
+
+  <main class="main-content">
+    <header>
+      <img src="logo.png" alt="MagnaRix Logo" />
+      <h1>Timeline &amp; Dependencies</h1>
+      <p class="subtitle">Visualize your strategy flow over time</p>
+    </header>
+
+    <div class="canvas">
+      <!-- ========== Strategic Initiatives (Unplaced Cards) ========== -->
+      <section class="column">
+        <h2>Strategic Initiatives</h2>
+        <div id="cards-container" style="overflow-y: auto; flex-grow: 1;"></div>
+      </section>
+
+      <!-- ========== Timeline Markers ========== -->
+      <section class="column">
+        <h2>Timeline Markers</h2>
+        <!-- Each marker is a drop zone -->
+        <div
+          class="marker"
+          data-column="Q1"
+          ondrop="drop(event)"
+          ondragover="allowDrop(event)"
+        >
+          Q1
+        </div>
+        <div
+          class="marker"
+          data-column="Q2"
+          ondrop="drop(event)"
+          ondragover="allowDrop(event)"
+        >
+          Q2
+        </div>
+        <div
+          class="marker"
+          data-column="Q3"
+          ondrop="drop(event)"
+          ondragover="allowDrop(event)"
+        >
+          Q3
+        </div>
+        <div
+          class="marker"
+          data-column="Q4"
+          ondrop="drop(event)"
+          ondragover="allowDrop(event)"
+        >
+          Q4
+        </div>
+      </section>
+
+      <!-- ========== Dependencies ========== -->
+      <section class="column">
+        <h2>Dependencies</h2>
+        <form id="dep-form" class="dep-form">
+          <div class="form-group">
+            <label for="dep-from">From:</label>
+            <input type="text" id="dep-from" placeholder="e.g. Hire Team" required />
+          </div>
+          <div class="form-group">
+            <label for="dep-to">To:</label>
+            <input type="text" id="dep-to" placeholder="e.g. Launch Alpha" required />
+          </div>
+          <button type="submit" class="btn">Add Dependency</button>
+        </form>
+        <ul id="dependency-list" class="dep-list"></ul>
+      </section>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+  <!-- Dynamically load the sidebar and set the “active” link -->
+  <script>
+    fetch("sidebar.html")
+      .then((res) => res.text())
+      .then((html) => {
+        document.getElementById("sidebar-placeholder").innerHTML = html;
+        let page = window.location.pathname.split("/").pop() || "CommandCanvas.html";
+        document.querySelectorAll(".sidebar-nav .nav-item").forEach((link) => {
+          if (link.getAttribute("href") === page) {
+            link.classList.add("active");
+          }
+        });
+        if (window.innerWidth <= 768) {
+          document.querySelector(".hamburger-btn").style.display = "inline-block";
+        }
+      });
+  </script>
+</body>
+</html>

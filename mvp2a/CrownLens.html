@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CrownLens – Risk &amp; Export</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Sidebar placeholder (will load sidebar.html here) -->
+  <button class="hamburger-btn" style="display:none;">☰</button>
+  <div id="sidebar-placeholder"></div>
+
+  <main class="main-content">
+    <header>
+      <img src="logo.png" alt="MagnaRix Logo" />
+      <h1>CrownLens – Risk Dashboard</h1>
+      <p class="subtitle">Monitor top risks and export insights</p>
+    </header>
+
+    <div class="canvas" style="justify-content: center;">
+      <section class="column">
+        <h2>Top Risks</h2>
+        <ul id="risks-list" style="margin-bottom: 1.5rem; line-height: 1.5;"></ul>
+        <button id="exportCSVBtn" class="btn" style="margin-bottom: 1rem;">
+          Export to CSV
+        </button>
+        <p style="font-size: 0.9rem; color: #5a6b7c;">
+          🔗 Shareable view: <code>https://magnarix.github.io/mvp-canvas/CrownLens.html</code>
+        </p>
+      </section>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+  <!-- Dynamically load the sidebar and set the “active” link -->
+  <script>
+    fetch("sidebar.html")
+      .then((res) => res.text())
+      .then((html) => {
+        document.getElementById("sidebar-placeholder").innerHTML = html;
+        let page = window.location.pathname.split("/").pop() || "CrownLens.html";
+        document.querySelectorAll(".sidebar-nav .nav-item").forEach((link) => {
+          if (link.getAttribute("href") === page) {
+            link.classList.add("active");
+          }
+        });
+        if (window.innerWidth <= 768) {
+          document.querySelector(".hamburger-btn").style.display = "inline-block";
+        }
+        renderAllPages();
+      });
+  </script>
+</body>
+</html>
