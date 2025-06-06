@@ -3,117 +3,75 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Command Canvas – Overview</title>
+  <title>Magnarix – Command the Future</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <!-- Sidebar placeholder -->
-  <button class="hamburger-btn" style="display:none;">☰</button>
-  <div id="sidebar-placeholder"></div>
 
-  <main class="main-content">
-    <header>
-      <!-- Logo is now 80px wide -->
-      <img src="logo.png" alt="MagnaRix Logo" />
-      <h1>Command Canvas</h1>
-      <p class="subtitle">
-        Define Your Goals, Risks &amp; KPIs
-        <!-- Readme link next to subtitle -->
-        <a href="index_README.html" target="_blank" class="readme-link">(Readme)</a>
-      </p>
-    </header>
+<div id="navbar"></div>
+<script>
+  fetch("navbar.html")
+    .then(response => response.text())
+    .then(html => {
+      document.getElementById("navbar").innerHTML = html;
+    })
+    .catch(error => console.error("Error loading navbar:", error));
+</script>
 
-    <div class="canvas">
-      <!-- ========== Goals Column ========== -->
-      <section class="column">
-        <h2>Goals</h2>
-        <p>Key objectives to drive strategic growth.</p>
+<header>
+  <img src="logo.png" alt="MagnaRix Logo" class="logo" />
+  <h1>Command the Future</h1>
+</header>
 
-        <!-- Add-Goal Form -->
-        <div class="add-goal-form">
-          <input type="text" id="goal-title" placeholder="Goal Title" required />
-          <textarea id="goal-desc" placeholder="Description (optional)" rows="2"></textarea>
-          <input type="date" id="goal-due" />
-          <input type="text" id="goal-owner" placeholder="Owner (optional)" />
-          <button id="saveGoalBtn" class="btn">Save Goal</button>
-        </div>
+<div class="hero">
+  <h2>Strategic AI Orchestration for Visionary Leaders</h2>
+  <p>MagnaRix is the AI-powered interface for executives to visualize, simulate, and align organizational strategy — from vision to execution. Turn judgment into systems. Lead with foresight.</p>
+  <div class="cta-buttons">
+    <a href="forge.html" class="cta-primary">Explore MagnaForge</a>
+    <a href="crown.html" class="cta-secondary">Discover MagnaCrown</a>
+  </div>
+</div>
 
-        <!-- Goals List (prepopulated by script.js) -->
-        <div id="goals-list"></div>
-      </section>
-
-      <!-- ========== Risks Column ========== -->
-      <section class="column">
-        <h2>Risks</h2>
-        <p>Potential obstacles that may impede progress.</p>
-
-        <!-- Add-Risk Form -->
-        <div class="add-risk-form">
-          <input type="text" id="risk-title" placeholder="Risk Title" required />
-          <select id="risk-likelihood">
-            <option value="Low">Low</option>
-            <option value="Medium">Medium</option>
-            <option value="High">High</option>
-          </select>
-          <select id="risk-impact">
-            <option value="Low">Low</option>
-            <option value="Medium">Medium</option>
-            <option value="High">High</option>
-          </select>
-          <textarea id="risk-mitigation" placeholder="Mitigation Notes" rows="2"></textarea>
-          <button id="saveRiskBtn" class="btn">Save Risk</button>
-        </div>
-
-        <!-- Risks List (prepopulated by script.js) -->
-        <div id="risks-list"></div>
-      </section>
-
-      <!-- ========== KPIs Column ========== -->
-      <section class="column">
-        <h2>KPIs</h2>
-        <p>Metrics to measure success and performance.</p>
-
-        <!-- Add-KPI Form -->
-        <div class="add-kpi-form">
-          <input type="text" id="kpi-name" placeholder="KPI Name" required />
-          <select id="kpi-metricType">
-            <option value="%">Percent (%)</option>
-            <option value="$">Dollar ($)</option>
-            <option value="Number">Number</option>
-          </select>
-          <input type="text" id="kpi-target" placeholder="Target Value" />
-          <select id="kpi-frequency">
-            <option value="Weekly">Weekly</option>
-            <option value="Monthly">Monthly</option>
-            <option value="Quarterly">Quarterly</option>
-          </select>
-          <button id="saveKpiBtn" class="btn">Save KPI</button>
-        </div>
-
-        <!-- KPIs List (prepopulated by script.js) -->
-        <div id="kpis-list"></div>
-      </section>
+<!-- ▶️ YouTube Video Embed -->
+<div class="section-wrapper">
+  <div style="width: 100%; max-width: 960px;">
+    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 12px; box-shadow: var(--shadow);">
+      <iframe src="https://www.youtube.com/embed/Da4hQ6dJ0tY"
+              title="MagnaRix – Command the Future"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+              style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
+      </iframe>
     </div>
-  </main>
+  </div>
+</div>
 
-  <!-- Main JavaScript -->
-  <script src="script.js"></script>
-  <!-- Dynamically load sidebar.html and highlight active link -->
-  <script>
-    fetch("sidebar.html")
-      .then(res => res.text())
-      .then(html => {
-        document.getElementById("sidebar-placeholder").innerHTML = html;
-        let page = window.location.pathname.split("/").pop() || "index.html";
-        document.querySelectorAll(".sidebar-nav .nav-item").forEach(link => {
-          if (link.getAttribute("href") === page) {
-            link.classList.add("active");
-          }
-        });
-        if (window.innerWidth <= 768) {
-          document.querySelector(".hamburger-btn").style.display = "inline-block";
-        }
-      });
-  </script>
+<section class="section">
+  <h2>The Intelligence Behind Visionary Leadership</h2>
+  <p>MagnaRix empowers CEOs, strategists, and architects to model decisions, simulate outcomes, and steer their organizations with clarity and confidence.</p>
+  <div class="cta-buttons">
+    <a href="values.html" class="cta-secondary">See Our Philosophy</a>
+  </div>
+</section>
+
+<div class="section-wrapper">
+  <div class="sections">
+    <div class="card">
+      <h3>🛠️ MagnaForge</h3>
+      <p><strong>Design custom AI. Build proprietary intelligence.</strong><br> A low-code studio for AI development, model training, and orchestration — made to be explainable, secure, and fully enterprise-controlled.</p>
+    </div>
+    <div class="card">
+      <h3>👑 MagnaCrown</h3>
+      <p><strong>Operationalize oversight. Align with governance.</strong><br> The executive command center for policy, risk, and strategic simulation. Enables real-time monitoring, audit trails, and cross-org accountability.</p>
+    </div>
+  </div>
+</div>
+
+<footer>
+  &copy; 2025 MagnaRix Corporation · All rights reserved · <a href="contact.html">Contact</a>
+</footer>
+
 </body>
 </html>
