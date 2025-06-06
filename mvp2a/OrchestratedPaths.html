@@ -29,14 +29,18 @@
           <input type="checkbox" id="fundToggle" />
           Delay fundraising
         </label>
-        <div id="scenario-output" class="card" style="margin-top: 1rem; position: static; background: #e7f2ff; color: #0b1e3a;">
+        <div
+          id="scenario-output"
+          class="card"
+          style="margin-top: 1rem; position: static; background: #e7f2ff; color: #0b1e3a;"
+        >
           Scenario Result: Conservative path, steady but slow growth.
         </div>
       </section>
     </div>
   </main>
 
-  <script src="script.js"></script>
+  <script src="script_updated.js"></script>
   <!-- Dynamically load the sidebar and set the “active” link -->
   <script>
     fetch("sidebar.html")
@@ -52,7 +56,6 @@
         if (window.innerWidth <= 768) {
           document.querySelector(".hamburger-btn").style.display = "inline-block";
         }
-        // After sidebar is loaded, call render
         renderAllPages();
       });
   </script>
