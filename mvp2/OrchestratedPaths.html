@@ -1,3 +1,4 @@
+<!-- 2025-06-06T09:00:00-04:00 -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,28 +8,29 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-
-  <!-- Sidebar placeholder (will load sidebar.html here) -->
+  <!-- Sidebar placeholder -->
+  <button class="hamburger-btn" style="display:none;">☰</button>
   <div id="sidebar-placeholder"></div>
 
   <main class="main-content">
     <header>
+      <img src="logo.png" alt="MagnaRix Logo" />
       <h1>Orchestrated Paths – Scenario Simulation</h1>
       <p class="subtitle">Run hypothetical decision scenarios</p>
     </header>
 
-    <div class="canvas">
+    <div class="canvas" style="justify-content: center;">
       <section class="column">
         <h2>Simulate Decisions</h2>
         <label class="form-group checkbox">
-          <input type="checkbox" id="hireToggle" onchange="updateScenario()" />
+          <input type="checkbox" id="hireToggle" />
           Hire aggressively
         </label>
         <label class="form-group checkbox">
-          <input type="checkbox" id="fundToggle" onchange="updateScenario()" />
+          <input type="checkbox" id="fundToggle" />
           Delay fundraising
         </label>
-        <div id="scenario-output" class="card" style="margin-top: 1rem;">
+        <div id="scenario-output" class="card" style="margin-top: 1rem; position: static; background: #e7f2ff; color: #0b1e3a;">
           Scenario Result: Conservative path, steady but slow growth.
         </div>
       </section>
@@ -38,39 +40,21 @@
   <script src="script.js"></script>
   <!-- Dynamically load the sidebar and set the “active” link -->
   <script>
-    fetch('sidebar.html')
-      .then(response => response.text())
-      .then(html => {
-        document.getElementById('sidebar-placeholder').innerHTML = html;
-
-        let page = window.location.pathname.split('/').pop();
-        if (!page) page = 'index.html';
-
-        document
-          .querySelectorAll('.sidebar-nav .nav-item')
-          .forEach(link => {
-            if (link.getAttribute('href') === page) {
-              link.classList.add('active');
-            }
-          });
+    fetch("sidebar.html")
+      .then((res) => res.text())
+      .then((html) => {
+        document.getElementById("sidebar-placeholder").innerHTML = html;
+        let page = window.location.pathname.split("/").pop() || "OrchestratedPaths.html";
+        document.querySelectorAll(".sidebar-nav .nav-item").forEach((link) => {
+          if (link.getAttribute("href") === page) {
+            link.classList.add("active");
+          }
+        });
+        if (window.innerWidth <= 768) {
+          document.querySelector(".hamburger-btn").style.display = "inline-block";
+        }
+        renderAllPages();
       });
-
-    function updateScenario() {
-      const hire = document.getElementById('hireToggle').checked;
-      const fund = document.getElementById('fundToggle').checked;
-      const output = document.getElementById('scenario-output');
-      let result = 'Scenario Result: ';
-      if (hire && fund) {
-        result += 'Higher short-term burn but faster market capture.';
-      } else if (hire) {
-        result += 'Rapid execution with potential funding risks.';
-      } else if (fund) {
-        result += 'Cash reserves preserved, but slower product delivery.';
-      } else {
-        result += 'Conservative path, steady but slow growth.';
-      }
-      output.textContent = result;
-    }
   </script>
 </body>
 </html>
