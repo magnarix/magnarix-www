@@ -208,6 +208,16 @@ header h1 {
   cursor: grab;
 }
 
+.card.list-card {
+  background-color: #2a3f54;       /* Dark navy background */
+  color: #ffffff;                  /* White text */
+  border: 1px solid #0b1825;       /* Subtle border */
+  padding: 0.5rem;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2); /* Optional subtle shadow */
+  font-weight: 600;
+}
+
 /*---------------------------------------
   Marker (Timeline)
 ---------------------------------------*/
