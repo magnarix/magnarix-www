@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Command Canvas – Overview</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Sidebar placeholder -->
+  <button class="hamburger-btn" style="display:none;">☰</button>
+  <div id="sidebar-placeholder"></div>
+
+  <main class="main-content">
+    <header>
+      <!-- Logo is now 80px wide -->
+      <img src="logo.png" alt="MagnaRix Logo" />
+      <h1>Command Canvas</h1>
+      <p class="subtitle">
+        Define Your Goals, Risks &amp; KPIs
+        <!-- Readme link next to subtitle -->
+        <a href="index_README.html" target="_blank" class="readme-link">(Readme)</a>
+      </p>
+    </header>
+
+    <div class="canvas">
+      <!-- ========== Goals Column ========== -->
+      <section class="column">
+        <h2>Goals</h2>
+        <p>Key objectives to drive strategic growth.</p>
+
+        <!-- Add-Goal Form -->
+        <div class="add-goal-form">
+          <input type="text" id="goal-title" placeholder="Goal Title" required />
+          <textarea id="goal-desc" placeholder="Description (optional)" rows="2"></textarea>
+          <input type="date" id="goal-due" />
+          <input type="text" id="goal-owner" placeholder="Owner (optional)" />
+          <button id="saveGoalBtn" class="btn">Save Goal</button>
+        </div>
+
+        <!-- Goals List (prepopulated by script.js) -->
+        <div id="goals-list"></div>
+      </section>
+
+      <!-- ========== Risks Column ========== -->
+      <section class="column">
+        <h2>Risks</h2>
+        <p>Potential obstacles that may impede progress.</p>
+
+        <!-- Add-Risk Form -->
+        <div class="add-risk-form">
+          <input type="text" id="risk-title" placeholder="Risk Title" required />
+          <select id="risk-likelihood">
+            <option value="Low">Low</option>
+            <option value="Medium">Medium</option>
+            <option value="High">High</option>
+          </select>
+          <select id="risk-impact">
+            <option value="Low">Low</option>
+            <option value="Medium">Medium</option>
+            <option value="High">High</option>
+          </select>
+          <textarea id="risk-mitigation" placeholder="Mitigation Notes" rows="2"></textarea>
+          <button id="saveRiskBtn" class="btn">Save Risk</button>
+        </div>
+
+        <!-- Risks List (prepopulated by script.js) -->
+        <div id="risks-list"></div>
+      </section>
+
+      <!-- ========== KPIs Column ========== -->
+      <section class="column">
+        <h2>KPIs</h2>
+        <p>Metrics to measure success and performance.</p>
+
+        <!-- Add-KPI Form -->
+        <div class="add-kpi-form">
+          <input type="text" id="kpi-name" placeholder="KPI Name" required />
+          <select id="kpi-metricType">
+            <option value="%">Percent (%)</option>
+            <option value="$">Dollar ($)</option>
+            <option value="Number">Number</option>
+          </select>
+          <input type="text" id="kpi-target" placeholder="Target Value" />
+          <select id="kpi-frequency">
+            <option value="Weekly">Weekly</option>
+            <option value="Monthly">Monthly</option>
+            <option value="Quarterly">Quarterly</option>
+          </select>
+          <button id="saveKpiBtn" class="btn">Save KPI</button>
+        </div>
+
+        <!-- KPIs List (prepopulated by script.js) -->
+        <div id="kpis-list"></div>
+      </section>
+    </div>
+  </main>
+
+  <!-- Main JavaScript -->
+  <script src="script.js"></script>
+  <!-- Dynamically load sidebar.html and highlight active link -->
+  <script>
+    fetch("sidebar.html")
+      .then(res => res.text())
+      .then(html => {
+        document.getElementById("sidebar-placeholder").innerHTML = html;
+        let page = window.location.pathname.split("/").pop() || "overview.html";
+        document.querySelectorAll(".sidebar-nav .nav-item").forEach(link => {
+          if (link.getAttribute("href") === page) {
+            link.classList.add("active");
+          }
+        });
+        if (window.innerWidth <= 768) {
+          document.querySelector(".hamburger-btn").style.display = "inline-block";
+        }
+      });
+  </script>
+</body>
+</html>

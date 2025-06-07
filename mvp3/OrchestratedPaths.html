@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Orchestrated Paths – Scenario Simulation</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Sidebar placeholder (will load sidebar.html here) -->
+  <button class="hamburger-btn" style="display:none;">☰</button>
+  <div id="sidebar-placeholder"></div>
+
+  <main class="main-content">
+    <header>
+      <img src="logo.png" alt="MagnaRix Logo" />
+      <h1>Orchestrated Paths – Scenario Simulation</h1>
+      <p class="subtitle">Run hypothetical decision scenarios</p>
+    </header>
+
+    <div class="canvas" style="justify-content: center;">
+      <section class="column">
+        <h2>Simulate Decisions</h2>
+        <label class="form-group checkbox">
+          <input type="checkbox" id="hireToggle" />
+          Hire aggressively
+        </label>
+        <label class="form-group checkbox">
+          <input type="checkbox" id="fundToggle" />
+          Delay fundraising
+        </label>
+        <div id="scenario-output" class="card" style="margin-top: 1rem; position: static; background: #e7f2ff; color: #0b1e3a;">
+          Scenario Result: Conservative path, steady but slow growth.
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+  <!-- Dynamically load the sidebar and set the “active” link -->
+  <script>
+    fetch("sidebar.html")
+      .then((res) => res.text())
+      .then((html) => {
+        document.getElementById("sidebar-placeholder").innerHTML = html;
+        let page = window.location.pathname.split("/").pop() || "OrchestratedPaths.html";
+        document.querySelectorAll(".sidebar-nav .nav-item").forEach((link) => {
+          if (link.getAttribute("href") === page) {
+            link.classList.add("active");
+          }
+        });
+        if (window.innerWidth <= 768) {
+          document.querySelector(".hamburger-btn").style.display = "inline-block";
+        }
+        // After sidebar is loaded, call render
+        renderAllPages();
+      });
+  </script>
+</body>
+</html>
