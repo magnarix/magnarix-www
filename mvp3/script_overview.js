@@ -1,6 +1,9 @@
-// script_overview.js – Full extraction for overview.html
+
+// script_overview.js – Complete and corrected for overview.html
+
+const STORAGE_KEY = "mvp2State";
+
 let state = {
-  // ↘ Prepopulate with two sample Goals
   goals: [
     {
       id: "G_sample1",
@@ -17,8 +20,6 @@ let state = {
       owner: "Bob"
     }
   ],
-
-  // ↘ Prepopulate with two sample Risks
   risks: [
     {
       id: "R_sample1",
@@ -35,8 +36,6 @@ let state = {
       mitigation: "Offer retention bonuses"
     }
   ],
-
-  // ↘ Prepopulate with two sample KPIs
   kpis: [
     {
       id: "K_sample1",
@@ -53,67 +52,39 @@ let state = {
       frequency: "Quarterly"
     }
   ],
-
-  // No initial placements, so all samples appear unplaced in overview.html
   placements: {},
-
-  // No sample dependencies to start
   dependencies: [],
-
-  // (For future) risk-goal or kpi-goal links
   links: [],
-
-  // Prepopulate scenarioOptions as false
-  scenarioOptions: {
-    hire: false,
-    fund: false
-  },
-
-  // ForgeCast default
+  scenarioOptions: { hire: false, fund: false },
   forgeCastChallenge: "",
   forgeCastResult: { suggestion: "", rationale: "" },
-
-  // CrownLensRisks must contain each Risk’s title so they show up in Risk Dashboard
   crownLensRisks: ["Budget Overrun", "Staff Turnover"]
 };
+
 function loadState() {
   const saved = localStorage.getItem(STORAGE_KEY);
   if (saved) {
     try {
       const parsed = JSON.parse(saved);
-      // Merge into existing (so that default samples are overwritten if the user has saved data)
       state = { ...state, ...parsed };
     } catch (err) {
       console.warn("Failed to parse saved state:", err);
     }
+  }
+}
+
 function saveState() {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
 }
+
 function generateId(prefix) {
   return `${prefix}_${Date.now()}_${Math.floor(Math.random() * 1000)}`;
 }
-  renderAllPages();
-}
-function renderAllPages() {
-  const page = window.location.pathname.split("/").pop() || "overview.html";
 
-  if (page === "overview.html") {
-    renderOverview();
-  } else if (page === "CommandCanvas.html") {
-    renderCommandCanvas();
-  } else if (page === "OrchestratedPaths.html") {
-    renderOrchestratedPaths();
-  } else if (page === "ForgeCast.html") {
-    renderForgeCast();
-  } else if (page === "CrownLens.html") {
-    renderCrownLens();
-  }
 function renderOverview() {
-  // 1) Goals List
   const goalsList = document.getElementById("goals-list");
   goalsList.innerHTML = "";
   state.goals.forEach((g) => {
-    // If a goal is already placed on the timeline, skip it here
     if (state.placements[g.id]) return;
 
     const card = document.createElement("div");
@@ -121,7 +92,6 @@ function renderOverview() {
     card.setAttribute("data-id", g.id);
     card.setAttribute("data-type", "goal");
     card.setAttribute("draggable", "true");
-    card.setAttribute("ondragstart", "drag(event)");
     card.style.position = "static";
     card.style.marginBottom = "0.75rem";
 
@@ -133,16 +103,12 @@ function renderOverview() {
     subtitle.style.fontSize = "0.9rem";
     subtitle.style.marginTop = "0.25rem";
     subtitle.style.color = "#3a4a59";
-    subtitle.textContent = `Due: ${g.dueDate || "—"} | Owner: ${
-      g.owner || "—"
-    }`;
+    subtitle.textContent = `Due: ${g.dueDate || "—"} | Owner: ${g.owner || "—"}`;
 
     const removeBtn = document.createElement("span");
     removeBtn.textContent = "×";
     removeBtn.style.cssText = "float: right; cursor: pointer; color: #900;";
-    removeBtn.addEventListener("click", () => {
-      deleteGoal(g.id);
-    });
+    removeBtn.addEventListener("click", () => deleteGoal(g.id));
 
     card.appendChild(removeBtn);
     card.appendChild(title);
@@ -154,8 +120,37 @@ function renderOverview() {
       descEl.style.color = "#5a6b7c";
       card.appendChild(descEl);
     }
-      deleteRisk(r.id);
-    });
+    card.appendChild(subtitle);
+    goalsList.appendChild(card);
+  });
+
+  const risksList = document.getElementById("risks-list");
+  risksList.innerHTML = "";
+  state.risks.forEach((r) => {
+    if (state.placements[r.id]) return;
+
+    const card = document.createElement("div");
+    card.className = "card risk list-card";
+    card.setAttribute("data-id", r.id);
+    card.setAttribute("data-type", "risk");
+    card.setAttribute("draggable", "true");
+    card.style.position = "static";
+    card.style.marginBottom = "0.75rem";
+
+    const title = document.createElement("div");
+    title.textContent = r.title;
+    title.style.fontWeight = "600";
+
+    const subtitle = document.createElement("div");
+    subtitle.style.fontSize = "0.9rem";
+    subtitle.style.marginTop = "0.25rem";
+    subtitle.style.color = "#3a4a59";
+    subtitle.textContent = `L:${r.likelihood} | I:${r.impact}`;
+
+    const removeBtn = document.createElement("span");
+    removeBtn.textContent = "×";
+    removeBtn.style.cssText = "float: right; cursor: pointer; color: #900;";
+    removeBtn.addEventListener("click", () => deleteRisk(r.id));
 
     card.appendChild(removeBtn);
     card.appendChild(title);
@@ -167,21 +162,48 @@ function renderOverview() {
       mitEl.style.color = "#5a6b7c";
       card.appendChild(mitEl);
     }
-      deleteKpi(k.id);
-    });
+    card.appendChild(subtitle);
+    risksList.appendChild(card);
+  });
+
+  const kpisList = document.getElementById("kpis-list");
+  kpisList.innerHTML = "";
+  state.kpis.forEach((k) => {
+    if (state.placements[k.id]) return;
+
+    const card = document.createElement("div");
+    card.className = "card kpi list-card";
+    card.setAttribute("data-id", k.id);
+    card.setAttribute("data-type", "kpi");
+    card.setAttribute("draggable", "true");
+    card.style.position = "static";
+    card.style.marginBottom = "0.75rem";
+
+    const title = document.createElement("div");
+    title.textContent = k.name;
+    title.style.fontWeight = "600";
+
+    const subtitle = document.createElement("div");
+    subtitle.style.fontSize = "0.9rem";
+    subtitle.style.marginTop = "0.25rem";
+    subtitle.style.color = "#3a4a59";
+    subtitle.textContent = `${k.metricType} target: ${k.target} | ${k.frequency}`;
+
+    const removeBtn = document.createElement("span");
+    removeBtn.textContent = "×";
+    removeBtn.style.cssText = "float: right; cursor: pointer; color: #900;";
+    removeBtn.addEventListener("click", () => deleteKpi(k.id));
 
     card.appendChild(removeBtn);
     card.appendChild(title);
     card.appendChild(subtitle);
-
     kpisList.appendChild(card);
   });
 
-  // 4) Attach form handlers if not already attached
   attachOverviewFormHandlers();
 }
+
 function attachOverviewFormHandlers() {
-  // Goals
   const saveGoalBtn = document.getElementById("saveGoalBtn");
   if (saveGoalBtn && !saveGoalBtn.dataset.bound) {
     saveGoalBtn.dataset.bound = "true";
@@ -194,59 +216,73 @@ function attachOverviewFormHandlers() {
       const id = generateId("G");
       state.goals.push({ id, title, desc, dueDate, owner });
       saveState();
-      document.getElementById("goal-title").value = "";
-      document.getElementById("goal-desc").value = "";
-      document.getElementById("goal-due").value = "";
-      document.getElementById("goal-owner").value = "";
-      renderAllPages();
+      renderOverview();
     });
   }
-      renderAllPages();
+
+  const saveRiskBtn = document.getElementById("saveRiskBtn");
+  if (saveRiskBtn && !saveRiskBtn.dataset.bound) {
+    saveRiskBtn.dataset.bound = "true";
+    saveRiskBtn.addEventListener("click", () => {
+      const title = document.getElementById("risk-title").value.trim();
+      const likelihood = document.getElementById("risk-likelihood").value;
+      const impact = document.getElementById("risk-impact").value;
+      const mitigation = document.getElementById("risk-mitigation").value.trim();
+      if (!title) return;
+      const id = generateId("R");
+      state.risks.push({ id, title, likelihood, impact, mitigation });
+      if (!state.crownLensRisks.includes(title)) {
+        state.crownLensRisks.push(title);
+      }
+      saveState();
+      renderOverview();
     });
   }
-      renderAllPages();
+
+  const saveKpiBtn = document.getElementById("saveKpiBtn");
+  if (saveKpiBtn && !saveKpiBtn.dataset.bound) {
+    saveKpiBtn.dataset.bound = "true";
+    saveKpiBtn.addEventListener("click", () => {
+      const name = document.getElementById("kpi-name").value.trim();
+      const metricType = document.getElementById("kpi-metricType").value;
+      const target = document.getElementById("kpi-target").value.trim();
+      const frequency = document.getElementById("kpi-frequency").value;
+      if (!name) return;
+      const id = generateId("K");
+      state.kpis.push({ id, name, metricType, target, frequency });
+      saveState();
+      renderOverview();
     });
   }
+}
+
 function deleteGoal(id) {
   state.goals = state.goals.filter((g) => g.id !== id);
   delete state.placements[id];
   saveState();
-  renderAllPages();
+  renderOverview();
 }
+
 function deleteRisk(id) {
-  // Find the title before removal
   const r = state.risks.find((r) => r.id === id);
   const title = r ? r.title : null;
-
-  // Remove from risks array
   state.risks = state.risks.filter((r) => r.id !== id);
   delete state.placements[id];
-
-  // Remove from crownLensRisks
   if (title) {
     state.crownLensRisks = state.crownLensRisks.filter((t) => t !== title);
   }
-  renderAllPages();
+  saveState();
+  renderOverview();
 }
+
 function deleteKpi(id) {
   state.kpis = state.kpis.filter((k) => k.id !== id);
   delete state.placements[id];
   saveState();
-  renderAllPages();
+  renderOverview();
 }
-      renderAllPages();
-    });
-  }
-  renderAllPages();
 
-  // If using the mobile hamburger to toggle sidebar:
-  const hamburger = document.querySelector(".hamburger-btn");
-  if (hamburger) {
-    hamburger.addEventListener("click", () => {
-      document.querySelector(".sidebar").classList.toggle("open");
-    });
-  }
 document.addEventListener("DOMContentLoaded", () => {
   loadState();
-  renderAllPages();
+  renderOverview();
 });
