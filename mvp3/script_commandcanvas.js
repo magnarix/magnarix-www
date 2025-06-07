@@ -1,15 +1,27 @@
 // script_commandcanvas.js – Cleaned and Working Version
 
+const STORAGE_KEY = "mvp2State";  // ✅ FIXED: define storage key
+
+let state = {
+  goals: [],
+  risks: [],
+  kpis: [],
+  placements: {},
+  dependencies: []
+};
+
 function loadState() {
   const saved = localStorage.getItem(STORAGE_KEY);
   if (saved) {
     try {
       const parsed = JSON.parse(saved);
-      // Merge into existing (so that default samples are overwritten if the user has saved data)
       state = { ...state, ...parsed };
+      console.log("Loaded state:", state); // optional for debugging
     } catch (err) {
       console.warn("Failed to parse saved state:", err);
     }
+  }
+}
 
 function saveState() {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
@@ -24,6 +36,7 @@ function allowDrop(ev) {
   if (ev.target.classList.contains("marker")) {
     ev.target.classList.add("dragover");
   }
+}
 
 function drag(ev) {
   const cardEl = ev.target.closest(".card");
@@ -46,6 +59,7 @@ function drop(ev) {
     ev.target.closest(".marker").classList.remove("dragover");
     handleCardDrop(ev, ev.target.closest(".marker"));
   }
+}
 
 function handleCardDrop(ev, markerEl) {
   const data = ev.dataTransfer.getData("application/json");
@@ -54,11 +68,9 @@ function handleCardDrop(ev, markerEl) {
   const column = markerEl.getAttribute("data-column");
   const rect = markerEl.getBoundingClientRect();
 
-  // Calculate the drop position relative to the marker
   const offsetX = ev.clientX - rect.left;
   const offsetY = ev.clientY - rect.top;
 
-  // Update state.placements so this card is “pinned” in that column + coords
   state.placements[id] = {
     column: column,
     x: offsetX,
@@ -66,13 +78,13 @@ function handleCardDrop(ev, markerEl) {
   };
 
   saveState();
-  renderAllPages();
+  renderCommandCanvas();
 }
-
 
 function renderCommandCanvas() {
   const cardsContainer = document.getElementById("cards-container");
   cardsContainer.innerHTML = "";
+
   const unplaced = [
     ...state.goals.map((g) => ({ ...g, type: "goal" })),
     ...state.risks.map((r) => ({ ...r, type: "risk" })),
@@ -160,8 +172,6 @@ function attachDependencyHandler() {
     });
   }
 }
-
-
 
 document.addEventListener("DOMContentLoaded", () => {
   loadState();
