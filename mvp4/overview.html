@@ -1,0 +1,69 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MVP4 Overview</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Strategic Overview</h1>
+    <p class="subtitle">Manage your goals, risks, and KPIs here</p>
+  </header>
+
+  <!-- ========================= -->
+  <!--    Add New Goal Form     -->
+  <!-- ========================= -->
+  <section class="input-form">
+    <h2>Add New Goal</h2>
+    <form id="goal-form">
+      <label for="goal-title">Title:</label>
+      <input type="text" id="goal-title" required />
+
+      <label for="goal-desc">Description:</label>
+      <input type="text" id="goal-desc" />
+
+      <label for="goal-due">Due Date:</label>
+      <input type="date" id="goal-due" />
+
+      <label for="goal-owner">Owner:</label>
+      <input type="text" id="goal-owner" />
+
+      <button type="submit">Add Goal</button>
+    </form>
+  </section>
+
+  <script type="module">
+    import { loadState, saveState, state } from './state.js';
+
+    loadState();
+
+    const form = document.getElementById("goal-form");
+
+    form.addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      const title = document.getElementById("goal-title").value;
+      const desc = document.getElementById("goal-desc").value;
+      const dueDate = document.getElementById("goal-due").value;
+      const owner = document.getElementById("goal-owner").value;
+
+      const newGoal = {
+        id: `G_${Date.now()}`,
+        title,
+        desc,
+        dueDate,
+        owner
+      };
+
+      state.goals.push(newGoal);
+      saveState();
+
+      alert("Goal added successfully!");
+      form.reset();
+    });
+  </script>
+</body>
+</html>
