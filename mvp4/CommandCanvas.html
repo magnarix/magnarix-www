@@ -1,0 +1,61 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CommandCanvas – Timeline View</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f7fc;
+    }
+    .card {
+      background: #fff;
+      border-left: 5px solid #3f51b5;
+      margin: 0.5rem 0;
+      padding: 0.75rem 1rem;
+      border-radius: 8px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+      cursor: grab;
+      transition: transform 0.1s ease;
+    }
+    .card:hover {
+      transform: scale(1.02);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    }
+    .column {
+      flex: 1;
+      padding: 1rem;
+    }
+    .columns {
+      display: flex;
+      gap: 1rem;
+      padding: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <object data="sidebar.html" type="text/html" width="260" height="100%"></object>
+  <main style="margin-left: 280px;">
+    <header>
+      <h1>Command Canvas</h1>
+      <p class="subtitle">Drag and place goals in the timeline</p>
+    </header>
+    <div class="columns">
+      <section class="column">
+        <h2>Unplaced Goals</h2>
+        <div id="cards-container"></div>
+      </section>
+      <section class="column marker" data-time="Q1">
+        <h2>Q1</h2>
+      </section>
+      <section class="column marker" data-time="Q2">
+        <h2>Q2</h2>
+      </section>
+    </div>
+  </main>
+  <script type="module" src="script_commandcanvas.js"></script>
+</body>
+</html>
