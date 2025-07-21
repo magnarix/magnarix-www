@@ -1,0 +1,4 @@
+body { font-family: sans-serif; margin: 2em; background: #f9f9f9; }
+textarea { width: 100%; font-size: 1em; }
+button { padding: 0.5em 1em; font-size: 1em; }
+ul { list-style-type: disc; margin-left: 2em; }
