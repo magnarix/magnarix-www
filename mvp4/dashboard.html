@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head><title>Dashboard</title><link rel="stylesheet" href="main.css"></head>
+<body>
+  <h2>Dashboard</h2>
+  <ul id="goal-list"></ul>
+
+  <script type="module">
+    import { loadState } from './state.js';
+    const state = loadState();
+    const list = document.getElementById('goal-list');
+    state.strategicGoals.forEach(goal => {
+      const li = document.createElement('li');
+      li.textContent = goal;
+      list.appendChild(li);
+    });
+  </script>
+</body>
+</html>
