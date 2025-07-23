@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ForgeCast – AI Insight Generator</title>
+  <title>CrownLens – Risk &amp; Export</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -14,35 +14,20 @@
   <main class="main-content">
     <header>
       <img src="logo.png" alt="MagnaRix Logo" />
-      <h1>ForgeCast – AI Insight Generator</h1>
-      <p class="subtitle">Generate AI-driven strategic insights</p>
+      <h1>CrownLens – Risk Dashboard</h1>
+      <p class="subtitle">Monitor top risks and export insights</p>
     </header>
 
     <div class="canvas" style="justify-content: center;">
-      <section class="column" style="max-width: 600px; width: 100%;">
-        <h2>Describe Your Strategic Challenge</h2>
-        <textarea
-          id="challenge-input"
-          rows="5"
-          style="width: 100%; padding: 0.75rem; border: 1px solid #cbd2d9; border-radius: 6px; font-size: 1rem; resize: vertical;"
-          placeholder="e.g., Should we expand into Asia this year?"
-        ></textarea>
-        <button
-          onclick="generateInsight()"
-          class="btn"
-          style="margin-top: 1rem;"
-        >
-          Get Insight
+      <section class="column">
+        <h2>Top Risks</h2>
+        <ul id="risks-list" style="margin-bottom: 1.5rem; line-height: 1.5;"></ul>
+        <button id="exportCSVBtn" class="btn" style="margin-bottom: 1rem;">
+          Export to CSV
         </button>
-        <div
-          id="insight-output"
-          class="card"
-          style="margin-top: 1.5rem; background: #e7f2ff; padding: 1rem; border-radius: 8px; position: static;"
-        ></div>
-        <div
-          id="rationale-output"
-          style="margin-top: 0.75rem; font-size: 0.9rem; color: #5a6b7c;"
-        ></div>
+        <p style="font-size: 0.9rem; color: #5a6b7c;">
+          🔗 Shareable view: <code>https://magnarix.github.io/mvp-canvas/CrownLens.html</code>
+        </p>
       </section>
     </div>
   </main>
@@ -54,7 +39,7 @@
       .then((res) => res.text())
       .then((html) => {
         document.getElementById("sidebar-placeholder").innerHTML = html;
-        let page = window.location.pathname.split("/").pop() || "ForgeCast.html";
+        let page = window.location.pathname.split("/").pop() || "CrownLens.html";
         document.querySelectorAll(".sidebar-nav .nav-item").forEach((link) => {
           if (link.getAttribute("href") === page) {
             link.classList.add("active");

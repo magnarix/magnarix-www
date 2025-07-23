@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,56 +5,100 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>CommandCanvas – Timeline View</title>
   <link rel="stylesheet" href="style.css" />
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #f4f7fc;
-    }
-    .card {
-      background: #fff;
-      border-left: 5px solid #3f51b5;
-      margin: 0.5rem 0;
-      padding: 0.75rem 1rem;
-      border-radius: 8px;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.08);
-      cursor: grab;
-      transition: transform 0.1s ease;
-    }
-    .card:hover {
-      transform: scale(1.02);
-      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
-    }
-    .column {
-      flex: 1;
-      padding: 1rem;
-    }
-    .columns {
-      display: flex;
-      gap: 1rem;
-      padding: 1rem;
-    }
-  </style>
 </head>
 <body>
-  <object data="sidebar.html" type="text/html" width="260" height="100%"></object>
-  <main style="margin-left: 280px;">
+  <!-- Sidebar placeholder (will load sidebar.html here) -->
+  <button class="hamburger-btn" style="display:none;">☰</button>
+  <div id="sidebar-placeholder"></div>
+
+  <main class="main-content">
     <header>
-      <h1>Command Canvas</h1>
-      <p class="subtitle">Drag and place goals in the timeline</p>
+      <img src="logo.png" alt="MagnaRix Logo" />
+      <h1>Timeline &amp; Dependencies</h1>
+      <p class="subtitle">Visualize your strategy flow over time</p>
     </header>
-    <div class="columns">
+
+    <div class="canvas">
+      <!-- ========== Strategic Initiatives (Unplaced Cards) ========== -->
       <section class="column">
-        <h2>Unplaced Goals</h2>
-        <div id="cards-container"></div>
+        <h2>Strategic Initiatives</h2>
+        <div id="cards-container" style="overflow-y: auto; flex-grow: 1;"></div>
       </section>
-      <section class="column marker" data-time="Q1">
-        <h2>Q1</h2>
+
+      <!-- ========== Timeline Markers ========== -->
+      <section class="column">
+        <h2>Timeline Markers</h2>
+        <!-- Each marker is a drop zone -->
+        <div
+          class="marker"
+          data-column="Q1"
+          ondrop="drop(event)"
+          ondragover="allowDrop(event)"
+        >
+          Q1
+        </div>
+        <div
+          class="marker"
+          data-column="Q2"
+          ondrop="drop(event)"
+          ondragover="allowDrop(event)"
+        >
+          Q2
+        </div>
+        <div
+          class="marker"
+          data-column="Q3"
+          ondrop="drop(event)"
+          ondragover="allowDrop(event)"
+        >
+          Q3
+        </div>
+        <div
+          class="marker"
+          data-column="Q4"
+          ondrop="drop(event)"
+          ondragover="allowDrop(event)"
+        >
+          Q4
+        </div>
       </section>
-      <section class="column marker" data-time="Q2">
-        <h2>Q2</h2>
+
+      <!-- ========== Dependencies ========== -->
+      <section class="column">
+        <h2>Dependencies</h2>
+        <form id="dep-form" class="dep-form">
+          <div class="form-group">
+            <label for="dep-from">From:</label>
+            <input type="text" id="dep-from" placeholder="e.g. Hire Team" required />
+          </div>
+          <div class="form-group">
+            <label for="dep-to">To:</label>
+            <input type="text" id="dep-to" placeholder="e.g. Launch Alpha" required />
+          </div>
+          <button type="submit" class="btn">Add Dependency</button>
+        </form>
+        <ul id="dependency-list" class="dep-list"></ul>
       </section>
     </div>
   </main>
-  <script type="module" src="script_commandcanvas.js"></script>
+
+  <script src="script_commandcanvas.js"></script>
+  <!-- Dynamically load the sidebar and set the “active” link -->
+  <script>
+    fetch("sidebar.html")
+      .then((res) => res.text())
+      .then((html) => {
+        document.getElementById("sidebar-placeholder").innerHTML = html;
+        let page = window.location.pathname.split("/").pop() || "CommandCanvas.html";
+        document.querySelectorAll(".sidebar-nav .nav-item").forEach((link) => {
+          if (link.getAttribute("href") === page) {
+            link.classList.add("active");
+          }
+        });
+        if (window.innerWidth <= 768) {
+          document.querySelector(".hamburger-btn").style.display = "inline-block";
+        }
+      });
+  </script>
 </body>
 </html>

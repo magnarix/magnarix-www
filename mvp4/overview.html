@@ -1,118 +1,119 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MVP4 Overview</title>
+  <title>Command Canvas – Overview</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <object data="sidebar.html" type="text/html" width="260" height="100%"></object>
+  <!-- Sidebar placeholder -->
+  <button class="hamburger-btn" style="display:none;">☰</button>
+  <div id="sidebar-placeholder"></div>
 
   <main class="main-content">
     <header>
-      <h1>Strategic Overview</h1>
-      <p class="subtitle">Manage your goals, risks, and KPIs here</p>
+      <!-- Logo is now 80px wide -->
+      <img src="logo.png" alt="MagnaRix Logo" />
+      <h1>Command Canvas</h1>
+      <p class="subtitle">
+        Define Your Goals, Risks &amp; KPIs
+        <!-- Readme link next to subtitle -->
+        <a href="overview_README.html" target="_blank" class="readme-link">(Readme)</a>
+      </p>
     </header>
 
-    <!-- Goal Form -->
-    <section class="input-form">
-      <h2>Add New Goal</h2>
-      <form id="goal-form">
-        <label for="goal-title">Title:</label>
-        <input type="text" id="goal-title" required />
-        <label for="goal-desc">Description:</label>
-        <input type="text" id="goal-desc" />
-        <label for="goal-due">Due Date:</label>
-        <input type="date" id="goal-due" />
-        <label for="goal-owner">Owner:</label>
-        <input type="text" id="goal-owner" />
-        <button type="submit">Add Goal</button>
-      </form>
-    </section>
+    <div class="canvas">
+      <!-- ========== Goals Column ========== -->
+      <section class="column">
+        <h2>Goals</h2>
+        <p>Key objectives to drive strategic growth.</p>
 
-    <!-- Risk Form -->
-    <section class="input-form">
-      <h2>Add New Risk</h2>
-      <form id="risk-form">
-        <label for="risk-title">Title:</label>
-        <input type="text" id="risk-title" required />
-        <label for="risk-likelihood">Likelihood:</label>
-        <input type="text" id="risk-likelihood" />
-        <label for="risk-impact">Impact:</label>
-        <input type="text" id="risk-impact" />
-        <label for="risk-mitigation">Mitigation:</label>
-        <input type="text" id="risk-mitigation" />
-        <button type="submit">Add Risk</button>
-      </form>
-    </section>
+        <!-- Add-Goal Form -->
+        <div class="add-goal-form">
+          <input type="text" id="goal-title" placeholder="Goal Title" required />
+          <textarea id="goal-desc" placeholder="Description (optional)" rows="2"></textarea>
+          <input type="date" id="goal-due" />
+          <input type="text" id="goal-owner" placeholder="Owner (optional)" />
+          <button id="saveGoalBtn" class="btn">Save Goal</button>
+        </div>
 
-    <!-- KPI Form -->
-    <section class="input-form">
-      <h2>Add New KPI</h2>
-      <form id="kpi-form">
-        <label for="kpi-title">Title:</label>
-        <input type="text" id="kpi-title" required />
-        <label for="kpi-metric">Metric:</label>
-        <input type="text" id="kpi-metric" />
-        <label for="kpi-target">Target Value:</label>
-        <input type="text" id="kpi-target" />
-        <button type="submit">Add KPI</button>
-      </form>
-    </section>
+        <!-- Goals List (prepopulated by script_overview.js) -->
+        <div id="goals-list"></div>
+      </section>
+
+      <!-- ========== Risks Column ========== -->
+      <section class="column">
+        <h2>Risks</h2>
+        <p>Potential obstacles that may impede progress.</p>
+
+        <!-- Add-Risk Form -->
+        <div class="add-risk-form">
+          <input type="text" id="risk-title" placeholder="Risk Title" required />
+          <select id="risk-likelihood">
+            <option value="Low">Low</option>
+            <option value="Medium">Medium</option>
+            <option value="High">High</option>
+          </select>
+          <select id="risk-impact">
+            <option value="Low">Low</option>
+            <option value="Medium">Medium</option>
+            <option value="High">High</option>
+          </select>
+          <textarea id="risk-mitigation" placeholder="Mitigation Notes" rows="2"></textarea>
+          <button id="saveRiskBtn" class="btn">Save Risk</button>
+        </div>
+
+        <!-- Risks List (prepopulated by script_overview.js) -->
+        <div id="risks-list"></div>
+      </section>
+
+      <!-- ========== KPIs Column ========== -->
+      <section class="column">
+        <h2>KPIs</h2>
+        <p>Metrics to measure success and performance.</p>
+
+        <!-- Add-KPI Form -->
+        <div class="add-kpi-form">
+          <input type="text" id="kpi-name" placeholder="KPI Name" required />
+          <select id="kpi-metricType">
+            <option value="%">Percent (%)</option>
+            <option value="$">Dollar ($)</option>
+            <option value="Number">Number</option>
+          </select>
+          <input type="text" id="kpi-target" placeholder="Target Value" />
+          <select id="kpi-frequency">
+            <option value="Weekly">Weekly</option>
+            <option value="Monthly">Monthly</option>
+            <option value="Quarterly">Quarterly</option>
+          </select>
+          <button id="saveKpiBtn" class="btn">Save KPI</button>
+        </div>
+
+        <!-- KPIs List (prepopulated by script_overview.js) -->
+        <div id="kpis-list"></div>
+      </section>
+    </div>
   </main>
 
-  <script type="module">
-    import { loadState, saveState, state } from './state.js';
-    loadState();
-
-    // Add Goal
-    document.getElementById("goal-form").addEventListener("submit", (e) => {
-      e.preventDefault();
-      const newGoal = {
-        id: `G_${Date.now()}`,
-        title: document.getElementById("goal-title").value,
-        desc: document.getElementById("goal-desc").value,
-        dueDate: document.getElementById("goal-due").value,
-        owner: document.getElementById("goal-owner").value
-      };
-      state.goals.push(newGoal);
-      saveState();
-      alert("Goal added!");
-      e.target.reset();
-    });
-
-    // Add Risk
-    document.getElementById("risk-form").addEventListener("submit", (e) => {
-      e.preventDefault();
-      const newRisk = {
-        id: `R_${Date.now()}`,
-        title: document.getElementById("risk-title").value,
-        likelihood: document.getElementById("risk-likelihood").value,
-        impact: document.getElementById("risk-impact").value,
-        mitigation: document.getElementById("risk-mitigation").value
-      };
-      state.risks.push(newRisk);
-      saveState();
-      alert("Risk added!");
-      e.target.reset();
-    });
-
-    // Add KPI
-    document.getElementById("kpi-form").addEventListener("submit", (e) => {
-      e.preventDefault();
-      const newKPI = {
-        id: `KPI_${Date.now()}`,
-        title: document.getElementById("kpi-title").value,
-        metric: document.getElementById("kpi-metric").value,
-        target: document.getElementById("kpi-target").value
-      };
-      state.kpis.push(newKPI);
-      saveState();
-      alert("KPI added!");
-      e.target.reset();
-    });
+  <!-- Main JavaScript -->
+  <script src="script_overview.js"></script>
+  <!-- Dynamically load sidebar.html and highlight active link -->
+  <script>
+    fetch("sidebar.html")
+      .then(res => res.text())
+      .then(html => {
+        document.getElementById("sidebar-placeholder").innerHTML = html;
+        let page = window.location.pathname.split("/").pop() || "overview.html";
+        document.querySelectorAll(".sidebar-nav .nav-item").forEach(link => {
+          if (link.getAttribute("href") === page) {
+            link.classList.add("active");
+          }
+        });
+        if (window.innerWidth <= 768) {
+          document.querySelector(".hamburger-btn").style.display = "inline-block";
+        }
+      });
   </script>
 </body>
 </html>

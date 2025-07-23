@@ -1,0 +1,97 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ForgeCast – Scenario Forecast</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f7f9fb;
+      padding: 2rem;
+    }
+    .form-section {
+      background: #fff;
+      border-radius: 12px;
+      padding: 1.5rem;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      max-width: 600px;
+      margin-bottom: 2rem;
+    }
+    .dashboard-card {
+      background: #ffffff;
+      border-left: 5px solid #3f51b5;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+      padding: 1rem 1.5rem;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+    }
+    .dashboard-card h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.2rem;
+    }
+    .dashboard-card p {
+      margin: 0;
+      font-size: 0.95rem;
+      color: #444;
+    }
+  </style>
+</head>
+<body>
+  <object data="sidebar.html" type="text/html" width="260" height="100%"></object>
+  <main style="margin-left: 280px;">
+    <h1>ForgeCast – Scenario Forecast</h1>
+    <section class="form-section">
+      <form id="forecast-form">
+        <label for="scenario-title">Scenario Title:</label>
+        <input type="text" id="scenario-title" required style="width:100%;" />
+
+        <label for="risk-weight">Risk Weighting (1–10):</label>
+        <input type="number" id="risk-weight" min="1" max="10" value="5" style="width:100%;" />
+
+        <label for="aggressiveness">Aggressiveness Level (1–10):</label>
+        <input type="number" id="aggressiveness" min="1" max="10" value="5" style="width:100%;" />
+
+        <button type="submit" style="margin-top:1rem;">Run Forecast</button>
+      </form>
+    </section>
+
+    <section id="forecast-output"></section>
+  </main>
+
+  <script type="module">
+    import { loadState, state } from './state.js';
+    loadState();
+
+    const form = document.getElementById("forecast-form");
+    const output = document.getElementById("forecast-output");
+
+    form.addEventListener("submit", function(e) {
+      e.preventDefault();
+      const title = document.getElementById("scenario-title").value;
+      const riskWeight = parseInt(document.getElementById("risk-weight").value, 10);
+      const aggressiveness = parseInt(document.getElementById("aggressiveness").value, 10);
+
+      const goalCount = state.goals.length;
+      const riskCount = state.risks.length;
+      const score = Math.max(0, 100 + goalCount * 10 - riskCount * riskWeight + (aggressiveness - 5) * 5);
+
+      const rating = score >= 120 ? "High Confidence"
+                   : score >= 90 ? "Moderate Confidence"
+                   : "Low Confidence";
+
+      output.innerHTML = `
+        <div class="dashboard-card">
+          <h3>Scenario: ${title}</h3>
+          <p><strong>Forecast Score:</strong> ${score}</p>
+          <p><strong>Confidence Rating:</strong> ${rating}</p>
+          <p><strong>Goals Analyzed:</strong> ${goalCount}</p>
+          <p><strong>Risks Considered:</strong> ${riskCount}</p>
+        </div>
+      `;
+    });
+  </script>
+</body>
+</html>
