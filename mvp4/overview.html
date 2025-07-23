@@ -131,5 +131,28 @@
 
 <script type="module" src="script_goals.js"></script>
 
+
+<!-- RISK MANAGER START -->
+<h2>Strategic Risks</h2>
+<form id="risk-form">
+  <input type="text" id="risk-title" placeholder="Title" required />
+  <select id="risk-likelihood">
+    <option value="Low">Low</option>
+    <option value="Medium">Medium</option>
+    <option value="High">High</option>
+  </select>
+  <select id="risk-impact">
+    <option value="Low">Low</option>
+    <option value="Medium">Medium</option>
+    <option value="High">High</option>
+  </select>
+  <button type="submit">Add Risk</button>
+</form>
+
+<ul id="risk-list"></ul>
+<!-- RISK MANAGER END -->
+
+<script type="module" src="script_risks.js"></script>
+
 </body>
 </html>

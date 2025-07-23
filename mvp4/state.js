@@ -7,6 +7,7 @@ let defaultState = {
   mission: "",
   values: [],
   goals: [],
+  risks: [],
   kpis: [],
   initiatives: [],
   notes: [],
